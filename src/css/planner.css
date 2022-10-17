@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body{
+    background: #f1f2f6;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+
+.container-all{
+ 
+  /* background: rgb(10, 10, 10); */
+display: block;
+margin: 2%;
+
+}
+
+ .container-form{
+
+  /* background: #57606f; */
+
+  display: block;
+
+
+
+  
+  }
+
+  .form-group{
+   
+    margin-top: 20px;
+    width: 100%;
+    
+  }
+
+.input_planner{
+  background: none;
+  display: flex;
+  border: 0;
+  border-bottom: 2px solid rgb(200,200,200);
+  position: relative;
+  width: 100%;
+  outline: none;
+}
+.input_planner:focus{
+ 
+  border-bottom: 2px solid cornflowerblue;
+  transition: 0.3s ease-in-out;
+}
+.input_planner .label{
+  color: #57606f;
+  font-size: 16px;
+  cursor: text;
+  position: absolute;
+ left: 0;
+
+}
+label{
+    color: #57606f;
+    font-size: 14px;
+    cursor: text;
+    
+}
+#select_planner{
+  padding: 4px;
+  border: none;
+  background:#8f96a1 ;
+
+  color:#dfe4ea ;
+}
+.form-group-button{
+  margin-top: 5%;
+  text-align: right;
+ 
+
+}
+div.form-group-button button{
+  background: #f12711;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  
+color: #ffff;
+padding: 8px 35px;
+border-radius: 25px;
+border: #3742fa;
+
+
+
+}
+div.form-group-button button:active{
+
+ transform:  scale(0.9);
+
+ 
+  }
+form{
+  background: #f1f2f6;
+  align-items: center;
+ 
+
+ padding: 5%;
+
+
+ box-shadow: 0px 5px 6px 2px #747d8c ;
+  
+}
+
+
+.span{
+  text-align: center;
+  width: 100%;
+  background: #f39c12;
+  color: #ffff;
+  box-shadow: 0px 7px 6px 2px #747d8c ;
+  padding: 4px;
+}
+
+
+
+.planner{
+  border: solid gray;
+  margin: 5px;
+}
+#li-cant{
+  display: flex;
+}
+
+#cod_prod{
+  display: flex;
+}
+
+.tab-title{
+  background: #27ae60;
+  color: #ffff;
+}
+#id{
+
+ margin: 0px 10px;
+ text-align: center;
+}
+#input_cod{
+  margin: 0px 10px;
+ 
+}
+#linea{
+  margin: 0px 10px;
+}
+#cantidad{
+  margin: 0px 10px;
+}

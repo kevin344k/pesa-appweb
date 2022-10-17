@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planner</title>
+    <link rel="shortcut icon" href="#" />
+    <!--  Bootstrap-->
+    <link rel="stylesheet" href="./css/planner.css" />
+    <link rel="stylesheet" href="./css/planner-listas.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="./css/gantt.css" />
+  </head>
+  <!-- barra de bavegación -->
+
+  <body>
+    <div class="container-all">
+      <div class="container-sup">
+        <div class="container-form">
+          <div class="span"><span>Programar Producción</span></div>
+          <!-- input para enviar a produccion la planificacion -->
+          <form autocomplete="off">
+           
+            <div id="cod_prod" class="form-group">
+              <label class="label" for="id">Id </label>
+              <input required type="text" id="id" class="input_planner" />
+              <label class="label" for="producto">Código </label>
+              <input required type="text" id="input_cod" class="input_planner" />
+            </div>
+            <div class="form-group">
+              <label class="label" for="producto">Producto </label>
+              <input required type="text" id="producto" class="input_planner" />
+            </div>
+            <div id="li-cant" class="form-group">
+              <label class="label" for="linea">Línea </label>
+              <input required type="text" id="linea" class="input_planner" />
+              <label for="cantidad">Cantidad </label>
+              <input
+                required
+                type="number"
+                id="cantidad"
+                class="input_planner"
+              />
+            </div>
+            <div class="form-group"></div>
+
+            <div class="form-group">
+              <label>Unidades </label>
+              <select name="select" id="select_planner">
+                <option>Seleccione</option>
+                <option>FDON</option>
+                <option>UND</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Fecha Inicio </label>
+              <input type="datetime-local" id="dateinicio" />
+            </div>
+            <div class="form-group-button">
+              <button>Enviar <i class="bi bi-send"></i></button>
+            </div>
+          </form>
+        </div>
+
+        <div class="container-select">
+          <div class="container-list-lineas">
+            <!-- tabla que muestra las lineas disponibles -->
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr class="tab-title">
+                    <td colspan="2">Listado de Máquinas</td>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                    <th scope="col">Código(cc)</th>
+                    <th scope="col">Nombre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                  </tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- tabla que muestra las lineas disponibles -->
+          <div class="container-list-productos">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr class="tab-title">
+                    <td colspan="2">Listado de Productos</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nombre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                  </tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-inf">
+        <div id="chart">
+         <div class="h5-div">Línea de tiempo</div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- scrip para el gantt -->
+    <script src="./js/gantt.js"></script>
+    <script src="./js/initialize-gantt.js"></script>
+    <!-- script bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
