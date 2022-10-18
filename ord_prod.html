@@ -24,85 +24,96 @@
         <div class="container-form-prod">
           <div class="div-form-planner">
             <form id="form-plan">
-           <!--  -->
-           <label for="id-plan">Planner(id)</label>
-           <input class="" id="id-plan" type="text" />
-           <button class="btn btn-primary">Cargar</button>
-             
+              <!--  -->
+              <label for="id-plan">Planner(id)</label>
+              <input class="" id="id-plan" type="text" />
+              <button class="btn btn-primary">Cargar</button>
             </form>
           </div>
           <div class="div-form-prod">
             <form id="form-production">
-
-
-                <table class="tab-form-planner">
-                    <tr>
-                        <td colspan="4"><h3>Orden de Producción</h3></td>
-                        <td><label id="num-orden">123456</label></td>
-                    </tr>
-                    <tr>
-                        <div class="form-group">
-                        <td> <label for="nombre_linea">Línea</label></td>
-                        <td><input id="nombre_linea" class="input-s" type="text" /></td></div>
-
-                        <div class="form-group">
-                        <td><label for="cod_linea">Cód. de Línea</label></td>
-                        <td><input id="cod_linea" class="input-s" type="text" /></td></div>
-                    </tr>
-                    <tr>
-                        <div class="form-group"><td><label for="nombre-articulo">Artículo</label></td>
-                            <td><input id="nombre-articulo" class="input-s" type="text" /></td></div>
-                            <div class="form-group">
-                        <td><label for="cod-art">Cód. de Artículo</label></td>
-                        <td><input id="cod-art" class="input-s" type="text" /></td></div>
-                    </tr>
-                    <tr>
-                        <div class="form-group"></div>
-                        <td><label for="peso">Peso(g)</label></td>
-                        <td><input id="peso" class="input-s" type="text" /></td></div>
-
-                        <div class="form-group">
-                        <td><label for="prod-hora">Cant a fabricar por hora</label></td>
-                        <td><input id="c" class="input-s" type="text" /></td></div>
-                       
-                    </tr>
-                   </table>
-
-               <table border="1px solid">
+              <table class="tab-form-planner">
+                <label id="num-orden">#  <input id="num-orden-prod" type="text" disabled></label>
                 <tr>
-                    <th scope="col">Código</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">cantidad</th>
+                  <td colspan="4"><h3>Orden de Producción</h3></td>
+                
+                </tr>
+                <tr>
+                  <div class="form-group">
+                    <td><label for="nombre_linea">Línea</label></td>
+                    <td>
+                      <input id="nombre_linea" class="input-s" type="text" />
+                    </td>
+                  </div>
+
+                  <div class="form-group">
+                    <td><label for="cod_linea">Cód. de Línea</label></td>
+                    <td>
+                      <input id="cod_linea" class="input-s" type="text" />
+                    </td>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="form-group">
+                    <td><label for="nombre-articulo">Artículo</label></td>
+                    <td>
+                      <input id="nombre-articulo" class="input-s" type="text" />
+                    </td>
+                  </div>
+                  <div class="form-group">
+                    <td><label for="cod-art">Cód. de Artículo</label></td>
+                    <td><input id="cod-art" class="input-s" type="text" /></td>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="form-group">
+                    <td><label for="peso">Peso(g)</label></td>
+                    <td><input id="peso" class="input-s" type="text" /></td>
+                  </div>
+
+                  <div class="form-group">
+                    <td>
+                      <label for="prod-hora">Cant. a fabricar por hora</label>
+                    </td>
+                    <td><input id="c" class="input-s" type="text" /></td>
+                  </div>
+                </tr>
+              </table>
+
+              <table class="tab-form-suministro" border="1px solid">
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">cantidad</th>
                 </tr>
 
-<tr>
+                <tr>
+                  <td><input class="input-cod-suministros"  type="text" /></td>
+                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
+                  <td><input class="input-cant-suministro"  type="text" /></td>
+                </tr>
 
-<td><input type="text"></td>
-<td></td>
-<td></td>
-
-</tr>
-
-<tr>
-
-    <td><input type="text"></td>
-    <td></td>
-    <td></td>
-    
-    </tr>
-    <tr>
-
-        <td><input type="text"></td>
-        <td></td>
-        <td></td>
-        
-        </tr>
-
-
-               </table>
-              
-              
-          
+                <tr>
+                  <td><input class="input-cod-suministros" type="text" /></td>
+                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
+                  <td><input class="input-cant-suministro"  type="text" /></td>
+                </tr>
+                <tr>
+                  <td><input class="input-cod-suministros" type="text" /></td>
+                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
+                  <td><input class="input-cant-suministro"  type="text" /></td>
+                </tr>
+                <tr>
+                  <td><input class="input-cod-suministros" type="text" /></td>
+                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
+                  <td><input class="input-cant-suministro"  type="text" /></td>
+                </tr>
+                <tr>
+                  <td><input class="input-cod-suministros" type="text" /></td>
+                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
+                  <td><input class="input-cant-suministro"  type="text" /></td>
+                </tr>
+              </table>
             </form>
           </div>
         </div>

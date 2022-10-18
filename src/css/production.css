@@ -93,6 +93,7 @@ width: fit-content;
 
 border-radius: 0px 0px 10px 10px;
 padding: 20px;
+padding-top: 5px;
 }
 #form-plan{
     background: rgb(255, 255, 255);
@@ -121,9 +122,52 @@ label{
 
    transform: translatey(-20px);
     color: rgb(96, 90, 90);
-   
-
-
-   
 }
 
+.input-cod-suministros{
+    width: 50%;
+    min-width: 80px;
+    margin-top: 8px;
+    text-align: center;
+}
+.tab-form-suministro{
+
+border: 1px solid;
+width: 100%;
+
+}
+td{
+    width: 500px;
+}
+.input-desc-suministro{
+    width: 140%;
+    min-width: 80px;
+    margin-top: 8px;
+    text-align: center;
+}
+.input-cant-suministro{
+    width: 40%;
+    min-width: 80px;
+    margin-top: 8px;
+    text-align: center;
+}
+tr{
+   align-items: center;
+   text-align: center;
+   
+}
+#num-orden-prod{
+   
+background: #e67e22;
+border: none;
+outline: none;
+box-shadow: -1px 2px 14px 1px rgba(230,126,34,0.67);
+border-radius: 6px;
+padding: 2px;
+width: 20%;
+min-width:60px;
+}
+#num-orden{
+    width: 100%;
+    text-align: right;
+}
