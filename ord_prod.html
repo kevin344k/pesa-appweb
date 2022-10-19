@@ -23,20 +23,32 @@
       <div class="cotainer-prod-right">
         <div class="container-form-prod">
           <div class="div-form-planner">
-            <form id="form-plan">
-              <!--  -->
+         
+             
+            <div id="form-plan">
+              <label id="num-orden"
+              ># <input id="num-orden-prod" type="text" disabled
+            /></label>
+         
+              <form action="">
+             
+
               <label for="id-plan">Planner(id)</label>
+
               <input class="" id="id-plan" type="text" />
+
               <button class="btn btn-primary">Cargar</button>
             </form>
           </div>
+
+
+
+
           <div class="div-form-prod">
             <form id="form-production">
               <table class="tab-form-planner">
-                <label id="num-orden">#  <input id="num-orden-prod" type="text" disabled></label>
                 <tr>
                   <td colspan="4"><h3>Orden de Producción</h3></td>
-                
                 </tr>
                 <tr>
                   <div class="form-group">
@@ -88,32 +100,60 @@
                 </tr>
 
                 <tr>
-                  <td><input class="input-cod-suministros"  type="text" /></td>
-                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
-                  <td><input class="input-cant-suministro"  type="text" /></td>
+                  <td><input class="input-cod-suministros" type="text" /></td>
+                  <td>
+                    <input class="input-desc-suministro" type="text" disabled />
+                  </td>
+                  <td><input class="input-cant-suministro" type="text" /></td>
                 </tr>
 
                 <tr>
                   <td><input class="input-cod-suministros" type="text" /></td>
-                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
-                  <td><input class="input-cant-suministro"  type="text" /></td>
+                  <td>
+                    <input class="input-desc-suministro" type="text" disabled />
+                  </td>
+                  <td><input class="input-cant-suministro" type="text" /></td>
                 </tr>
                 <tr>
                   <td><input class="input-cod-suministros" type="text" /></td>
-                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
-                  <td><input class="input-cant-suministro"  type="text" /></td>
+                  <td>
+                    <input class="input-desc-suministro" type="text" disabled />
+                  </td>
+                  <td><input class="input-cant-suministro" type="text" /></td>
                 </tr>
                 <tr>
                   <td><input class="input-cod-suministros" type="text" /></td>
-                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
-                  <td><input class="input-cant-suministro"  type="text" /></td>
+                  <td>
+                    <input class="input-desc-suministro" type="text" disabled />
+                  </td>
+                  <td><input class="input-cant-suministro" type="text" /></td>
                 </tr>
                 <tr>
                   <td><input class="input-cod-suministros" type="text" /></td>
-                  <td><input class="input-desc-suministro"  type="text" disabled/></td>
-                  <td><input class="input-cant-suministro"  type="text" /></td>
+                  <td>
+                    <input class="input-desc-suministro" type="text" disabled />
+                  </td>
+                  <td><input class="input-cant-suministro" type="text" /></td>
+                </tr>
+
+                <tr>
+                  <td align="left"><b> Observaciones:</b></td>
+                </tr>
+                <tr style="border: 1px solid">
+                  <td colspan="3" style="width: 100%">
+                    <textarea
+                      style="width: 100%"
+                      name=""
+                      id="textarea"
+                      rows="2"
+                    ></textarea>
+                  </td>
                 </tr>
               </table>
+
+              <button class="" id="but-gen-ord" type="submit">
+                Generar Orden
+              </button>
             </form>
           </div>
         </div>
