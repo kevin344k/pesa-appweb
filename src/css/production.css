@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
+body{
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -14,11 +21,9 @@
 .container-prod-all {
   /* background: rgb(8, 8, 8); */
   width: 100vw;
-  height: 100vh;
+height: 100vh;
   display: flex;
-  background: #0F2027;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ 
   
 }
 
@@ -29,18 +34,18 @@
 }
 .cotainer-prod-left-top {
   /* background: rgb(201, 126, 21); */
-  width: 40vw;
-  height: 50vh;
+  width: fit-content;
+  height: 300px;
 }
 .cotainer-prod-left-bottom {
   /* background: rgb(6, 238, 60); */
-  width: 40vw;
-  height: 50vh;
+  width: fit-content;
+  height: 300px;
 }
 
 .cotainer-prod-right {
   /* background: rgb(79, 79, 82); */
-  width: 60vw;
+  width: fit-content;
   height: 100vh;
  
   align-items: center;
