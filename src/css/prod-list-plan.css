@@ -1,0 +1,23 @@
+.div-tab-planner-list{
+
+height: 300px;
+width: 380px;
+margin: auto;
+
+overflow: scroll;
+}
+#tb-list-plan{
+background: white;
+margin: auto;
+border-radius: 10px 10px 10px 10px;
+width: 95%;
+margin-top: 5%;
+height: 300px;
+width: 350px;
+}
+.lbl-list-plan{
+color: red;
+}
+th{
+    background:#ecf0f1;
+}

@@ -7,19 +7,81 @@
     <title>Production</title>
     <link rel="stylesheet" href="./src/css/production.css" />
     <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="./src/css/prod-list-plan.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
   </head>
   <body>
     <div class="container-prod-all">
       <div class="cotainer-prod-left-all">
-        <div class="cotainer-prod-left-top"></div>
-        <div class="cotainer-prod-left-bottom"></div>
+        <!-- tabla para ver los items enviadro por planeación -->
+        <div class="cotainer-prod-left-top">
+          <div class="div-tab-planner-list">
+            <table id="tb-list-plan">
+              <tr>
+                <td colspan="5">
+                  <label for="" class="lbl-list plan">
+                    Listado de Planeación</label
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th>Id</th>
+                <th>Máquina</th>
+                <th>Producto</th>
+                <th>Estado</th>
+                <th>cantidad</th>
+              </tr>
+              <tr>
+                <td>001</td>
+                <td>irwin 5</td>
+                <td class="td-nom-prod">Super Vianda Amarilla x 25</td>
+                <td><label class="Iniciado" for="">Iniciado</label></td>
+                <td>2000</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="cotainer-prod-left-bottom">
+          <!-- tabla para ver los items enviados a máquina -->
+
+          <div class="div-tab-planner-list">
+            <table id="tb-list-plan">
+              <tr>
+                <td colspan="5">
+                  <label for="" class="lbl-list plan">
+                    Listado de Ordenes</label
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th># O.P</th>
+                <th>Máquina</th>
+                <th>Producto</th>
+                <th>Estado</th>
+                <th>cantidad</th>
+              </tr>
+              <tr>
+                <td>001</td>
+                <td>irwin 5</td>
+                <td class="td-nom-prod">Super Vianda Amarilla x 25</td>
+                <td><label class="Iniciado" for="">Iniciado</label></td>
+                <td>500</td>
+              </tr>
+            </table>
+          </div>
+
+
+
+        </div>
       </div>
       <div class="cotainer-prod-right">
         <div class="container-form-prod">
@@ -42,57 +104,48 @@
               <form id="form-production">
                 <table class="tab-form-planner">
                   <tr>
-                    <td colspan="4"><h3>Orden de Producción</h3></td>
+                    <td colspan="4"><h4>Orden de Producción</h4></td>
                   </tr>
                   <tr>
-                    <div class="form-group">
-                      <td><label for="nombre_linea">Línea</label></td>
-                      <td>
-                        <input id="nombre_linea" class="input-s" type="text" />
-                      </td>
-                    </div>
+                    <td><label for="nombre_linea">Línea</label></td>
+                    <td>
+                      <input id="nombre_linea" class="input-s" type="text" />
+                    </td>
 
-                    <div class="form-group">
-                      <td><label for="cod_linea">Cód. de Línea</label></td>
-                      <td>
-                        <input id="cod_linea" class="input-s" type="text" />
-                      </td>
-                    </div>
+                    <td><label for="cod_linea">Cód. línea</label></td>
+                    <td>
+                      <input id="cod_linea" class="input-s" type="text" />
+                    </td>
                   </tr>
                   <tr>
-                    <div class="form-group">
-                      <td><label for="nombre-articulo">Artículo</label></td>
-                      <td>
-                        <input
-                          id="nombre-articulo"
-                          class="input-s"
-                          type="text"
-                        />
-                      </td>
-                    </div>
-                    <div class="form-group">
-                      <td><label for="cod-art">Cód. de Artículo</label></td>
-                      <td>
-                        <input id="cod-art" class="input-s" type="text" />
-                      </td>
-                    </div>
-                  </tr>
-                  <tr>
-                    <div class="form-group">
-                      <td><label for="peso">Peso(g)</label></td>
-                      <td><input id="peso" class="input-s" type="text" /></td>
-                    </div>
+                    <td><label for="nombre-articulo">Artículo</label></td>
+                    <td>
+                      <input id="nombre-articulo" class="input-s" type="text" />
+                    </td>
 
-                    <div class="form-group">
-                      <td>
-                        <label for="prod-hora">Cant. a fabricar por hora</label>
-                      </td>
-                      <td><input id="c" class="input-s" type="text" /></td>
-                    </div>
+                    <td><label for="cod-art">Cód. Artículo</label></td>
+                    <td>
+                      <input id="cod-art" class="input-s" type="text" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="peso">Peso(g)</label></td>
+                    <td><input id="peso" class="input-s" type="text" /></td>
+
+                    <td>
+                      <label for="prod-hora">Cant. por hora</label>
+                    </td>
+                    <td><input id="c" class="input-s" type="number" /></td>
                   </tr>
                 </table>
 
-                <table class="tab-form-suministro" >
+                <table class="tab-form-suministro">
+                  <tr>
+                    <td colspan="3">
+                      <label id="lbl-mp" for=""><b> Materia Prima </b></label>
+                      <hr />
+                    </td>
+                  </tr>
                   <tr>
                     <th scope="col">Código</th>
                     <th scope="col">Descripcion</th>
@@ -101,7 +154,7 @@
 
                   <tr>
                     <td><input class="input-cod-suministros" type="text" /></td>
-                    <td>
+                    <td class="td-desc-suministro">
                       <input
                         class="input-desc-suministro"
                         type="text"
@@ -113,7 +166,7 @@
 
                   <tr>
                     <td><input class="input-cod-suministros" type="text" /></td>
-                    <td>
+                    <td class="td-desc-suministro">
                       <input
                         class="input-desc-suministro"
                         type="text"
@@ -124,7 +177,7 @@
                   </tr>
                   <tr>
                     <td><input class="input-cod-suministros" type="text" /></td>
-                    <td>
+                    <td class="td-desc-suministro">
                       <input
                         class="input-desc-suministro"
                         type="text"
@@ -135,7 +188,7 @@
                   </tr>
                   <tr>
                     <td><input class="input-cod-suministros" type="text" /></td>
-                    <td>
+                    <td class="td-desc-suministro">
                       <input
                         class="input-desc-suministro"
                         type="text"
@@ -146,7 +199,7 @@
                   </tr>
                   <tr>
                     <td><input class="input-cod-suministros" type="text" /></td>
-                    <td>
+                    <td class="td-desc-suministro">
                       <input
                         class="input-desc-suministro"
                         type="text"
@@ -157,10 +210,10 @@
                   </tr>
                   <!--  -->
 
-                  <tr>
-                    <td align="left"><b> Observaciones:</b></td>
+                  <tr id="tr-obser">
+                    <td id="td-obser" align="left"><b> Observaciones:</b></td>
                   </tr>
-                  <tr >
+                  <tr>
                     <td colspan="3" style="width: 100%">
                       <textarea
                         style="width: 100%"
@@ -171,10 +224,12 @@
                     </td>
                   </tr>
                 </table>
-                <div id="but-gen"><button class="" id="but-gen-ord" type="submit"><i class="bi bi-journal-richtext"></i>
-                  Generar Orden
-                </button></div>
-                
+                <div id="but-gen">
+                  <button class="" id="but-gen-ord" type="submit">
+                    <i class="bi bi-journal-richtext"></i>
+                    Generar Orden
+                  </button>
+                </div>
               </form>
             </div>
           </div>

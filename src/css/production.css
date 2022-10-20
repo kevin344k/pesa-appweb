@@ -7,36 +7,42 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   font-size: 13px;
+  
 }
 
+
 .container-prod-all {
-  background: rgb(8, 8, 8);
+  /* background: rgb(8, 8, 8); */
   width: 100vw;
   height: 100vh;
   display: flex;
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }
 
 .cotainer-prod-left-all {
-  background: red;
+  /* background: red; */
   height: 100vh;
   width: 40vw;
 }
 .cotainer-prod-left-top {
-  background: rgb(235, 139, 5);
-  width: 100vw;
+  /* background: rgb(201, 126, 21); */
+  width: 40vw;
   height: 50vh;
 }
 .cotainer-prod-left-bottom {
-  background: rgb(6, 238, 60);
-  width: 100vw;
+  /* background: rgb(6, 238, 60); */
+  width: 40vw;
   height: 50vh;
 }
 
 .cotainer-prod-right {
-  background: rgb(33, 8, 222);
+  /* background: rgb(79, 79, 82); */
   width: 60vw;
   height: 100vh;
-  display: flex;
+ 
   align-items: center;
 }
 .container-form-prod {
@@ -52,19 +58,20 @@
   margin: auto;
 }
 .div-form-planner {
-  width: 95%;
+  width: fit-content;
   height: 4%;
   margin: auto;
   height: fit-content;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 #id-plan {
   width: 100px;
 }
 .tab-form-planner {
-  text-align: center;
+
   
   width: fit-content;
+  text-align: left;
 }
 #form-production {
   background: #fff;
@@ -82,11 +89,16 @@
   margin: auto;
 }
 #form-plan {
-  margin: 0% 5%;
+ 
   background: #ecf0f1;
+margin: 0px 20px;
+padding: 10px;
+ 
 }
 .input-s {
-  margin: 10px;
+ 
+ 
+  /* margin: 8px; */
   width: 190px;
   background: none;
   display: flex;
@@ -95,6 +107,8 @@
   left: 0;
   width: 100%;
   outline: none;
+  text-align: center;
+  margin-left: 8px;
 }
 .input-s:focus {
   border-bottom: 2px solid cornflowerblue;
@@ -102,24 +116,33 @@
 }
 label {
   color: rgb(96, 90, 90);
+
+  
 }
 
 .input-cod-suministros {
-  width: 50%;
-  min-width: 80px;
-  margin-top: 8px;
+  width: 60%;
+ 
+  margin-top: 5px;
   text-align: center;
 }
 .tab-form-suministro {
  
   width: 100%;
   background: #ecf0f1;
+  margin-top: 2%;
+ 
 }
 td {
-  width: 500px;
+  width: 120px;
+  text-align: center;
+  margin-top: 58px;
 }
+
+
+
 .input-desc-suministro {
-  width: 140%;
+  /* width: 140%; */
   min-width: 80px;
   margin-top: 8px;
   text-align: center;
@@ -133,6 +156,7 @@ td {
 tr {
   align-items: center;
   text-align: center;
+  margin: 20px;
 }
 #num-orden-prod {
   background: #e67e22;
@@ -144,6 +168,7 @@ tr {
   width: 20%;
   min-width: 60px;
   margin-right: 20px;
+   margin-bottom: 5px;
 }
 #num-orden {
   width: 100%;
@@ -153,8 +178,8 @@ tr {
 
 #but-gen{
     width: 100%;
-    margin: 4%;
-    margin-bottom: 0%;
+    margin-top: 2%;
+   
     text-align: center;
 }
 #but-gen-ord {
@@ -172,9 +197,11 @@ tr {
 
   letter-spacing: 1.5px;
   color: #ffff;
-  padding: 8px 35px;
+  padding: 8px 45px;
   border-radius: 25px;
   border: #3742fa;
+
+
 
 }
 
@@ -189,3 +216,8 @@ tr {
     transform:  scale(0.9);
    
 }
+
+#lbl-mp{
+margin-top: 8px;
+}
+
