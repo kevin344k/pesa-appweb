@@ -1,16 +1,16 @@
 .div-tab-planner-list {
   overflow: scroll;
-
+width: 100%;
 
 }
 #tb-list-plan {
   background: white;
-
+  margin: auto;
   border-radius: 10px 10px 10px 10px;
   width: 95%;
   margin-top: 5%;
-  height: 200px;
-  width: 300px;
+  /* height: 200px;
+  width: 300px; */
 
 }
 
@@ -20,7 +20,7 @@ th {
 .div-tab-prod-list {
 
     overflow: scroll;
- 
+    width: 100%;
 }
 
 #tb-list-prod {
@@ -28,7 +28,7 @@ th {
   margin: auto;
   border-radius: 10px 10px 10px 10px;
   width: 95%;
-  height: 200px;
-  width: 300px;
+  /* height: 200px;
+  width: 300px; */
  
 }
