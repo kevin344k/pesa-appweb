@@ -17,66 +17,243 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
     />
     <link rel="shortcut icon" href="#" />
-    <link rel="stylesheet" href="./src/css/infor-oper-right.css">
+    <link rel="stylesheet" href="./src/css/infor-oper-right.css" />
   </head>
   <body>
-    
     <div class="div-all">
       <div class="div-left">
         <div class="div-data-but">
-          <div class="head-infor"><i class="bi bi-person"></i>  Informe del Operador</div>
+          <div class="head-infor">
+            <i class="bi bi-person"></i> Informe del Operador
+          </div>
           <ul class="ul-but">
             <div class="div-data">
-            <li id="but-data">
-              <i class="bi bi-card-checklist"> Datos de la orden</i>
-            </li><span></span>
-          </div>
+              <li id="but-data">
+                <i class="bi bi-card-checklist"> Datos de la orden</i>
+              </li>
+              <span></span>
+            </div>
             <div class="div-paralizaciones">
               <li id="but-paralizaciones">
                 <i class="bi bi-stop-fill"> Paralizaciones </i>
-              </li><span></span>
+              </li>
+              <span></span>
             </div>
-           
 
             <div class="div-und-fab">
               <li id="but-prod-linea">
                 <i class="bi bi-box"> Und Fabricadas</i>
-              </li><span></span>
+              </li>
+              <span></span>
             </div>
           </ul>
         </div>
 
         <div class="div-left-bottom">
-          <button id="but-fin">Finalizar turno  <i class="bi bi-box-arrow-right"></i></button>
+          <button id="but-fin">
+            Finalizar turno <i class="bi bi-box-arrow-right"></i>
+          </button>
         </div>
       </div>
 
-      <div class="div-right">
-<!-- codigo para mostrar datos de la orden  -->
-<div class="div-dat-orden" >
-<div class="num-orden"><button>Buscar</button></div>
+      <div id="div-data-all" class="div-right">
+        <!-- codigo para mostrar datos de la orden  -->
 
+        <div class="num-orden">
+          <input type="text" id="input-num-orden" placeholder="# de orden" />
+          <button id="but-cargar-orden"><i class="bi bi-search"></i></button>
+        </div>
+        <form action="">
+          <div class="all-right-body">
+            <div class="div-dat-orden">
+              <label class="lbl-section-input" for="">Fecha y Turno</label>
+              <div class="form-group">
+                <label for="">Fecha</label>
+                <input type="Date" />
+                <label for="">Turno</label>
+                <input id="input-turno" type="text" />
+              </div>
 
+              <label class="lbl-section-input" for="">Línea</label><br />
+              <div class="form-group">
+                <label for=""># de orden</label>
+                <input id="input-num-orden2" type="text" /><br />
+                <label for="">Máquina</label>
+                <input id="input-linea" type="text" /><br />
+                <label for="">C.C</label>
+                <input id="input-cc" type="text" />
+                <label for="">Cod. molde</label>
+                <input id="input-cod-molde" type="text" />
+              </div>
 
+              <label class="lbl-section-input" for="">Producto</label>
+              <div class="form-group">
+                <label for="">Atículo</label>
+                <input type="text" /><br />
+                <label for="">Cód. artículo</label>
+                <input id="input-cod-art" type="text" /><br />
+                <label for="">Peso</label>
+                <input id="input-peso" type="text" />
+              </div>
+            </div>
 
+            <!-- codigo para ingresar el personalñ que tarabajo en el turno  -->
+            <div class="div-personal">
+              <label for=""></label>
 
+              <div class="form-group">
+                <label for=""> Cantidad a Fab.</label>
+                <input type="text" /><br />
+                <label for=""> Und por turno</label>
+                <input type="text" /><br />
+                <label for=""> Hora de inicio</label>
+                <input type="time" /><br />
+              </div>
 
-</div>
+              <div class="div-meta">
+                <label id="lbl-personal" for=""
+                  >Nombre del operador y ayudante</label
+                >
 
+                <div class="div-ayudante">
+                  1 <input class="input-cedula" type="text" /><input
+                    type="text"
+                  />
+                </div>
 
+                <div class="div-ayudante">
+                  2 <input class="input-cedula" type="text" /><input
+                    type="text"
+                  />
+                </div>
 
+                <div class="div-ayudante">
+                  3 <input class="input-cedula" type="text" /><input
+                    type="text"
+                  />
+                </div>
 
+                <div class="div-ayudante">
+                  4 <input class="input-cedula" type="text" /><input
+                    type="text"
+                  />
+                </div>
 
+                <div class="div-ayudante">
+                  5 <input class="input-cedula" type="text" /><input
+                    type="text"
+                  />
+                </div>
+                <div class="div-ayudante">
+                  6 <input class="input-cedula" type="text" /><input
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
 
+      <!-- Paralizaciones  -->
 
+      <div id="div-paralizacion" class="div-stop fade-in-left">
+        <div class="div-cod-paralizaciones">
+          <table>
+            <tr>
+              <th id="tab-title" colspan="4">TIEMPO IMPRODUCTIVO GENERADO</th>
+            </tr>
 
-
-
-
-
-
-
+            <tr>
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Desde</th>
+              <th>Hasta</th>
+            </tr>
+            <tr>
+              <td style="width: 100px">
+                <input class="cod-stop" type="text" />
+              </td>
+              <td><input class="input-description" type="text" disabled /></td>
+              <td><input class="input-time-start" type="time" /></td>
+              <td><input class="input-time-end" type="time" /></td>
+            </tr>
+            <tr>
+              <td style="width: 100px">
+                <input class="cod-stop" type="text" />
+              </td>
+              <td><input class="input-description" type="text" disabled /></td>
+              <td><input class="input-time-start" type="time" /></td>
+              <td><input class="input-time-end" type="time" /></td>
+            </tr>
+            <tr>
+              <td style="width: 100px">
+                <input class="cod-stop" type="text" />
+              </td>
+              <td><input class="input-description" type="text" disabled /></td>
+              <td><input class="input-time-start" type="time" /></td>
+              <td><input class="input-time-end" type="time" /></td>
+            </tr>
+            <tr>
+              <td style="width: 100px">
+                <input class="cod-stop" type="text" />
+              </td>
+              <td><input class="input-description" type="text" disabled /></td>
+              <td><input class="input-time-start" type="time" /></td>
+              <td><input class="input-time-end" type="time" /></td>
+            </tr>
+            <tr>
+              <td style="width: 100px">
+                <input class="cod-stop" type="text" />
+              </td>
+              <td><input class="input-description" type="text" disabled /></td>
+              <td><input class="input-time-start" type="time" /></td>
+              <td><input class="input-time-end" type="time" /></td>
+            </tr>
+            <tr>
+              <td style="width: 100px">
+                <input class="cod-stop" type="text" />
+              </td>
+              <td><input class="input-description" type="text" disabled /></td>
+              <td><input class="input-time-start" type="time" /></td>
+              <td><input class="input-time-end" type="time" /></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- und reportadas -->
+      <div id="und-fabr" class="und-fabr">
+        <table id="tab-und">
+          <tr>
+            <td colspan="1">
+              Unidades Buenas
+              <i style="color: #2ed573" class="bi bi-check-circle-fill"></i>
+            </td>
+            <td colspan="1">
+              Unidades malas
+              <i style="color: #ff4757" class="bi bi-x-circle"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="grupo-input">
+                <span class="lbl-span">Cantidad</span>
+                <input id="input-und-buenas" type="number" min="0" />
+              </div>
+            </td>
+            <td>
+              <div class="grupo-input">
+                <span class="lbl-span">Scrap</span>
+                <input type="number" min="0" name="" id="input-malas" />
+              </div>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
+
+    <!-- script -->
+
+    <script src="./src/js/infor-oper.js"></script>
   </body>
 </html>

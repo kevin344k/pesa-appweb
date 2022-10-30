@@ -14,27 +14,21 @@
 .div-left {
   width: fit-content;
   height: 100vh;
-  background: #2e86de;
+  background: #1B1464;
 
   display: grid;
 }
 
-.div-right {
- 
-width: 100%;
-  height: 100vh;
 
-  background: #202125;
-}
 .div-data-but {
-  background: #2e86de;
+  background: #1B1464;
 
   width: fit-content;
   height: 70vh;
 }
 
 .div-left-bottom {
-  background: #2e86de;
+  background: #1B1464;
   width: fit-content;
   margin: auto;
   text-align: center;
@@ -67,7 +61,7 @@ width: 100%;
 
     color: #ffff;
   border-left: 2px solid #ffff;
-  background: rgba(163, 175, 189,0.7)  ;
+  background: rgba(163, 175, 189,0.7) ;
   box-shadow: 10px 8px 3px -6px rgba(0,0,0,.2)inset;
   
 }

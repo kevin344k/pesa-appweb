@@ -1,0 +1,215 @@
+.div-right {
+  width: 100%;
+  height: 100vh;
+
+  /* background: #202125; */
+}
+
+.div-dat-orden {
+  background-color: rgb(255, 255, 255);
+  width: 30vw;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.all-right-body {
+  display: flex;
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.num-orden {
+  background: #f1f2f6;
+
+  align-items: center;
+  text-align: center;
+  padding: 1%;
+}
+
+#but-cargar-orden {
+  background: #2193b0; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #6dd5ed,
+    #2193b0
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #6dd5ed,
+    #2193b0
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #ffff;
+  padding: 8px 35px;
+  border-radius: 25px;
+  border: #3742fa;
+}
+#but-cargar-orden:active {
+  transform: scale(0.9);
+}
+
+input {
+  background: #f1f2f6;
+  outline: none;
+  border: none;
+  text-align: center;
+  border-bottom: 1px solid #3742fa;
+  display: inline-block;
+}
+
+#input-num-orden {
+  width: 20%;
+}
+
+/* inputs */
+
+#input-cc {
+  width: 50px;
+}
+.form-group {
+  border: 1px solid #ffff;
+  padding: 3%;
+  margin: 0.5%;
+
+  background: #dfe4ea;
+  border-radius: 15px;
+  display: inline-block;
+}
+.lbl-section-input {
+  margin-left: 23px;
+  color: gray;
+}
+#input-peso {
+  margin: 10px;
+  width: 80px;
+}
+#input-cod-art {
+  width: 100px;
+  margin: 10px;
+}
+
+#input-cod-molde {
+  width: 80px;
+  margin: 10px;
+}
+#input-num-orden2 {
+  width: 80px;
+  margin: 10px;
+}
+#input-turno {
+  width: 30px;
+  margin: 10px;
+}
+.div-personal {
+  padding-top: 25px;
+}
+.div-meta {
+  background: #dfe4ea;
+  width: fit-content;
+  border-radius: 25px;
+}
+
+.div-ayudante {
+  padding-left: 15px;
+  margin: 10px;
+}
+.input-cedula {
+  width: 25%;
+  margin-right: 20px;
+}
+#lbl-personal {
+  margin-top: 2%;
+  padding-left: 15px;
+}
+
+/* paralizaciones */
+.div-stop {
+  width: 100%;
+}
+
+.div-cod-paralizaciones {
+  width: 90%;
+
+  background: #dfe4ea;
+  margin: auto;
+}
+
+table {
+  margin-top: 20%;
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+}
+.cod-stop {
+  width: 90%;
+  margin: 0;
+  padding: 0;
+}
+.input-description {
+  width: 100%;
+}
+.input-time-start {
+  text-align: center;
+  background: #ff4757;
+
+  border-radius: 5px;
+}
+.input-time-end {
+  text-align: center;
+  background: #7bed9f;
+  border-radius: 5px;
+}
+td {
+  padding: 7px;
+}
+#tab-title {
+  background: #ffa502;
+}
+
+/* reporte de unidades */
+
+.und-fabr {
+  margin: auto;
+  width: 400px;
+padding: 30px 10px;
+  border: 1px solid #ced6e0;
+  border-radius: 10px 0px;
+  box-shadow: 1px 1px 7px 3px #dfe4ea;
+}
+#tab-und {
+  margin: auto;
+}
+.lbl-span {
+  padding: 2%;
+  background: #a4b0be;
+  width: 70px;
+  border-radius: 10px 0px 0px 10px;
+  color: #ffff;
+  text-align: center;
+  align-items: center;
+}
+#input-und-buenas {
+  border-radius: 0px 10px 10px 0px;
+  background: #ffff;
+  border: 2px solid #a4b0be;
+  padding: 2%;
+  width: 100px;
+}
+#input-und-buenas:focus {
+  border: 2px solid #2ed573;
+}
+.grupo-input {
+  display: flex;
+}
+
+#input-malas {
+  border-radius: 0px 10px 10px 0px;
+  background: #ffff;
+  border: 2px solid #a4b0be;
+  padding: 2%;
+  width: 100px;
+}
+
+#input-malas:focus {
+  border: 2px solid #ff4757;
+}
