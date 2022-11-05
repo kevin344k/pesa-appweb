@@ -1,216 +1,459 @@
-  <div class="container-prod-all">
-      <div class="cotainer-prod-left-all">
-        <!-- tabla para ver los items enviadro por planeación -->
-        <div class="cotainer-prod-left-top">
-          <div class="div-tab-planner-list">
-            <table id="tb-list-plan">
-              <tr>
-                <td colspan="5">
-                  <label for="" class="lbl-list plan">
-                    Listado de Planeación</label
-                  >
-                </td>
-              </tr>
-              <tr>
-                <th>Id</th>
-                <th>Máquina</th>
-                <th>Producto</th>
-                <th>Estado</th>
-                <th>cantidad</th>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>irwin 5</td>
-                <td class="td-nom-prod">Super Vianda Amarilla x 25</td>
-                <td><label class="Iniciado" for="">Iniciado</label></td>
-                <td>2000</td>
-              </tr>
-            </table>
+{{! estilos solo para esta pagina ya que es una plantilla y es renderizado aparte del main }}
+<link rel="stylesheet" href="/css/production.css" />
+
+<link rel="stylesheet" href="/css/prod-list-plan.css" />
+
+<div class="container d-flex justify-content-center mt-4">
+
+  <div class="row">
+    <div class="col-12 col-md-5">
+      {{! se divide este col para hacer las dos tablas dentro de un col  }}
+      <div class="row">
+        <div class="col">
+          <div class="card text-center">
+            <div class="card-header">
+              <h3 class="card-title">Planner Id</h3>
+            </div>
+            <div class="card-body">
+              {{! encbezado planner id }}
+
+              <div class="row mb-2 text-center">
+                <div class="col">
+                  Id
+                </div>
+                <div class="col">
+                  Fecha
+                </div>
+                <div class="col">
+                  Code
+                </div>
+                <div class="col">
+                  Description
+                </div>
+                <div class="col">
+                  Amount
+                </div>
+                <div class="col">
+                  Action
+                </div>
+
+              </div>
+              {{! segunda fila de planner id , de aquí en adelante se debe ser automático }}
+
+              <div class="row mb-2 text-center text-secondary">
+                <hr />
+                <div class="col">
+                  00001
+                </div>
+                <div class="col">
+                  2022-07-12
+                </div>
+                <div class="col">
+                  095786
+                </div>
+                <div class="col">
+                  Super Vianda Amrilla
+                </div>
+                <div class="col">
+                  25146 und
+                </div>
+                <div class="col">
+                  <button class="btn btn-success">load</button>
+                </div>
+
+              </div>
+              {{! tercera fila del planner id donde se supone debe ser automatico }}
+              <div class="row mb-2 text-center text-secondary">
+                <hr />
+                <div class="col">
+                  00001
+                </div>
+                <div class="col">
+                  2022-07-12
+                </div>
+                <div class="col">
+                  095786
+                </div>
+                <div class="col">
+                  Super Vianda Amrilla
+                </div>
+                <div class="col">
+                  25146 und
+                </div>
+                <div class="col">
+                  <button class="btn btn-success">load</button>
+                </div>
+
+              </div>
+              {{!  }}
+            </div>
           </div>
         </div>
-        <div class="cotainer-prod-left-bottom">
-          <!-- tabla para ver los items enviados a máquina -->
+      </div>
 
-          <div class="div-tab-prod-list">
-            <table id="tb-list-prod">
-              <tr>
-                <td colspan="5">
-                  <label for="" class="lbl-list prod">
-                    Listado de Ordenes</label
-                  >
-                </td>
-              </tr>
-              <tr>
-                <th># O.P</th>
-                <th>Máquina</th>
-                <th>Producto</th>
-                <th>Estado</th>
-                <th>cantidad</th>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>irwin 5</td>
-                <td class="td-nom-prod">Super Vianda Amarilla x 25</td>
-                <td><label class="Iniciado" for="">Iniciado</label></td>
-                <td>500</td>
-              </tr>
-            </table>
+      {{!///////segunda tabla Order Started/////////}}
+      <div class="row mt-3">
+        <div class="col">
+          <div class="card text-center">
+            <div class="card-header">
+              <h3 class="card-title">Order Started</h3>
+            </div>
+            <div class="card-body">
+              {{! encabezado del Order Started }}
+
+              <div class="row mb-2 text-center align-items-center">
+                <div class="col">
+                  Id Planner
+                </div>
+                <div class="col">
+                  # Order
+                </div>
+                <div class="col">
+                  Code
+                </div>
+                <div class="col">
+                  Description
+                </div>
+                <div class="col">
+                  Amount
+                </div>
+                <div class="col">
+                  F. Inicio
+                </div>
+                <div class="col">
+                  Line
+                </div>
+
+              </div>
+              {{! primer registro de order started }}
+              <div
+                class="row mb-2 text-center align-items-center text-secondary"
+              >
+                <hr />
+                <div class="col">
+                  00001
+                </div>
+                <div class="col">
+                  123456
+                </div>
+                <div class="col">
+                  012545
+                </div>
+                <div class="col">
+                  Super Vianda Amrilla
+                </div>
+                <div class="col">
+                  25146
+                </div>
+                <div class="col">
+                  2022-10-12
+                </div>
+                <div class="col rounded bg-danger bg-gradient">
+                  <span class="text-white">Irwin #5</span>
+                </div>
+
+              </div>
+              {{! segundoregistro de order started }}
+              <div
+                class="row mb-2 text-center align-items-center text-secondary"
+              >
+                <hr />
+                <div class="col">
+                  00001
+                </div>
+                <div class="col">
+                  123456
+                </div>
+                <div class="col">
+                  012545
+                </div>
+                <div class="col">
+                  Super Vianda Amrilla
+                </div>
+                <div class="col">
+                  25146
+                </div>
+                <div class="col">
+                  2022-10-12
+                </div>
+                <div class="col rounded bg-warning bg-gradient">
+                  <span class="text-white">Irwin #5</span>
+                </div>
+
+              </div>
+              {{!  }}
+            </div>
           </div>
+        </div>
+      </div>
+      {{! div del col }}
+    </div>
 
+    <div class="col">
+      <div class="card">
 
+        <div class="card-header">
+
+          <h3 class="card-title text-center">Production Order</h3>
+
+        </div>
+        <div class="card-body">
+          {{! formulario para ingresar la orden de producción }}
+
+          <form
+            id="form-production"
+            action="/informe-Operador"
+            autocomplete="off"
+          >
+            {{! //////////////////////////////////header form/////////////////////////////////////////////////////////// }}
+            {{! input group para todos los input del formulario orden de produccion }}
+            <div class="input-group m-2">
+              <label class="form-label" for="prod-hora"># Order:
+                <span
+                  class="p-1 rounded bg-danger bg-gradient text-white"
+                >123456</span>
+              </label>
+            </div>
+            {{! primer input-group }}
+            <div class="input-group mb-2">
+              <span class="input-group-text" for="nombre_linea">Line</span>
+              <input id="nombre_linea" class="form-control" type="text" />
+              <span class="input-group-text" for="cod_linea">C.C</span>
+              <input class="form-control" id="cc" type="text" />
+            </div>
+            {{! segundo input-group }}
+            <div class="input-group mb-2">
+              <span
+                class="input-group-text"
+                for="nombre-articulo"
+              >Artículo</span>
+              <input class="form-control" id="nombre-articulo" type="text" />
+
+            </div>
+
+            {{! tercer input-group }}
+
+            <div class="input-group mb-2">
+
+              <span class="input-group-text" for="cod-art">Código</span>
+              <input class="form-control" id="cod-art" type="text" />
+              <span class="input-group-text" for="peso">Peso(g)</span>
+              <input class="form-control" id="peso" type="number" />
+            </div>
+            {{! cuarto input-group }}
+            <label class="form-label" for="prod-hora">Cantidad a Fabricar
+            </label>
+            <div class="input-group mb-2">
+
+              <span class="input-group-text" for="prod-hora">Total</span>
+              <input class="form-control" id="c" type="number" />
+              <span class="input-group-text" for="prod-hora">Ciclo</span>
+              <input class="form-control" id="c" type="text" />
+
+            </div>
+
+            {{! quinto input-grou }}
+
+            <div class="input-group mb-3">
+
+              <span class="input-group-text" for="prod-hora">Por Turno</span>
+              <input class="form-control" id="c" type="number" />
+              <span class="input-group-text" for="prod-hora">Por hora</span>
+              <input class="form-control" id="c" type="number" />
+
+            </div>
+            {{! ////////////////////////////////////////body-form///////////////////////////////////////////////////// }}
+
+            {{! aqui esta la tabla que nos mostrará los input que activaran la ventana modal patra elegir la materia prima y suministro }}
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <h5 class="card-title text-center">Materia Prima</h5>
+                </div>
+                {{! cabvecera suministros }}
+                <div class="row mb-2 text-center">
+                  <div class="col col-md-3">
+                    Code
+                  </div>
+                  <div class="col col-md-6">
+                    Description
+                  </div>
+                  <div class="col col-md-3">
+                    Amount
+                  </div>
+                </div>
+                {{! primera fila de inputs materia prima y suministros  }}
+                <div class="row mb-2">
+                  <div class="col col-md-3">
+                    <div class="input-group">
+                      <input class="form-control" type="text" />
+                      <button
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-item-search"
+                        type="button"
+                        id=""
+                      ><i class="bi bi-search"></i></button>
+                    </div>
+                  </div>
+                  <div class="col col-md-6">
+                    <input class="form-control" type="text" disabled />
+                  </div>
+                  <div class="col col-md-3">
+                    <input class="form-control" type="text" />
+                  </div>
+                </div>
+
+                {{! segunda fila de inputs materia prima y suministros  }}
+
+                <div class="row mb-2">
+                  <div class="col col-md-3">
+                    <div class="input-group">
+                      <input class="form-control" type="text" />
+                      <button
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-item-search"
+                        type="button"
+                        id=""
+                      ><i class="bi bi-search"></i></button>
+                    </div>
+                  </div>
+                  <div class="col col-md-6">
+                    <input class="form-control" type="text" disabled />
+                  </div>
+                  <div class="col col-md-3">
+                    <input class="form-control" type="text" />
+                  </div>
+                </div>
+
+                {{! tercera fila de inputs materia prima y suministros  }}
+                <div class="row mb-2">
+                  <div class="col col-md-3">
+                    <div class="input-group">
+                      <input class="form-control" type="text" />
+                      <button
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-item-search"
+                        type="button"
+                        id=""
+                      ><i class="bi bi-search"></i></button>
+                    </div>
+                  </div>
+                  <div class="col col-md-6">
+                    <input class="form-control" type="text" disabled />
+                  </div>
+                  <div class="col col-md-3">
+                    <input class="form-control" type="text" />
+                  </div>
+                </div>
+                {{! cuarta fila de inputs materia prima y suministros  }}
+                <div class="row mb-2">
+                  <div class="col col-md-3">
+                    <div class="input-group">
+                      <input class="form-control" type="text" />
+                      <button
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-item-search"
+                        type="button"
+                        id=""
+                      ><i class="bi bi-search"></i></button>
+                    </div>
+                  </div>
+                  <div class="col col-md-6">
+                    <input class="form-control" type="text" disabled />
+                  </div>
+                  <div class="col col-md-3">
+                    <input class="form-control" type="text" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-floating mt-2">
+              <textarea
+                class="form-control"
+                placeholder="Leave at note here"
+                id="floatingTextarea2"
+                style="height: 100px"
+              ></textarea>
+              <label for="floatingTextarea2">Note</label>
+            </div>
+
+            <div class="row">
+              <div class="col text-center">
+                <button
+                  class="btn btn-outline-danger btn-md mt-3"
+                  type="submit"
+                >
+                  <i class="bi bi-journal-richtext"></i>
+                  Generar Orden
+                </button>
+              </div>
+            </div>
+
+          </form>
 
         </div>
       </div>
-      <div class="cotainer-prod-right">
-        <div class="container-form-prod">
-          <div class="div-form-planner">
-            <div id="div-form-plan">
-              <label id="num-orden"
-                ># <input id="num-orden-prod" type="text" disabled
-              /></label>
+      {{! div del col orden prod }}
+    </div>
 
-              <form id="form-plan">
-                <label for="id-plan">Planner(id)</label>
+    {{! div del row }}
+  </div>
+  {{! div del container }}
+</div>
+{{! ////////////////////////////////////////////////////////////// }}
+{{! ventana modal para buscar materia prima y suministros por codigo y cargar automaticamnete a la orden  }}
+{{! una ventana mmodal esta constituido de  1) modal-header 2) modal-body 3) modal-footer}}
 
-                <input class="" id="id-plan" type="text" />
+<div
+  class="modal fade"
+  id="modal-item-search"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="titleWindow"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="titleWindow">Load item</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
 
-                <button class="btn btn-primary">Cargar</button>
-              </form>
-            </div>
-
-            <div class="div-form-prod">
-              <form id="form-production">
-                <table class="tab-form-planner">
-                  <tr>
-                    <td colspan="4"><h4>Orden de Producción</h4></td>
-                  </tr>
-                  <tr>
-                    <td><label for="nombre_linea">Línea</label></td>
-                    <td>
-                      <input id="nombre_linea" class="input-s" type="text" />
-                    </td>
-
-                    <td><label for="cod_linea">Cód. línea</label></td>
-                    <td>
-                      <input id="cod_linea" class="input-s" type="text" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><label for="nombre-articulo">Artículo</label></td>
-                    <td>
-                      <input id="nombre-articulo" class="input-s" type="text" />
-                    </td>
-
-                    <td><label for="cod-art">Cód. Artículo</label></td>
-                    <td>
-                      <input id="cod-art" class="input-s" type="text" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><label for="peso">Peso(g)</label></td>
-                    <td><input id="peso" class="input-s" type="text" /></td>
-
-                    <td>
-                      <label for="prod-hora">Cant. por hora</label>
-                    </td>
-                    <td><input id="c" class="input-s" type="number" /></td>
-                  </tr>
-                </table>
-
-                <table class="tab-form-suministro">
-                  <tr>
-                    <td colspan="3">
-                      <label id="lbl-mp" for=""><b> Materia Prima </b></label>
-                      <hr />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="col">Código</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">cantidad</th>
-                  </tr>
-
-                  <tr>
-                    <td><input class="input-cod-suministros" type="text" /></td>
-                    <td class="td-desc-suministro">
-                      <input
-                        class="input-desc-suministro"
-                        type="text"
-                        disabled
-                      />
-                    </td>
-                    <td><input class="input-cant-suministro" type="text" /></td>
-                  </tr>
-
-                  <tr>
-                    <td><input class="input-cod-suministros" type="text" /></td>
-                    <td class="td-desc-suministro">
-                      <input
-                        class="input-desc-suministro"
-                        type="text"
-                        disabled
-                      />
-                    </td>
-                    <td><input class="input-cant-suministro" type="text" /></td>
-                  </tr>
-                  <tr>
-                    <td><input class="input-cod-suministros" type="text" /></td>
-                    <td class="td-desc-suministro">
-                      <input
-                        class="input-desc-suministro"
-                        type="text"
-                        disabled
-                      />
-                    </td>
-                    <td><input class="input-cant-suministro" type="text" /></td>
-                  </tr>
-                  <tr>
-                    <td><input class="input-cod-suministros" type="text" /></td>
-                    <td class="td-desc-suministro">
-                      <input
-                        class="input-desc-suministro"
-                        type="text"
-                        disabled
-                      />
-                    </td>
-                    <td><input class="input-cant-suministro" type="text" /></td>
-                  </tr>
-                  <tr>
-                    <td><input class="input-cod-suministros" type="text" /></td>
-                    <td class="td-desc-suministro">
-                      <input
-                        class="input-desc-suministro"
-                        type="text"
-                        disabled
-                      />
-                    </td>
-                    <td><input class="input-cant-suministro" type="text" /></td>
-                  </tr>
-                  <!--  -->
-
-                  <tr id="tr-obser">
-                    <td id="td-obser" align="left"><b> Observaciones:</b></td>
-                  </tr>
-                  <tr>
-                    <td colspan="3" style="width: 100%">
-                      <textarea
-                        style="width: 100%"
-                        name=""
-                        id="textarea"
-                        rows="2"
-                      ></textarea>
-                    </td>
-                  </tr>
-                </table>
-                <div id="but-gen">
-                  <button class="" id="but-gen-ord" type="submit">
-                    <i class="bi bi-journal-richtext"></i>
-                    Generar Orden
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="insert code" />
+          <button class="btn btn-outline-success" type="button" id=""><i
+              class="bi bi-search"
+            ></i></button>
         </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          class="btn btn-info"
+          type="button"
+          data-bs-dismiss="modal"
+        >Back</button>
+        <button type="button" class="btn btn-success" type="button">
+          Load
+        </button>
       </div>
     </div>
+  </div>
+</div>
+
+{{! ///////////////////////////////// }}
+{{! ///////////////////////////////// }}
+{{! ///////////////////////////////// }}
+{{! ///////////////////////////////// }}
