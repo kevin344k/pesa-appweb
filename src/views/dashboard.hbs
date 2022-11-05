@@ -1,5 +1,47 @@
-<div class="row">
-    <div class="col">
-        
+<link rel="stylesheet" href="/css/dash.css" />
+
+<div class="container"  style="height: 100px;" >
+  {{! un solo row que engloba todo }}
+  <div class="row ">
+    {{! una sola columna que engloba a todo }}
+    <div class="col ">
+      {{! otro row para la fila superior que estara dividida en dos columnas }}
+      <div class="row ">
+        {{! primera columna superior de units produced }}
+        <div class="col">
+          {{!  card  para units produced}}
+          <div class="card" id="card-units-produced">
+            <div class="card-body">
+              <h5 class="card-title">Units Produced</h5>
+
+            </div>
+          </div>
+        </div>
+        {{! segunda columna superior de paralizaciones }}
+        <div class="col">
+          {{! card para paralizaciones }}
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Units Produced</h5>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      {{! una fila inferior para las lineas en tiempo real en todo el ancho de la página }}
+      <div class="row mt-4">
+        <div class="col">
+          {{! card para lineas en tiempo real }}
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Units Produced</h5>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
+    {{! div del primer row que engloba todo }}
+  </div>
 </div>

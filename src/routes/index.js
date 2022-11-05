@@ -20,11 +20,16 @@ router.get('/informe-Operador',(req,res)=>{
   
   
    res.render('infor-oper.hbs')
-  
-  
+
   
   })
+  router.get('/dash',(req,res)=>{
 
+  
+  
+   res.render('dashboard.hbs')
 
+  
+  })
 // este código permite exportar el módulo router al archivo autentication.js
 module.exports=router

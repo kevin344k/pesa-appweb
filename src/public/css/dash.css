@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+body {
+  background-color: #130f40;
+  
+}
+#card-units-produced {
+  background-color: #2c2c54;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
