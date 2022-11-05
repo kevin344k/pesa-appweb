@@ -12,7 +12,10 @@ router.get('/signin', (req, res) => {
 
 router.post('/signin',(req,res)=>{
 
-res.render('planeacion')
+ successRedirect:'/planeacion'
+
+ res.render('planeacion')
+
 
 
 })
