@@ -15,7 +15,15 @@ router.get('/ordenProd',(req,res)=>{
    res.render("orden_prod.hbs")
 })
 
+router.get('/informe-Operador',(req,res)=>{
 
+  
+  
+   res.render('infor-oper.hbs')
+  
+  
+  
+  })
 
 
 // este código permite exportar el módulo router al archivo autentication.js

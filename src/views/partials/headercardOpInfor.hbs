@@ -1,0 +1,50 @@
+{{!-- esta es un partial que permite reutilizar el codigo de la cabecera del card de --Production Order en Infor Oper ya que manejan la misma structura excepto por el id de orden y id de informe --}}
+
+ {{! primer input-group }}
+            <div class="input-group mb-2">
+              <span class="input-group-text" for="nombre_linea">Line</span>
+              <input id="nombre_linea" class="form-control" type="text" />
+              <span class="input-group-text" for="cod_linea">C.C</span>
+              <input class="form-control" id="cc" type="text" />
+            </div>
+            {{! segundo input-group }}
+            <div class="input-group mb-2">
+              <span
+                class="input-group-text"
+                for="nombre-articulo"
+              >Artículo</span>
+              <input class="form-control" id="nombre-articulo" type="text" />
+
+            </div>
+
+            {{! tercer input-group }}
+
+            <div class="input-group mb-2">
+
+              <span class="input-group-text" for="cod-art">Código</span>
+              <input class="form-control" id="cod-art" type="text" />
+              <span class="input-group-text" for="peso">Peso(g)</span>
+              <input class="form-control" id="peso" type="number" />
+            </div>
+            {{! cuarto input-group }}
+            <label class="form-label" for="prod-hora">Cantidad a Fabricar
+            </label>
+            <div class="input-group mb-2">
+
+              <span class="input-group-text" for="prod-hora">Total</span>
+              <input class="form-control" id="c" type="number" />
+              <span class="input-group-text" for="prod-hora">Ciclo</span>
+              <input class="form-control" id="c" type="text" />
+
+            </div>
+
+            {{! quinto input-grou }}
+
+            <div class="input-group mb-3">
+
+              <span class="input-group-text" for="prod-hora">Por Turno</span>
+              <input class="form-control" id="c" type="number" />
+              <span class="input-group-text" for="prod-hora">Por hora</span>
+              <input class="form-control" id="c" type="number" />
+
+            </div>

@@ -1,7 +1,6 @@
+{{!-- {{>headercardOpInfor}}  --}}
 {{! estilos solo para esta pagina ya que es una plantilla y es renderizado aparte del main }}
 <link rel="stylesheet" href="/css/production.css" />
-
-<link rel="stylesheet" href="/css/prod-list-plan.css" />
 
 <div class="container d-flex justify-content-center mt-4">
 
@@ -12,32 +11,39 @@
         <div class="col">
           <div class="card text-center">
             <div class="card-header">
-              <h3 class="card-title">Planner Id</h3>
+              <h3 class="card-title">Order List</h3>
             </div>
             <div class="card-body">
-              {{! encbezado planner id }}
+              {{! encbezado Order List}}
 
               <div class="row mb-2 text-center">
                 <div class="col">
-                  Id
+                  #
                 </div>
                 <div class="col">
                   Fecha
                 </div>
+
                 <div class="col">
                   Code
                 </div>
+
                 <div class="col">
                   Description
                 </div>
+
                 <div class="col">
                   Amount
+                </div>
+                <div class="col">
+                  shortage
                 </div>
                 <div class="col">
                   Action
                 </div>
 
               </div>
+
               {{! segunda fila de planner id , de aquí en adelante se debe ser automático }}
 
               <div class="row mb-2 text-center text-secondary">
@@ -58,7 +64,10 @@
                   25146 und
                 </div>
                 <div class="col">
-                  <button class="btn btn-success">load</button>
+                  25000 und
+                </div>
+                <div class="col">
+                  <button class="btn btn-info text-white">Open</button>
                 </div>
 
               </div>
@@ -81,7 +90,10 @@
                   25146 und
                 </div>
                 <div class="col">
-                  <button class="btn btn-success">load</button>
+                  25000 und
+                </div>
+                <div class="col">
+                  <button class="btn btn-info text-white">Open</button>
                 </div>
 
               </div>
@@ -91,93 +103,84 @@
         </div>
       </div>
 
-      {{!///////segunda tabla Order Started/////////}}
+      {{!///////Production People/////////}}
       <div class="row mt-3">
         <div class="col">
           <div class="card text-center">
             <div class="card-header">
-              <h3 class="card-title">Order Started</h3>
+              <h3 class="card-title">Production People</h3>
             </div>
             <div class="card-body">
-              {{! encabezado del Order Started }}
+              {{! encabezado de Production People }}
 
               <div class="row mb-2 text-center align-items-center">
-                <div class="col">
-                  Id Planner
+                <div class="col col-md-1">
+                  #
                 </div>
                 <div class="col">
-                  # Order
+                  C.I
+                </div>
+                <div class="col col-md-4">
+                  Nombres
                 </div>
                 <div class="col">
-                  Code
-                </div>
-                <div class="col">
-                  Description
-                </div>
-                <div class="col">
-                  Amount
-                </div>
-                <div class="col">
-                  F. Inicio
-                </div>
-                <div class="col">
-                  Line
+                  Rol
                 </div>
 
               </div>
-              {{! primer registro de order started }}
+              {{! primer registro de Production People }}
               <div
                 class="row mb-2 text-center align-items-center text-secondary"
               >
                 <hr />
-                <div class="col">
-                  00001
+                <div class="col col-md-1">
+                  1
                 </div>
                 <div class="col">
-                  123456
+                  <div class="input-group">
+                    <input class="form-control" type="text" />
+                    <button
+                      class="btn btn-outline-secondary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modal-people-search"
+                      type="button"
+                      id=""
+                    ><i class="bi bi-search"></i></button>
+                  </div>
+                </div>
+                <div class="col col-md-4">
+                  <input class="form-control" type="text" disabled />
                 </div>
                 <div class="col">
-                  012545
-                </div>
-                <div class="col">
-                  Super Vianda Amrilla
-                </div>
-                <div class="col">
-                  25146
-                </div>
-                <div class="col">
-                  2022-10-12
-                </div>
-                <div class="col rounded bg-danger bg-gradient">
-                  <span class="text-white">Irwin #5</span>
+                  <input class="form-control" type="text" disabled />
                 </div>
 
               </div>
-              {{! segundoregistro de order started }}
+              {{! segundo registro de production people }}
               <div
                 class="row mb-2 text-center align-items-center text-secondary"
               >
                 <hr />
-                <div class="col">
-                  00001
+                <div class="col col-md-1">
+                  2
                 </div>
                 <div class="col">
-                  123456
+                  <div class="input-group">
+                    <input class="form-control" type="text" />
+                    <button
+                      class="btn btn-outline-secondary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modal-people-search"
+                      type="button"
+                      id=""
+                    ><i class="bi bi-search"></i></button>
+                  </div>
+                </div>
+                <div class="col col-md-4">
+                  <input class="form-control" type="text" disabled />
                 </div>
                 <div class="col">
-                  012545
-                </div>
-                <div class="col">
-                  Super Vianda Amrilla
-                </div>
-                <div class="col">
-                  25146
-                </div>
-                <div class="col">
-                  2022-10-12
-                </div>
-                <div class="col rounded bg-warning bg-gradient">
-                  <span class="text-white">Irwin #5</span>
+                  <input class="form-control" type="text" disabled />
                 </div>
 
               </div>
@@ -193,8 +196,10 @@
       <div class="card">
 
         <div class="card-header">
-
-          <h3 class="card-title text-center">Production Order</h3>
+            <div class="container ">
+              <script>document.write(new Date().toLocaleDateString()+"  --   "+"  Turno 1 ")</script>
+            </div>
+          <h3 class="card-title text-center">Operator Report</h3>
 
         </div>
         <div class="card-body">
@@ -207,14 +212,30 @@
           >
             {{! //////////////////////////////////header form/////////////////////////////////////////////////////////// }}
             {{! input group para todos los input del formulario orden de produccion }}
-            <div class="input-group m-2">
-              <label class="form-label" for="prod-hora"># Order:
-                <span
-                  class="p-1 rounded bg-danger bg-gradient text-white"
-                >123456</span>
-              </label>
+
+            <div class="row mb-1">
+              <div class="col">
+                <div class="input-group">
+                  <label class="form-label" for="prod-hora"># Order:
+                    <span
+                      class="p-1 rounded bg-danger bg-gradient text-white"
+                    >123456</span>
+                  </label>
+                </div>
+
+              </div>
+              <div class="col">
+                <div class="input-group">
+                  <label class="form-label" for="prod-hora"># Report:
+                    <span
+                      class="p-1 rounded bg-secondary bg-gradient text-white"
+                    >123456</span>
+                  </label>
+                </div>
+              </div>
             </div>
-{{!-- para llamar a un partial que cargue la cabecera de la orden de produción e informe de operador  --}}
+{{!-- input group para cargar los datos de la orden en el informe  --}}
+           
 {{!--  --}}
 {{!--  --}}
 {{!--  --}}
@@ -224,76 +245,31 @@
 {{!--  --}}
 
 
-
-            {{! primer input-group }}
-            {{!-- <div class="input-group mb-2">
-              <span class="input-group-text" for="nombre_linea">Line</span>
-              <input id="nombre_linea" class="form-control" type="text" />
-              <span class="input-group-text" for="cod_linea">C.C</span>
-              <input class="form-control" id="cc" type="text" />
-            </div> --}}
-            {{! segundo input-group }}
-            {{!-- <div class="input-group mb-2">
-              <span
-                class="input-group-text"
-                for="nombre-articulo"
-              >Artículo</span>
-              <input class="form-control" id="nombre-articulo" type="text" />
-
-            </div> --}}
-
-            {{! tercer input-group }}
-
-            {{!-- <div class="input-group mb-2">
-
-              <span class="input-group-text" for="cod-art">Código</span>
-              <input class="form-control" id="cod-art" type="text" />
-              <span class="input-group-text" for="peso">Peso(g)</span>
-              <input class="form-control" id="peso" type="number" />
-            </div> --}}
-            {{! cuarto input-group }}
-            {{!-- <label class="form-label" for="prod-hora">Cantidad a Fabricar
-            </label>
-            <div class="input-group mb-2">
-
-              <span class="input-group-text" for="prod-hora">Total</span>
-              <input class="form-control" id="c" type="number" />
-              <span class="input-group-text" for="prod-hora">Ciclo</span>
-              <input class="form-control" id="c" type="text" />
-
-            </div> --}}
-
-            {{! quinto input-grou }}
-
-            {{!-- <div class="input-group mb-3">
-
-              <span class="input-group-text" for="prod-hora">Por Turno</span>
-              <input class="form-control" id="c" type="number" />
-              <span class="input-group-text" for="prod-hora">Por hora</span>
-              <input class="form-control" id="c" type="number" />
-
-            </div> --}}
             {{! ////////////////////////////////////////body-form///////////////////////////////////////////////////// }}
 
-            {{! aqui esta la tabla que nos mostrará los input que activaran la ventana modal patra elegir la materia prima y suministro }}
+            {{! aqui esta la tabla que nos mostrará los input que activaran la ventana modal patra elegir las paralizaciones }}
             <div class="card">
               <div class="card-body">
                 <div class="row">
-                  <h5 class="card-title text-center">Materia Prima</h5>
+                  <h5 class="card-title text-center">Tiempo improductivo
+                    generado</h5>
                 </div>
                 {{! cabvecera suministros }}
                 <div class="row mb-2 text-center">
-                  <div class="col col-md-3">
+                  <div class="col col-md-2">
                     Code
                   </div>
                   <div class="col col-md-6">
                     Description
                   </div>
-                  <div class="col col-md-3">
-                    Amount
+                  <div class="col col-md-2">
+                    Desde
+                  </div>
+                  <div class="col col-md-2">
+                    Hasta
                   </div>
                 </div>
-                {{! primera fila de inputs materia prima y suministros  }}
+                {{! primera fila de inputs tiempo improductivo generado  }}
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
@@ -307,15 +283,18 @@
                       ><i class="bi bi-search"></i></button>
                     </div>
                   </div>
-                  <div class="col col-md-6">
+                  <div class="col col-md-5">
                     <input class="form-control" type="text" disabled />
                   </div>
-                  <div class="col col-md-3">
-                    <input class="form-control" type="text" />
+                  <div class="col col-md-2">
+                    <input class="form-control text-center" type="time" />
+                  </div>
+                  <div class="col col-md-2">
+                    <input class="form-control text-center" type="time" />
                   </div>
                 </div>
 
-                {{! segunda fila de inputs materia prima y suministros  }}
+                {{! segunda fila de inputs tiempo improductivo generado   }}
 
                 <div class="row mb-2">
                   <div class="col col-md-3">
@@ -330,15 +309,18 @@
                       ><i class="bi bi-search"></i></button>
                     </div>
                   </div>
-                  <div class="col col-md-6">
+                  <div class="col col-md-5">
                     <input class="form-control" type="text" disabled />
                   </div>
-                  <div class="col col-md-3">
-                    <input class="form-control" type="text" />
+                  <div class="col col-md-2">
+                    <input class="form-control text-center" type="time" />
+                  </div>
+                  <div class="col col-md-2">
+                    <input class="form-control text-center" type="time" />
                   </div>
                 </div>
 
-                {{! tercera fila de inputs materia prima y suministros  }}
+                {{! tercera fila de inputs tiempo improductivo generado   }}
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
@@ -352,14 +334,17 @@
                       ><i class="bi bi-search"></i></button>
                     </div>
                   </div>
-                  <div class="col col-md-6">
+                  <div class="col col-md-5">
                     <input class="form-control" type="text" disabled />
                   </div>
-                  <div class="col col-md-3">
-                    <input class="form-control" type="text" />
+                  <div class="col col-md-2">
+                    <input class="form-control text-center" type="time" />
+                  </div>
+                  <div class="col col-md-2">
+                    <input class="form-control text-center" type="time" />
                   </div>
                 </div>
-                {{! cuarta fila de inputs materia prima y suministros  }}
+                {{! cuarta fila de inputs tiempo improductivo generado   }}
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
@@ -373,14 +358,65 @@
                       ><i class="bi bi-search"></i></button>
                     </div>
                   </div>
-                  <div class="col col-md-6">
+                  <div class="col col-md-5">
                     <input class="form-control" type="text" disabled />
                   </div>
-                  <div class="col col-md-3">
-                    <input class="form-control" type="text" />
+                  <div class="col col-md-2">
+                    <input class="form-control text-center" type="time" />
+                  </div>
+                  <div class="col col-md-2">
+                    <input class="form-control text-center" type="time" />
                   </div>
                 </div>
+                {{! fin input tiempo improductivo generado }}
+              </div>
+            </div>
+            {{! seccion para poner el "line production" }}
+            <div class="card mt-2">
+              <div class="card-body">
+                <div class="card-title text-center">
+                  <h5>Line Production</h5>
+                  <div class="row">
+                    {{! und buenas }}
+                    <div class="col mx-5">
+                      <label class="mb-1" for="">Units produced</label>
+                      <div class="input-group mb-3">
+                        <button
+                          class="btn btn-success"
+                          type="button"
+                          id="button-addon1"
+                        ><i class="bi bi-emoji-laughing-fill"></i></button>
+                        <input
+                          type="text"
+                          class="form-control text-center"
+                          placeholder=""
+                          aria-label="Example text with button addon"
+                          aria-describedby="button-addon1"
+                        />
+                      </div>
+                    </div>
+                    {{! scrap generado }}
+                    <div class="col mx-5">
+                      <label class="mb-1" for="">scrap(kg)</label>
 
+                      <div class="input-group mb-3">
+                        <button
+                          class="btn btn-danger"
+                          type="button"
+                          id="button-addon1"
+                        ><i class="bi bi-emoji-frown-fill"></i></button>
+                        <input
+                          type="text"
+                          class="form-control text-center"
+                          placeholder=""
+                          aria-label="Example text with button addon"
+                          aria-describedby="button-addon1"
+                        />
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -391,7 +427,9 @@
                 id="floatingTextarea2"
                 style="height: 100px"
               ></textarea>
-              <label for="floatingTextarea2">Note</label>
+              <label
+                for="floatingTextarea2"
+              >Observations/Recommendations</label>
             </div>
 
             <div class="row">
@@ -401,7 +439,7 @@
                   type="submit"
                 >
                   <i class="bi bi-journal-richtext"></i>
-                  Generar Orden
+                  Close report
                 </button>
               </div>
             </div>
@@ -452,11 +490,63 @@
 
       <div class="modal-footer">
         <button
-          class="btn btn-info"
+          class="btn btn-info text-white"
           type="button"
           data-bs-dismiss="modal"
         >Back</button>
-        <button type="button" class="btn btn-success" type="button">
+        <button type="button" class="btn btn-success text-white" type="button">
+          Load
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{! ///////////////////////////////// }}
+{{! ///////////////////////////////// }}
+{{! ///////////////////////////////// }}
+{{! ///////////////////////////////// }}
+
+{{! ////////////////////////2do modal para ingresar the production people  ////////////////////////////////////// }}
+{{! ventana modal para buscar materia prima y suministros por codigo y cargar automaticamnete a la orden  }}
+{{! una ventana mmodal esta constituido de  1) modal-header 2) modal-body 3) modal-footer}}
+
+<div
+  class="modal fade"
+  id="modal-people-search"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="titleWindow"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="titleWindow">Load C.I</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="insert C.I" />
+          <button class="btn btn-outline-success" type="button" id=""><i
+              class="bi bi-search"
+            ></i></button>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          class="btn btn-info text-white"
+          type="button"
+          data-bs-dismiss="modal"
+        >Back</button>
+        <button type="button" class="btn btn-success text-white" type="button">
           Load
         </button>
       </div>
