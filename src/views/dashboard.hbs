@@ -1,47 +1,68 @@
 <link rel="stylesheet" href="/css/dash.css" />
 
-<div class="container"  style="height: 100px;" >
+<div class="container mt-3">
   {{! un solo row que engloba todo }}
-  <div class="row ">
-    {{! una sola columna que engloba a todo }}
-    <div class="col ">
-      {{! otro row para la fila superior que estara dividida en dos columnas }}
-      <div class="row ">
-        {{! primera columna superior de units produced }}
-        <div class="col">
-          {{!  card  para units produced}}
-          <div class="card" id="card-units-produced">
-            <div class="card-body">
-              <h5 class="card-title">Units Produced</h5>
 
-            </div>
-          </div>
-        </div>
-        {{! segunda columna superior de paralizaciones }}
-        <div class="col">
-          {{! card para paralizaciones }}
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Units Produced</h5>
-            </div>
+  {{! una sola columna que engloba a todo }}
 
-          </div>
+  {{! otro row para la fila superior que estara dividida en dos columnas }}
+  <div class="row align-content-center">
+    {{! primera columna superior de units produced }}
+    <div class="col-12 col-md-6 col-sm-12 mt-3">
+      {{!  card  para units produced}}
+      <div id="unitsProduced" class="card">
+        <div id="div-units-produced" class="card-body">
+          <h5 class="card-title">Units Produced</h5>
+          {{!  }}
+          {{!  }}
+          {{! primer gráfico en canvas  }}
+          <canvas id="canvas-unitsProduced" height="300px" ></canvas>
         </div>
       </div>
-      {{! una fila inferior para las lineas en tiempo real en todo el ancho de la página }}
-      <div class="row mt-4">
-        <div class="col">
-          {{! card para lineas en tiempo real }}
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Units Produced</h5>
-            </div>
-
-          </div>
+    </div>
+    {{! segunda columna superior de paralizaciones }}
+    <div class="col-12 col-md-6 col-sm-12 mt-3">
+      {{! card para paralizaciones }}
+      <div id="paralizations" class="card">
+        <div class="card-body">
+          <h5 class="card-title">Paralizations</h5>
+          <select id="featuresOptions">
+            <option value="height">Altura (m)</option>
+            <option value="length">Longitud (m)</option>
+            <option value="speed">Velocidad(km/h)</option>
+          </select>
+          {{!  }}
+          {{!  }}
+          {{! segundo gráfico en canvas  }}
+          <canvas id="canvas-paralizaciones"></canvas>
         </div>
 
       </div>
     </div>
-    {{! div del primer row que engloba todo }}
   </div>
+  {{! una fila inferior para las lineas en tiempo real en todo el ancho de la página }}
+  <div class="row mt-4">
+    <div class="col">
+      {{! card para lineas en tiempo real }}
+      <div id="realTime" class="card">
+        <div class="card-body" >
+          <h5 class="card-title">Real Time</h5>
+          {{!  }}
+          {{!  }}
+          {{! tercer gráfico en canvas  }}
+          <canvas id="canvas-realTime" ></canvas>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  {{! div del primer row que engloba todo }}
+
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+<script  src="/js/dash/helpers.js"></script>
+<script  src="/js/dash/handlers.js"></script>
+<script  src="/js/dash/app.js"></script>

@@ -1,10 +1,67 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
 body {
   background-color: #130f40;
-  
+
 }
-#card-units-produced {
-  background-color: #2c2c54;
+
+
+
+
+#realTime{
+
+  background-color: #1f1f4c;
   color: white;
   font-family: "Poppins", sans-serif;
+}
+canvas{
+ width: 700px;
+  height: fit-content;
+}
+
+/* grafico de unidades producidas */
+#canvas-unitsProduced{
+  width: 500px;
+height: 400px;
+}
+#unitsProduced{
+
+  background-color: #1f1f4c;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/* grafico de paralizaciones */
+#paralizations{
+ 
+
+  background-color: #1f1f4c;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+#canvas-paralizaciones{
+
+width: 600px;
+height: 400px;
+}
+/* grafico de tiempo real */
+
+#canvas-realTime{
+  width: 1200;
+  height: 500;
+
+}
+
+@media(max-width:500px){
+#canvas-paralizaciones{
+  width: 400;
+
+}
+#canvas-unitsProduced{
+  width: 300;
+
+}
+
+
+
+
 }
