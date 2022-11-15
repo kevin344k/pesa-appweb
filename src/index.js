@@ -3,6 +3,7 @@ const path=require('path')// permite manejar rutas internas de archivos
 const exphbs=require('express-handlebars')//permite renderizar hbs
 const morgan=require('morgan')//crea logs de las peticiones del cliente al servidor
 
+
 //INICIALIZACIONES
 const app=express() //se inicializa express
 
@@ -52,3 +53,4 @@ app.use(express.static(path.join(__dirname,"public")))
 /////iniciamos el server en el puerto presviamente establecido ////
 app.listen(app.get("port"))
 console.log("server on port" ,app.get("port"))
+
