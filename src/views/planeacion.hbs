@@ -8,15 +8,18 @@
           <h3 class="card-title">Planner</h3>
         </div>
         <div class="card-body">
-          <form action="/ordenProd">
+          <form action="/planner" method="post" autocomplete="off">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">#</span>
               <input
                 type="text"
-                class="form-control"
+                class="form-control bg-transparent border border-white"
                 placeholder=""
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                name="plan_id"
+                id="id_plan"
+                value=''
                 disabled
               />
             </div>
@@ -33,8 +36,7 @@
                 placeholder=""
                 aria-label="Username"
                 aria-describedby="basic-addon1"
-                data-toggle="modal"
-                data-target="#modal-item-search"
+                name="cod_prod_plan"
               />
               <button
                 class="btn btn-outline-secondary"
@@ -52,6 +54,7 @@
               >Product</span>
               <input
                 type="text"
+                name="desc_prod_plan"
                 class="form-control"
                 placeholder=""
                 aria-label="Username"
@@ -63,26 +66,32 @@
                 class="input-group-text text-secondary"
                 id="basic-addon1"
               >Machine</span>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="FDON">IRWI 1</option>
-                <option value="UND">IRWIN 2</option>
-                <option value="FDON">IRWIN 3</option>
-                <option value="UND">IRWIN 4</option>
-                <option value="UND">IRWIN 5</option>
-                <option value="UND">COMODORE</option>
+              <select
+                id="name_line"
+                name="linea_name"
+                class="form-select"
+                aria-placeholder="Open this select menu"
+                onchange="mostrarCc(line)"
+              ><option value="">PLEASE SELECT ONE</option>
+                <option value="IRWIN 1 ">IRWI 1 </option>
+                <option value="IRWIN 2">IRWIN 2</option>
+                <option value="IRWIN 3">IRWIN 3</option>
+                <option value="IRWIN 4">IRWIN 4</option>
+                <option value="IRWIN 5">IRWIN 5</option>
+                <option value="COMODORE">COMODORE</option>
               </select>
               <span
                 class="input-group-text text-secondary"
                 id="basic-addon1"
-              >C.C</span>
+              >CC</span>
               <input
+                id="cc_line"
+                name="linea_cc"
                 type="text"
                 class="form-control"
-                placeholder=""
-                aria-label="Username"
+                
+               
                 aria-describedby="basic-addon1"
-                readonly
               />
             </div>
 
@@ -93,18 +102,23 @@
               >Quantity</span>
               <input
                 type="text"
+                name="cant_plan"
                 class="form-control"
                 placeholder=""
                 aria-label="Username"
                 aria-describedby="basic-addon1"
               />
-            </div>
-            <div class="input-group mb-3">
+
               <span
                 class="input-group-text text-secondary"
                 id="basic-addon1"
               >Measurement</span>
-              <select class="form-select" aria-label="Default select example">
+              <select
+                id="select_measurement"
+                name="units_cant_plan"
+                class="form-select"
+                aria-label="Default select example"
+              >
                 <option selected>Open this select menu</option>
                 <option value="FDON">FDON</option>
                 <option value="UND">UND</option>
@@ -117,6 +131,7 @@
               >Date start</span>
               <input
                 type="DateTime-local"
+                name="date_start"
                 class="form-control text-center"
                 placeholder=""
                 aria-label="Username"
@@ -127,6 +142,7 @@
 
               <input
                 type="DateTime-local"
+                name="date_end"
                 class="form-control text-center"
                 placeholder=""
                 aria-label="Username"
@@ -184,13 +200,19 @@
         ></button>
       </div>
       <div class="modal-body">
-
+        {{!-- form --}}
+       <form  action=' ' method="get">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="insert code" />
-          <button class="btn btn-outline-success" type="button" id=""><i
-              class="bi bi-search"
-            ></i></button>
+
+          <input type="text" 
+          id="code_product"
+          name="code_product"
+          class="form-control" placeholder="insert code" />
+          <button class="btn btn-outline-success"  id="search"><i
+               class="bi bi-search"
+            ></i></button> 
         </div>
+     </form>
       </div>
 
       <div class="modal-footer">
@@ -217,3 +239,4 @@
   src="https://www.gstatic.com/charts/loader.js"
 ></script>
 <script type="text/javascript" src="js/planner/chart-gantt.js"></script>
+<script type="text/javascript" src="js/planner/planner.js" ></script>

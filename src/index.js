@@ -13,24 +13,30 @@ const app=express() //se inicializa express
 
 ///se establece el puerto en el cual va ha estar en modo escucha el server con la tecla "alt +124 = ||"" se puede hacer el o lógico.
 
-app.set("port",process.env.PORT || 5000)
+app.set("port", process.env.PORT || 5000);
 ///// se configuar las carpetas con los "hbs" para ser cargado cada ves que se haga una peticion del cliente/////
-app.set("views",path.join(__dirname,"views"))
+app.set("views", path.join(__dirname, "views"));
 app.engine(
-    ".hbs",
-    exphbs.engine({
-        defaultLayout:"main",
-        layoutsDir:path.join(app.get("views"),"layouts"),
-        partialsDir:path.join(app.get("views"),"partials"),
-        extname:".hbs"
-
-    })
-) 
-app.set("view engine",".hbs")
+  ".hbs",
+  exphbs.engine({
+    defaultLayout: "main",
+    layoutsDir: path.join(app.get("views"), "layouts"),
+    partialsDir: path.join(app.get("views"), "partials"),
+    extname: ".hbs",
+  })
+);
+app.set("view engine", ".hbs");
 
 ///MIDDLEWARES
 
-app.use(morgan('dev'))
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false })); //para que la alpicaión acepte desde los formularios que me envien los usuarios y false para no aceptar imágenes
+app.use(express.json()); //para que la aplicación acepte datos en formato json
+//GLOBAL VARIABLES
+//toma info del cliente, lo que responde el server y continua con el codigo con next
+app.use((req,res,next)=>{
+next();
+})
 
 
 //ROUTES
@@ -38,7 +44,7 @@ app.use(morgan('dev'))
 ///// se importara el archivo index de la carpeta routes que sera el inicializador de la app web
 app.use(require("./routes"))
 app.use(require("./routes/authentication"))
-
+app.use("/app",require("./routes/app"))
 //FILES PUBLIC
 app.use(express.static(path.join(__dirname,"public")))
 

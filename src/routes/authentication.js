@@ -10,15 +10,7 @@ router.get('/signin', (req, res) => {
 
 
 
-router.post('/signin',(req,res)=>{
 
- successRedirect:'/planeacion'
-
- res.render('planeacion')
-
-
-
-})
 
 
  
