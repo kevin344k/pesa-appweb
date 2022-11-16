@@ -1,3 +1,5 @@
+
+
 const socket = io();
 const idPlan = document.querySelector("#id_plan");
 const buscarProd = document.querySelector("#buscarProducto");
@@ -11,7 +13,7 @@ const desc_Product = document.querySelector("#desc_Product");
 socket.emit("cliente:plannerId")
 socket.on("server:plannerId",(data)=>{
 
-idPlan.value=data+1
+idPlan.value=data.id+1
 })
 
 buscarProd.addEventListener("submit", (e) => {
@@ -70,11 +72,23 @@ socket.on("descP", (descProd,data) => {
   desc_Product.value=descProd.desc_prod
 });
 
-const sendPlan= document.querySelector("#sendPlan")
-sendPlan.addEventListener("submit",(e)=>{
-    e.preventDefault()
-
-socket.emit("client:plannerSave",{
+const planForm= document.querySelector("#planForm")
+planForm.addEventListener('submit',e=>{
+  e.preventDefault();
+  console.log(
+    
+   
+      inputCodeProd.value ,	
+      desc_Product.value,	
+     name_line.value,	
+     cc_line.value ,	
+       qty.value,	
+     select_measurement.value,
+      dateStart.value ,	
+      dateEnd.value		
+ 
+  )
+  socket.emit("client:plannerSave",{
    
     cod_prod_plan:inputCodeProd.value ,	
     desc_prod_plan:desc_Product.value,	
@@ -86,5 +100,17 @@ socket.emit("client:plannerSave",{
     date_end: dateEnd.value		
 })
 
-
+  
 })
+
+socket.on("server:plan_query",(queryPlan)=>{
+
+  if (queryPlan) {
+    alert('Planificación realizada')
+  }else{
+    alert('a ocurrido un error')
+  }
+})
+
+
+

@@ -59,8 +59,8 @@ io.on("connection", (socket) => {
   console.log("nueva conexión");
   //para buscar el codigo de producto en planner
 socket.on("cliente:plannerId",async()=>{
-const [plannerId]=await pool.query('select id_plan from planner')
-console.log(plannerId)
+const [plannerId]=await pool.query(' SELECT COUNT(id_plan) as id FROM planner')
+console.log(plannerId[0])
 socket.emit("server:plannerId",plannerId[0])
 })
 
@@ -92,8 +92,33 @@ socket.emit("server:plannerId",plannerId[0])
   });
 
 
-  socket.on("client:plannerSave",(data)=>{
+  socket.on("client:plannerSave",async(data)=>{
     console.log(data)
+
+ const poolPlan=  await pool.query('insert into planner (cod_prod_plan,desc_prod_plan,linea_name,linea_cc,cant_plan,units_cant_plan,date_start,date_end) values (?,?,?,?,?,?,?,?) ',[data.cod_prod_plan,data.desc_prod_plan,data.linea_name,data.linea_cc,data.cant_plan,data.units_cant_plan,data.date_start,data.date_end]
+  
+ 
+)
+if (poolPlan) {
+  queryPlan= true
+}else{
+ queryPlan= false
+}
+
+socket.emit("server:plan_query",queryPlan)
+
   })
   //////////////////////
+socket.on("client:chart",async()=>{
+  console.log('recibido')
+const [selectAll]= await pool.query('select * from planner ')
+console.log(selectAll)
+socket.emit('server:chart',selectAll)
+
+
+}
+)
+
+
+
 });
