@@ -8,7 +8,7 @@
           <h3 class="card-title">Planner</h3>
         </div>
         <div class="card-body">
-          <form action="/planner" method="post" autocomplete="off">
+          <form  method="get" autocomplete="off">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">#</span>
               <input
@@ -19,7 +19,7 @@
                 aria-describedby="basic-addon1"
                 name="plan_id"
                 id="id_plan"
-                value=''
+                value=""
                 disabled
               />
             </div>
@@ -53,6 +53,7 @@
                 id="basic-addon1"
               >Product</span>
               <input
+              id="desc_Product"
                 type="text"
                 name="desc_prod_plan"
                 class="form-control"
@@ -89,8 +90,6 @@
                 name="linea_cc"
                 type="text"
                 class="form-control"
-                
-               
                 aria-describedby="basic-addon1"
               />
             </div>
@@ -101,6 +100,7 @@
                 id="basic-addon1"
               >Quantity</span>
               <input
+              id="qty"
                 type="text"
                 name="cant_plan"
                 class="form-control"
@@ -130,6 +130,7 @@
                 id="basic-addon1"
               >Date start</span>
               <input
+              id="dateStart"
                 type="DateTime-local"
                 name="date_start"
                 class="form-control text-center"
@@ -141,6 +142,7 @@
             <div class="input-group mb-3">
 
               <input
+              id="dateEnd"
                 type="DateTime-local"
                 name="date_end"
                 class="form-control text-center"
@@ -154,7 +156,7 @@
               >Date end</span>
             </div>
             <div class="d-grid gad-2">
-              <button class="btn btn-primary btn-block">Submit</button>
+              <button type="submit" id="sendPlan" class="btn btn-primary btn-block">Submit</button>
             </div>
           </form>
         </div>
@@ -200,30 +202,47 @@
         ></button>
       </div>
       <div class="modal-body">
-        {{!-- form --}}
-       <form  action=' ' method="get">
-        <div class="input-group">
+        {{! form }}
+        <form method="get" id="buscarProducto">
+          <div class="input-group">
 
-          <input type="text" 
-          id="code_product"
-          name="code_product"
-          class="form-control" placeholder="insert code" />
-          <button class="btn btn-outline-success"  id="search"><i
-               class="bi bi-search"
-            ></i></button> 
+            <input
+              type="text"
+              id="code_product"
+              name="code_product"
+              class="form-control"
+              placeholder="insert code"
+            />
+            <button class="btn btn-outline-success" id="search"><i
+                class="bi bi-search"
+              ></i></button>
+          </div>
+        </form>
+         <div class="container" >
+         <div class="row text-secondary mt-3">
+            <div class="col">código</div>
+            <div class="col">Descripción</div>
+            <div class="col">Por hora</div>
+            <div class="col">Por turno</div>
+            <div class="col">Action</div>
+          </div>
+        <div class="container" id="divProd">
+      
+            
         </div>
-     </form>
       </div>
 
       <div class="modal-footer">
         <button
-          class="btn btn-info"
+          class="btn btn-info text-white"
           type="button"
           data-bs-dismiss="modal"
-        >Back</button>
-        <button type="button" class="btn btn-success" type="button">
-          Load
-        </button>
+        >Back</button><button id="loadCod"
+          class="btn btn-success text-white"
+          type="button"
+          data-bs-dismiss="modal"
+        >Load</button>
+
       </div>
     </div>
   </div>
@@ -233,10 +252,10 @@
 {{! ///////////////////////////////// }}
 {{! ///////////////////////////////// }}
 {{! ///////////////////////////////// }}
-
+<script src="socket.io/socket.io.min.js"></script>
 <script
   type="text/javascript"
   src="https://www.gstatic.com/charts/loader.js"
 ></script>
 <script type="text/javascript" src="js/planner/chart-gantt.js"></script>
-<script type="text/javascript" src="js/planner/planner.js" ></script>
+<script type="text/javascript" src="js/planner/planner.js"></script>

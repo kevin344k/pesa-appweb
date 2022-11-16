@@ -13,10 +13,10 @@ router.post("/signin", (req, res) => {
 //planner
 router.get("/planner", async (req, res) => {
   res.render("planeacion");
-});
+});/*
 router.post("/planner", async (req, res) => {
    res.send("recibido");
- });
+ });*/
 //orden de produccion
 router.get("/ordenProd", (req, res) => {
   res.render("orden_prod.hbs");
