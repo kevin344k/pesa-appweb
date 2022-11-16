@@ -35,5 +35,7 @@ router.post("/informe-Operador", (req, res) => {
 router.get("/dash", (req, res) => {
   res.render("dashboard.hbs");
 });
-
+router.get("/admin",(req,res)=>{
+  res.render("admin.hbs")
+})
 module.exports = router;
