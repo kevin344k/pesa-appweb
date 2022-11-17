@@ -1,26 +1,143 @@
 <div class="container mt-4">
-   <div class="row">
-    <div class="col">
-         <div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="true" href="#">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Personal</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Producto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Personal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Disabled</a>
+        </li>
+      </ul>
     </div>
-   </div>
+    <div class="card-body">
+
+      <div class="card mx-4 mt-4">
+
+        <div class="card-body">
+          <form action="">
+            <div class="row">
+              <h6 class="card-title mb-4 d-flex justify-content-start">Ingresar
+                un nuevo producto</h6>
+              <div class="col col-md-2 col-sm-12">
+                <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="addon-wrapping">Code</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col col-md-5 col-sm-12">
+                <div class="input-group flex-nowrap">
+                  <span
+                    class="input-group-text"
+                    id="addon-wrapping"
+                  >Description</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col col-md-2 col-sm-12">
+                <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="addon-wrapping">Und x hora</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col col-md-2 col-sm-12">
+                <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="addon-wrapping">Und x turno</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col col-md-1 col-sm-12">
+                <button id="add" class="btn btn-success"><i
+                    class="bi bi-plus-lg"
+                  ></i></button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <div class="card mx-4 mt-4">
+        <div class="card-header">
+          <h5 class="card-title mt-3">Listado de productos</h5>
+          <div class="row text-secondary">
+            <div class="col">código</div>
+            <div class="col">Descripción</div>
+            <div class="col">Por hora</div>
+            <div class="col">Por turno</div>
+            <div class="col">Action</div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          {{!-- aqui se insertará los campos de productos de manera dinámica --}}
+          <div class="row ">
+            <div class="col">508671</div>
+            <div class="col">FDON(100-25) SUPER VIANDA AMARILLA</div>
+            <div class="col">95.50</div>
+            <div class="col">1146 </div>
+            <div class="col"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></div>
+          </div>
+<div class="row ">
+            <div class="col">508671</div>
+            <div class="col">FDON(100-25) SUPER VIANDA AMARILLA</div>
+            <div class="col">95.50</div>
+            <div class="col">1146 </div>
+            <div class="col"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></div>
+          </div>
+
+<div class="row ">
+            <div class="col">508671</div>
+            <div class="col">FDON(100-25) SUPER VIANDA AMARILLA</div>
+            <div class="col">95.50</div>
+            <div class="col">1146 </div>
+            <div class="col"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></div>
+          </div>
+
+<div class="row ">
+            <div class="col">508671</div>
+            <div class="col">FDON(100-25) SUPER VIANDA AMARILLA</div>
+            <div class="col">95.50</div>
+            <div class="col">1146 </div>
+            <div class="col"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></div>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
+
+<script type="text/javascript" src="js/admin/admin.js"></script>
