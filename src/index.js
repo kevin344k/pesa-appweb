@@ -122,3 +122,100 @@ socket.emit('server:chart',selectAll)
 
 
 });
+
+
+
+////////////////io para la plantilla admin/////////////////////
+
+io.on("connection",(socketadmin)=>{
+
+
+socketadmin.on("client:admin-ingresar-prod", async(data)=>{
+
+const insertProduct=await pool.query('insert into productos(code_prod,desc_prod,aph,apd) values (?,?,?,?)',[data.codigo,data.description,data.undHora,data.undTurno])
+console.log(insertProduct)
+
+
+
+
+})
+
+
+socketadmin.on('client:loadpage',async()=>{
+  const [listProd]=await pool.query('select * from productos')
+  socketadmin.emit('server:loadpage', listProd)
+  console.log(listProd)
+})
+
+socketadmin.on('client:deleteProd', async data=>{
+
+ await pool.query('delete from productos where code_prod=?',data)
+ console.log(data)
+ 
+})
+////ingreso de personas a la base dedatos
+
+//validar si usuario existe
+
+socketadmin.on('client:validatePerson',async (data)=>{
+  console.log(data)
+
+  const [validacion]=await pool.query('select * from usuarios where cedula=?',data)
+
+  console.log(validacion)
+
+  if (validacion=="") {
+    socketadmin.emit('server:resValidation',"no existe")
+
+  } else{
+    
+    socketadmin.emit('server:resValidation',"existe")
+  }
+
+})
+
+/*socketadmin.on('client:datausuarios',async data=>{
+
+  const [duplicated]=await pool.query('select * from usuarios where cedula=?',data.cedula)
+
+console.log(duplicated)
+
+
+  
+})*/
+
+socketadmin.on('client:selectUsers',async ()=>{
+
+
+
+  const [result]=await pool.query('select * from usuarios')
+
+    socketadmin.emit('server:selectUsers',result)
+
+
+})
+
+
+socketadmin.on('client:deletePerson',data=>{
+  pool.query('delete from usuarios where cedula=?',data)
+})
+
+
+socketadmin.on('client:deletePersonById',data=>{
+  console.log(data)
+  pool.query('delete from usuarios where cedula=?',data)
+})
+
+socketadmin.on('client:editPerson', async data=>{
+ // console.log(data)
+  let [edit]=  await pool.query('select * from usuarios where cedula=?',data)
+  console.log(edit)
+
+socketadmin.emit('server:dataEdit',edit[0])
+
+
+})
+
+
+
+})

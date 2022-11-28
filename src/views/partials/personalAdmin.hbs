@@ -1,0 +1,107 @@
+<div class="card mx-4 mt-4">
+
+  <div class="card-body">
+    <form action="" id="formAddPersonal" method="post" autocomplete="off">
+      <div class="row">
+        <h6 class="card-title mb-4 d-flex justify-content-start">Ingresar
+          colaborador y rol</h6>
+        <div class="col col-md-6 col-sm-12 col-lg-2 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Cédula</span>
+            <input
+              id="input-cedula"
+              name="input-cedula"
+              type="text"
+              minlength="10"
+              maxlength="10"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              required
+            />
+          </div>
+        </div>
+        <div class="col col-md-6 col-sm-12 col-lg-4 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Nombre y Apellido</span>
+            <input
+              id="input-nommbre-apellido"
+              name="input_nommbre_apellido"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-2 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Rol</span>
+
+            <select class="form-select" name="selectrol" id="selectrol">
+              <option value="Operador">Operador</option>
+              <option value="Ayudante">Ayudante</option>
+              <option value="J.División">Jefe División</option>
+              <option value="Coordinador S&OP">Coordinador S&OP</option>
+              <option value="Gerente">Gerente</option>
+              <option value="Admin">Admin</option>
+
+            </select>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Pass</span>
+
+            <input
+              id="input-pass"
+              name="input-pass"
+              type="password"
+              class="form-control border-right-0"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              required
+            />
+            <a
+              class="input-group-text bg-transparent pe-auto"
+              id="show-hide-pass"
+            ><i class="bi bi-eye-fill"></i></a>
+
+          </div>
+        </div>
+        <div class="d-grid gap-2 col col-md-12 col-sm-12 col-lg-1 mt-2">
+          <button type="submit" id="but-add-person" class="btn btn-success"><i
+              class="bi bi-plus-lg"
+            ></i></button>
+
+        </div>
+
+      </div>
+     <div class="container mt-4" id="divMensajeError">
+      
+     </div>
+    </form>
+  </div>
+</div>
+<div class="container overflow-scroll">
+  <div class="card  mt-4 ">
+    <div class="card-header">
+      <h5 class="card-title mt-3">Listado</h5>
+      <div class="row text-secondary">
+        <div class="col-2">Cédula</div>
+        <div class="col-4">Nombre y Apellido</div>
+        <div class="col-2">Rol</div>
+        <div class="col-2">Password</div>
+        <div class="col-2">Action</div>
+      </div>
+    </div>
+
+    <div id="listPer" class="card-body">
+      {{! aqui se insertará los campos con le personal de manera dinámica }}
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,94 @@
+      <div class="card mx-4 mt-4">
+
+        <div class="card-body">
+          <form action="" id="formAdd">
+            <div class="row">
+              <h6 class="card-title mb-4 d-flex justify-content-start">Ingresar
+                un nuevo producto</h6>
+              <div class="col col-md-2 col-sm-12">
+                <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="addon-wrapping">Code</span>
+                  <input
+                    id="input-code"
+                    name="input-code"
+                                      type="text"
+                    class="form-control"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col col-md-5 col-sm-12">
+                <div class="input-group flex-nowrap">
+                  <span
+                    class="input-group-text"
+                    id="addon-wrapping"
+                  >Description</span>
+                  <input
+                  id="input-desc"
+                  name="input-desc"
+                    type="text"
+                    class="form-control"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col col-md-2 col-sm-12">
+                <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="addon-wrapping">Und x hora</span>
+                  <input
+                  id="input-und-hora"
+                  name="input-und-hora"
+                    type="text"
+                    class="form-control"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col col-md-2 col-sm-12">
+                <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="addon-wrapping">Und x turno</span>
+                  <input
+                  id="input-und-turno"
+                  name="input-und-turno"
+                    type="text"
+                    class="form-control"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col col-md-1 col-sm-12">
+                <button type="submit" id="but-add-prod" class="btn btn-success"><i
+                    class="bi bi-plus-lg"
+                  ></i></button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <div class="card mx-4 mt-4">
+        <div class="card-header">
+          <h5 class="card-title mt-3">Listado de productos</h5>
+          <div class="row text-secondary">
+            <div class="col">código</div>
+            <div class="col">Descripción</div>
+            <div class="col">Por hora</div>
+            <div class="col">Por turno</div>
+            <div class="col">Action</div>
+          </div>
+        </div>
+
+        <div id="listProd" class="card-body">
+          {{!-- aqui se insertará los campos de productos de manera dinámica --}}
+
+        </div>
+      </div>

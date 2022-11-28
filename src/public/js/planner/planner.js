@@ -47,7 +47,7 @@ buscarProd.addEventListener("submit", (e) => {
     <div class=col>${data.aph} </div>
     <div class=col>${data.apd} </div>
     <div class=col><input class="form-check-input" type="radio" name="inlineRadioOptions" id=${data.desc_prod} value=${data.code_prod}> </div> 
-    </div>`;
+    </div>`
 
       divProd.appendChild(divCol);
     });
