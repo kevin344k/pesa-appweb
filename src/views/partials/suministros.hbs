@@ -1,0 +1,113 @@
+<div class="card mx-4 mt-4">
+
+  <div class="card-body">
+    <form action="" id="formAddSum">
+      <div class="row">
+        <h6 class="card-title mb-4 d-flex justify-content-start">Crear código de un
+          Suministro</h6>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-3 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">código</span>
+            <input
+              id="inputCodeSum"
+              name="inputCodeSum"
+              type="text"
+              minlength="6"
+              maxlength="6"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+            />
+          </div>
+        </div>
+         <div class="col-12 col-md-6 col-sm-12 col-lg-9 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Descripción</span>
+            <input
+              id="inputDescSum"
+              name="inputDescSum"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+            />
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-6 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Proveedor</span>
+            <input
+              id="inputProveedorSum"
+              name="inputProveedorSum"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+            />
+          </div>
+        </div>
+       
+        <div class="col-12 col-md-6 col-sm-12 col-lg-4 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Unidad de Medida</span>
+            <select name="selectUndSum" id="selectUndSum" class="form-select">
+              <option value="Seleccione">Seleccione</option>
+              <option value="KLS">KLS</option>
+              <option value="UND">UND</option>
+              <option value="MTS">MTS</option>
+            </select>
+            {{! <input
+              id="input-familia"
+              name="input-und-turno"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              
+            /> }}
+          </div>
+        </div>
+        {{!-- <div class="col-12 col-md-6 col-sm-12 col-lg-4 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Categoría</span>
+            <select name="select_famMp" id="select_catMp" class="form-select">
+              <option value="Seleccione">Seleccione</option>
+              <option value="PS">PS</option>
+              <option value="HDPE">HDPE</option>
+              <option value="PE">PE</option>
+              <option value="PP">PP</option>
+              <option value="LDPE">LDPE</option>
+            </select>
+          </div>
+
+        </div> --}}
+        <div class="d-grid gap-2 col col-md-12 col-sm-12 col-lg-2 mt-2">
+          <button type="submit" id="butAddSum" class="btn btn-success"><i
+              class="bi bi-plus-lg"
+            ></i></button>
+        </div>
+      </div>
+
+    </form>
+    <div id="msgSum" class="container"></div>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-header">
+    <h5 class="card-title mt-3">Listado de Suministros</h5>
+     <div class="row text-secondary">
+        <div class="col-2">Fecha de creación</div>
+      <div class="col-2">código</div>
+      <div class="col-2">Proveedor</div>
+      <div class="col-2">Descripción</div>
+      <div class="col-2">Unidad de Medida</div>
+<div class="col-2">Accion</div>
+    </div> 
+  </div>
+
+  <div class="card-body" id="listSum">
+    {{! aqui se insertará los campos con la materia prima de manera dinámica }}
+
+  </div>
+</div>

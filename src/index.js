@@ -52,19 +52,20 @@ console.log("server on port", app.get("port"));
 //websockets
 
 const { Server } = require("socket.io");
+const { Socket } = require("dgram");
 
 const io = new Server(httpServer);
 
 io.on("connection", (socket) => {
   console.log("nueva conexión");
   //para buscar el codigo de producto en planner
-socket.on("cliente:plannerId",async()=>{
-const [plannerId]=await pool.query(' SELECT COUNT(id_plan) as id FROM planner')
-console.log(plannerId[0])
-socket.emit("server:plannerId",plannerId[0])
-})
-
-
+  socket.on("cliente:plannerId", async () => {
+    const [plannerId] = await pool.query(
+      " SELECT COUNT(id_plan) as id FROM planner"
+    );
+    console.log(plannerId[0]);
+    socket.emit("server:plannerId", plannerId[0]);
+  });
 
   socket.on("planner:codigoProd", async (data) => {
     const cod = data.codigo;
@@ -86,136 +87,203 @@ socket.emit("server:plannerId",plannerId[0])
 
   socket.on("client:descProd", async (data) => {
     console.log(data);
-    const [descProd] = await pool.query("select desc_prod from productos where code_prod=?",data);
+    const [descProd] = await pool.query(
+      "select desc_prod from productos where code_prod=?",
+      data
+    );
 
-    socket.emit("descP", descProd[0],data);
+    socket.emit("descP", descProd[0], data);
   });
 
+  socket.on("client:plannerSave", async (data) => {
+    console.log(data);
 
-  socket.on("client:plannerSave",async(data)=>{
+    const poolPlan = await pool.query(
+      "insert into planner (cod_prod_plan,desc_prod_plan,linea_name,linea_cc,cant_plan,units_cant_plan,date_start,date_end) values (?,?,?,?,?,?,?,?) ",
+      [
+        data.cod_prod_plan,
+        data.desc_prod_plan,
+        data.linea_name,
+        data.linea_cc,
+        data.cant_plan,
+        data.units_cant_plan,
+        data.date_start,
+        data.date_end,
+      ]
+    );
+    if (poolPlan) {
+      queryPlan = true;
+    } else {
+      queryPlan = false;
+    }
+
+    socket.emit("server:plan_query", queryPlan);
+  });
+  //////////////////////
+  socket.on("client:chart", async () => {
+    console.log("recibido");
+    const [selectAll] = await pool.query("select * from planner ");
+
+    socket.emit("server:chart", selectAll);
+  });
+});
+
+////////////////io para la plantilla admin/////////////////////
+
+io.on("connection", (socketadmin) => {
+  socketadmin.on("client:admin-ingresar-prod", async (data) => {
+    const [validation] = await pool.query(
+      "select  * from productos where code_prod=?",
+      data.codigo
+    );
+    console.log(data.codigo, 138);
+    console.log(validation, 139);
+    if (validation == "") {
+      await pool.query(
+        "insert into productos(code_prod,desc_prod,aph,apd) values (?,?,?,?)",
+        [data.codigo, data.description, data.undHora, data.undTurno]
+      );
+      socketadmin.emit(
+        "resAddValProd",
+        "Producto agregado exitosamente, por favor recarge la página"
+      );
+    } else {
+      socketadmin.emit("resAddValProd", "Error: El producto ya existe");
+    }
+  });
+
+  socketadmin.on("client:loadpage", async () => {
+    const [listProd] = await pool.query("select * from productos");
+    socketadmin.emit("server:loadpage", listProd);
+    console.log(listProd, "144");
+  });
+
+  socketadmin.on("client:deleteProd", async (data) => {
+    await pool.query("delete from productos where code_prod=?", data);
+    console.log(data, "149");
+  });
+
+  ////ingreso de personas a la base dedatos
+  socketadmin.on("client:selectUsers", async () => {
+    const [resultquery] = await pool.query("select * from usuarios");
+
+    socketadmin.emit("server:selectUsers", resultquery);
+    //console.log(resultquery ,"156")
+  });
+  //validar si usuario existe
+
+  socketadmin.on("client:validatePerson", async (datos) => {
+    const [validacion] = await pool.query(
+      "select * from usuarios where cedula=?",
+      datos.cedula
+    );
+
+    console.log(validacion, "175");
+
+    if (validacion == "") {
+      await pool.query(
+        "insert into usuarios (cedula,nombres,rol,password) values (?,?,?,?)",
+        [datos.cedula, datos.nombres, datos.rol, datos.password]
+      );
+
+      socketadmin.emit(
+        "server:resValidation",
+        "Usuario agregado correctamente"
+      );
+    } else {
+      socketadmin.emit("server:resValidation", "El usuario ya existe");
+    }
+  });
+
+  socketadmin.on("client:deletePerson", (data) => {
+    pool.query("delete from usuarios where cedula=?", data);
+  });
+
+  socketadmin.on("client:deletePersonById", (data) => {
+    console.log(data);
+    pool.query("delete from usuarios where cedula=?", data);
+  });
+
+  socketadmin.on("client:editPerson", async (data) => {
+    // console.log(data)
+    let [edit] = await pool.query(
+      "select * from usuarios where cedula=?",
+      data
+    );
+    console.log(edit);
+
+    socketadmin.emit("server:dataEdit", edit[0]);
+  });
+
+  //para validar la pestañade mp
+
+  socketadmin.on("client:mpdata", async (datamp) => {
+    console.log(datamp, "226");
+    const [resMp] = await pool.query(
+      "select * from materiaPrima where codigo=?",
+      datamp.codigo
+    );
+
+    console.log(resMp, "229");
+    if (resMp == "") {
+      await pool.query(
+        "insert into materiaPrima(codigo,nombre,proveedor,familia,categoria) values(?,?,?,?,?)",
+        [
+          datamp.codigo,
+          datamp.nombreMp,
+          datamp.proveedor,
+          datamp.famMp,
+          datamp.famcat,
+        ]
+      );
+
+      socketadmin.emit("server:resultMp", "Registro agregado exitosamente");
+    } else {
+      socketadmin.emit("server:resultMp", "La materia prima ya existe");
+    }
+  });
+
+  socketadmin.on("client:mpLoadList", async () => {
+    const [resultListMp] = await pool.query("select * from materiaPrima");
+    console.log(resultListMp);
+    socketadmin.emit("server:dbList", resultListMp);
+  });
+
+  socketadmin.on("client:deleteMp", async (data) => {
+    await pool.query("delete from materiaPrima where codigo=?", data);
+    console.log(data);
+  });
+
+  ///pesataña suministros de pagina admin
+  socketadmin.on("client:saveSum",async data=>{
     console.log(data)
+   const [sumval]= await pool.query("select * from suministro where codigo=?",data.codigo)
 
- const poolPlan=  await pool.query('insert into planner (cod_prod_plan,desc_prod_plan,linea_name,linea_cc,cant_plan,units_cant_plan,date_start,date_end) values (?,?,?,?,?,?,?,?) ',[data.cod_prod_plan,data.desc_prod_plan,data.linea_name,data.linea_cc,data.cant_plan,data.units_cant_plan,data.date_start,data.date_end]
-  
- 
-)
-if (poolPlan) {
-  queryPlan= true
-}else{
- queryPlan= false
-}
+   if (sumval=="") {
+   await pool.query("insert into suministro(codigo,proveedor,descripcion,undMedida,fechaCre) values (?,?,?,?,?) ",[data.codigo,data.proveedor,data.descripcion,data.undMedida,data.fecha_creacion])
 
-socket.emit("server:plan_query",queryPlan)
+   socketadmin.emit("server:valSum","Datos registrados exitosamente")
+   } else {
+    socketadmin.emit("server:valSum","Error:El suministro ya existe")
+   }
+
 
   })
-  //////////////////////
-socket.on("client:chart",async()=>{
-  console.log('recibido')
-const [selectAll]= await pool.query('select * from planner ')
-console.log(selectAll)
-socket.emit('server:chart',selectAll)
 
+socketadmin.on("client:dataSumAll",async()=>{
+ const [suministros]= await pool.query("select * from suministro")
+ console.log(suministros)
+ if (suministros!="") {
+  socketadmin.emit("server:suministros",suministros)
+ }
+})
 
-}
-)
+socketadmin.on("client:deleteSum",  (data)=>{
+
+  pool.query("delete from suministro where codigo=?",data)
+
+})
 
 
 
 });
-
-
-
-////////////////io para la plantilla admin/////////////////////
-
-io.on("connection",(socketadmin)=>{
-
-
-socketadmin.on("client:admin-ingresar-prod", async(data)=>{
-
-const insertProduct=await pool.query('insert into productos(code_prod,desc_prod,aph,apd) values (?,?,?,?)',[data.codigo,data.description,data.undHora,data.undTurno])
-console.log(insertProduct)
-
-
-
-
-})
-
-
-socketadmin.on('client:loadpage',async()=>{
-  const [listProd]=await pool.query('select * from productos')
-  socketadmin.emit('server:loadpage', listProd)
-  console.log(listProd)
-})
-
-socketadmin.on('client:deleteProd', async data=>{
-
- await pool.query('delete from productos where code_prod=?',data)
- console.log(data)
- 
-})
-////ingreso de personas a la base dedatos
-
-//validar si usuario existe
-
-socketadmin.on('client:validatePerson',async (data)=>{
-  console.log(data)
-
-  const [validacion]=await pool.query('select * from usuarios where cedula=?',data)
-
-  console.log(validacion)
-
-  if (validacion=="") {
-    socketadmin.emit('server:resValidation',"no existe")
-
-  } else{
-    
-    socketadmin.emit('server:resValidation',"existe")
-  }
-
-})
-
-/*socketadmin.on('client:datausuarios',async data=>{
-
-  const [duplicated]=await pool.query('select * from usuarios where cedula=?',data.cedula)
-
-console.log(duplicated)
-
-
-  
-})*/
-
-socketadmin.on('client:selectUsers',async ()=>{
-
-
-
-  const [result]=await pool.query('select * from usuarios')
-
-    socketadmin.emit('server:selectUsers',result)
-
-
-})
-
-
-socketadmin.on('client:deletePerson',data=>{
-  pool.query('delete from usuarios where cedula=?',data)
-})
-
-
-socketadmin.on('client:deletePersonById',data=>{
-  console.log(data)
-  pool.query('delete from usuarios where cedula=?',data)
-})
-
-socketadmin.on('client:editPerson', async data=>{
- // console.log(data)
-  let [edit]=  await pool.query('select * from usuarios where cedula=?',data)
-  console.log(edit)
-
-socketadmin.emit('server:dataEdit',edit[0])
-
-
-})
-
-
-
-})

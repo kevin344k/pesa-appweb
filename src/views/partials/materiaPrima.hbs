@@ -1,0 +1,112 @@
+<div class="card mx-4 mt-4">
+
+  <div class="card-body">
+    <form action="" id="formAddMp">
+      <div class="row">
+        <h6 class="card-title mb-4 d-flex justify-content-start">Crear código de
+          Materia Prima</h6>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-3 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">código</span>
+            <input
+              id="input-codeMp"
+              name="input-codeMp"
+              type="text"
+              minlength="6"
+              maxlength="6"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+            />
+          </div>
+        </div>
+       
+        <div class="col-12 col-md-6 col-sm-12 col-lg-9 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Nombre M.P</span>
+            <input
+              id="input-nombreMp"
+              name="input-nombreMp"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+            />
+          </div>
+        </div>
+         <div class="col-12 col-md-6 col-sm-12 col-lg-3 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Proveedor</span>
+            <input
+              id="input-proveedor"
+              name="input-proveedor"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+            />
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-3 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Familia</span>
+            <select name="select_famMp" id="select_famMp" class="form-select">
+              <option value="Seleccione">Seleccione</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+            {{! <input
+              id="input-familia"
+              name="input-und-turno"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              
+            /> }}
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-3 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Categoría</span>
+            <select name="select_famMp" id="select_catMp" class="form-select">
+              <option value="Seleccione">Seleccione</option>
+              <option value="PS">PS</option>
+              <option value="HDPE">HDPE</option>
+              <option value="PE">PE</option>
+              <option value="PP">PP</option>
+              <option value="LDPE">LDPE</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="d-grid gap-2 col col-md-12 col-sm-12 col-lg-3 mt-2">
+          <button type="submit" id="but-add-mp" class="btn btn-success"><i
+              class="bi bi-plus-lg"
+            ></i></button>
+        </div>
+      </div>
+
+    </form>
+    <div id="msgMprima" class="container"></div>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-header">
+    <h5 class="card-title mt-3">Listado de Materia Prima</h5>
+     <div class="row text-secondary">
+      <div class="col-2">código</div>
+      <div class="col-4">Proveedor</div>
+      <div class="col-2">Nombre M.P</div>
+      <div class="col-2">Familia</div>
+      <div class="col-2">Categoría</div>
+    </div> 
+  </div>
+
+  <div class="card-body" id="listMp">
+    {{! aqui se insertará los campos con la materia prima de manera dinámica }}
+
+  </div>
+</div>
