@@ -1,4 +1,4 @@
-const socketadmin = io();
+
 
 const productoAdmin = document.getElementById("productoAdmin");
 const primerLink = document.getElementById("primerLink");
@@ -82,6 +82,7 @@ const butSave = document.querySelector("#but-add-person");
 const butEdit = document.querySelector("#but-edit-person");
 butEdit.style.display = "none";
 
+const socketadmin = io();
 
 socketadmin.emit("client:mpLoadList");
 
