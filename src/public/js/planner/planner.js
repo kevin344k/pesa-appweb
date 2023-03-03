@@ -1,5 +1,3 @@
-
-
 const socket = io();
 const idPlan = document.querySelector("#id_plan");
 const buscarProd = document.querySelector("#buscarProducto");
@@ -13,7 +11,7 @@ const desc_Product = document.querySelector("#desc_Product");
 socket.emit("cliente:plannerId")
 socket.on("server:plannerId",(data)=>{
 
-idPlan.value=data.id+1
+idPlan.value=data.id_plan+1
 })
 
 buscarProd.addEventListener("submit", (e) => {
@@ -42,11 +40,12 @@ buscarProd.addEventListener("submit", (e) => {
       divCol.innerHTML += ` 
       <div class="row mt-2">
            
-    <div class=col>${data.code_prod} </div>
-    <div class=col>${data.desc_prod} </div>
-    <div class=col>${data.aph} </div>
-    <div class=col>${data.apd} </div>
-    <div class=col><input class="form-check-input" type="radio" name="inlineRadioOptions" id=${data.desc_prod} value=${data.code_prod}> </div> 
+    <div class=col-2>${data.code_prod} </div>
+    <div class=col-4>${data.desc_prod} </div>
+    <div class=col-1>${data.aph} </div>
+    <div class=col-2>${data.apd} </div>
+    <div class=col-2>${data.unidadMedida} </div>
+    <div class=col-1><input class="form-check-input" type="radio" name="inlineRadioOptions" id=${data.desc_prod} value=${data.code_prod}> </div> 
     </div>`
 
       divProd.appendChild(divCol);
@@ -69,7 +68,9 @@ loadCod.addEventListener("click", () => {
 socket.on("descP", (descProd,data) => {
   console.log(descProd.desc_prod);
   inputCodeProd.value=data;
-  desc_Product.value=descProd.desc_prod
+  desc_Product.value=descProd.desc_prod;
+  select_measurement.value=descProd.unidadMedida
+
 });
 
 const planForm= document.querySelector("#planForm")
@@ -90,7 +91,7 @@ planForm.addEventListener('submit',e=>{
   )
   socket.emit("client:plannerSave",{
    
-    cod_prod_plan:inputCodeProd.value ,	
+    cod_prod:inputCodeProd.value ,	
     desc_prod_plan:desc_Product.value,	
     linea_name: name_line.value,	
     linea_cc:cc_line.value ,	

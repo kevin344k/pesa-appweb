@@ -74,7 +74,7 @@
                 name="linea_name"
                 class="form-select"
                 aria-placeholder="Open this select menu"
-                onchange="mostrarCc(line)"
+                {{!-- onchange="mostrarCc(line)" --}}
                 required
               ><option value="">PLEASE SELECT ONE</option>
                 <option value="IRWIN 1 ">IRWI 1 </option>
@@ -126,7 +126,7 @@
                 class="form-select"
                 aria-label="Default select example"
               >
-                <option selected>Open this select menu</option>
+                <option value="Seleccionar">Seleccionar</option>
                 <option value="FDON">FDON</option>
                 <option value="UND">UND</option>
               </select>
@@ -199,7 +199,7 @@
   aria-labelledby="titleWindow"
   aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 id="titleWindow">Load item</h5>
@@ -229,11 +229,12 @@
         </form>
          <div class="container" >
          <div class="row text-secondary mt-3">
-            <div class="col">código</div>
-            <div class="col">Descripción</div>
-            <div class="col">Por hora</div>
-            <div class="col">Por turno</div>
-            <div class="col">Action</div>
+            <div class="col-2">código</div>
+            <div class="col-4">Descripción</div>
+            <div class="col-1">Por hora</div>
+            <div class="col-2">Por turno</div>
+            <div class="col-2">Und medida</div>
+            <div class="col-1">Action</div>
           </div>
         <div class="container" id="divProd">
       

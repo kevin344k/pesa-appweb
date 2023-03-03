@@ -17,6 +17,7 @@ const select_famMp = document.getElementById("select_famMp");
 const select_catMp = document.getElementById("select_catMp");
 const listMp = document.getElementById("listMp");
 const listSum=document.getElementById("listSum")
+const optionUND=document.getElementById("optionUND")
 
 primerLink.classList.add("active");
 personalAdmin.style.display = "none";
@@ -88,10 +89,10 @@ socketadmin.on("server:dbList", (data) => {
     createListMp.innerHTML += `<div class="row mt-2">
     <div class=col-2>${element.codigo}</div>
   <div class=col-2>${element.proveedor}</div>
-  <div class=col-2>${element.nombre}</div>
-  <div class=col-2>${element.familia}</div>
+  <div class=col-3>${element.nombre}</div>
   <div class=col-2>${element.categoria}</div>
-  <div class=col-2><button  id=${element.codigo} class="btn btn-outline-danger"><i class="bi bi-trash3-fill"></i></button></div> 
+  <div class=col-2>${element.familia}</div>
+  <div class=col-1><button  id=${element.codigo} class="btn btn-outline-danger"><i class="bi bi-trash3-fill"></i></button></div> 
   
   </div>
 `;
@@ -115,13 +116,15 @@ formAdd.addEventListener("submit", (e) => {
     (inputCode.value != "") &
     (inputDesc.value != "") &
     (inputUndHora.value != "") &
-    (inputUndTurno.value != "")
+    (inputUndTurno.value != "") &
+    optionUND!="Seleccionar"
   ) {
     socketadmin.emit("client:admin-ingresar-prod", {
       codigo: inputCode.value,
       description: inputDesc.value,
       undHora: inputUndHora.value,
       undTurno: inputUndTurno.value,
+      undMedida: optionUND.value
     });
 
     socketadmin.on("resAddValProd", (text) => {
@@ -190,6 +193,7 @@ function validarMp(texto1) {
     input_nombreMp.value = "";
     select_famMp.value = "";
     select_catMp.value = "";
+    
   }
 
   setTimeout(() => {
@@ -205,10 +209,11 @@ socketadmin.on("server:loadpage", (data) => {
     lista.innerHTML += `<div class="row mt-2">
            
     <div class=col-2>${element.code_prod} </div>
-    <div class=col-4>${element.desc_prod} </div>
+    <div class=col-3>${element.desc_prod} </div>
     <div class=col-2>${element.aph} </div>
     <div class=col-2>${element.apd} </div>
-    <div class=col-2><button  id=${element.code_prod} class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></div> 
+    <div class=col-2>${element.unidadMedida} </div>
+    <div class=col-1><button  id=${element.code_prod} class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></div> 
     </div>`;
 
     listProd.appendChild(lista);
@@ -484,3 +489,4 @@ for (let i = 0; i < deleteSum.length; i++) {
 }
 
 })
+

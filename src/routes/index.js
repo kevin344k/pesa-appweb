@@ -28,9 +28,9 @@ router.post("/ordenProd", (req, res) => {
 router.get("/informe-Operador", (req, res) => {
   res.render("infor-oper.hbs");
 });
-router.post("/informe-Operador", (req, res) => {
-   res.send("recibido");
- });
+// router.post("/informe-Operador", (req, res) => {
+//    res.send("recibido");
+//  });
 //dashboard
 router.get("/dash", (req, res) => {
   res.render("dashboard.hbs");
