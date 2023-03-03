@@ -24,17 +24,17 @@
               <span class="input-group-text" for="cod-art">Código</span>
               <input class="form-control" id="cod-art" type="text" />
               <span class="input-group-text" for="peso">Peso(g)</span>
-              <input class="form-control" id="peso" type="number" />
+              <input class="form-control" id="peso" type="text" />
             </div>
             {{! cuarto input-group }}
-            <label class="form-label" for="prod-hora">Cantidad a Fabricar
-            </label>
+            <label class="form-label" for="prod-hora">Cantidad a Fabricar :
+            <span id="undmedida" class="text-danger"></span></label>
             <div class="input-group mb-2">
 
               <span class="input-group-text" for="prod-hora">Total</span>
-              <input class="form-control" id="c" type="number" />
-              <span class="input-group-text" for="prod-hora">Ciclo</span>
-              <input class="form-control" id="c" type="text" />
+              <input class="form-control" id="cantidad" type="text" />
+              <span class="input-group-text" for="prod-hora">Ciclo(GxM)</span>
+              <input class="form-control" id="ciclo" type="text" />
 
             </div>
 
@@ -43,8 +43,9 @@
             <div class="input-group mb-3">
 
               <span class="input-group-text" for="prod-hora">Por Turno</span>
-              <input class="form-control" id="c" type="number" />
+              <input class="form-control" id="porHora" type="text" />
               <span class="input-group-text" for="prod-hora">Por hora</span>
-              <input class="form-control" id="c" type="number" />
+              <input class="form-control" id="porTurno" type="text" />
+
 
             </div>

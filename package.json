@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "para el proyecto de tesis",
   "main": "index.js",
- 
   "scripts": {
     "dev": "nodemon src\\index.js",
     "start": "node src/index.js"
@@ -23,6 +22,7 @@
     "express-handlebars": "^6.0.6",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
+    "socket.io": "^4.5.3",
     "util": "^0.12.5"
   },
   "devDependencies": {

@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="/css/planner.css" />
 
 <div class="container p-1 mt-4">
-  <div class="row">
-    <div class="col-12 col-lg-5">
+  <div class="row ">
+    <div class="col-12 col-lg-5 mb-3">
       <div class="card text-center">
         <div class="card-header">
           <h3 class="card-title">Planner</h3>
         </div>
         <div class="card-body">
-          <form action="/planner" method="post" autocomplete="off">
+          <form  id="planForm" autocomplete="off">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">#</span>
               <input
@@ -19,7 +19,7 @@
                 aria-describedby="basic-addon1"
                 name="plan_id"
                 id="id_plan"
-                value=''
+                value=""
                 disabled
               />
             </div>
@@ -37,6 +37,7 @@
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 name="cod_prod_plan"
+                 required
               />
               <button
                 class="btn btn-outline-secondary"
@@ -53,12 +54,14 @@
                 id="basic-addon1"
               >Product</span>
               <input
+              id="desc_Product"
                 type="text"
                 name="desc_prod_plan"
                 class="form-control"
                 placeholder=""
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                 required
               />
             </div>
             <div class="input-group mb-3">
@@ -71,7 +74,8 @@
                 name="linea_name"
                 class="form-select"
                 aria-placeholder="Open this select menu"
-                onchange="mostrarCc(line)"
+                {{!-- onchange="mostrarCc(line)" --}}
+                required
               ><option value="">PLEASE SELECT ONE</option>
                 <option value="IRWIN 1 ">IRWI 1 </option>
                 <option value="IRWIN 2">IRWIN 2</option>
@@ -79,6 +83,7 @@
                 <option value="IRWIN 4">IRWIN 4</option>
                 <option value="IRWIN 5">IRWIN 5</option>
                 <option value="COMODORE">COMODORE</option>
+                
               </select>
               <span
                 class="input-group-text text-secondary"
@@ -89,9 +94,8 @@
                 name="linea_cc"
                 type="text"
                 class="form-control"
-                
-               
                 aria-describedby="basic-addon1"
+                required
               />
             </div>
 
@@ -101,12 +105,15 @@
                 id="basic-addon1"
               >Quantity</span>
               <input
-                type="text"
+              id="qty"
+                type="number"
+                min="0"
                 name="cant_plan"
                 class="form-control"
                 placeholder=""
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                 required
               />
 
               <span
@@ -119,7 +126,7 @@
                 class="form-select"
                 aria-label="Default select example"
               >
-                <option selected>Open this select menu</option>
+                <option value="Seleccionar">Seleccionar</option>
                 <option value="FDON">FDON</option>
                 <option value="UND">UND</option>
               </select>
@@ -130,23 +137,27 @@
                 id="basic-addon1"
               >Date start</span>
               <input
+              id="dateStart"
                 type="DateTime-local"
                 name="date_start"
                 class="form-control text-center"
                 placeholder=""
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                 required
               />
             </div>
             <div class="input-group mb-3">
 
               <input
+              id="dateEnd"
                 type="DateTime-local"
                 name="date_end"
                 class="form-control text-center"
                 placeholder=""
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                 required
               />
               <span
                 class="input-group-text text-secondary"
@@ -154,7 +165,7 @@
               >Date end</span>
             </div>
             <div class="d-grid gad-2">
-              <button class="btn btn-primary btn-block">Submit</button>
+              <button  id="sendPlan" class="btn btn-primary btn-block">Planificar</button>
             </div>
           </form>
         </div>
@@ -167,7 +178,7 @@
         <div class="card-header">
           <h3 class="card-title center"> TimeLine</h3>
         </div>
-        <div id="timeline" class="card-body">
+        <div id="timeline" class="card-body ">
           <div id="chart_div"></div>
 
         </div>
@@ -188,7 +199,7 @@
   aria-labelledby="titleWindow"
   aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 id="titleWindow">Load item</h5>
@@ -200,30 +211,48 @@
         ></button>
       </div>
       <div class="modal-body">
-        {{!-- form --}}
-       <form  action=' ' method="get">
-        <div class="input-group">
+        {{! form }}
+        <form method="get" id="buscarProducto">
+          <div class="input-group">
 
-          <input type="text" 
-          id="code_product"
-          name="code_product"
-          class="form-control" placeholder="insert code" />
-          <button class="btn btn-outline-success"  id="search"><i
-               class="bi bi-search"
-            ></i></button> 
+            <input
+              type="text"
+              id="code_product"
+              name="code_product"
+              class="form-control"
+              placeholder="insert code"
+            />
+            <button class="btn btn-outline-success" id="search"><i
+                class="bi bi-search"
+              ></i></button>
+          </div>
+        </form>
+         <div class="container" >
+         <div class="row text-secondary mt-3">
+            <div class="col-2">código</div>
+            <div class="col-4">Descripción</div>
+            <div class="col-1">Por hora</div>
+            <div class="col-2">Por turno</div>
+            <div class="col-2">Und medida</div>
+            <div class="col-1">Action</div>
+          </div>
+        <div class="container" id="divProd">
+      
+            
         </div>
-     </form>
       </div>
 
       <div class="modal-footer">
         <button
-          class="btn btn-info"
+          class="btn btn-info text-white"
           type="button"
           data-bs-dismiss="modal"
-        >Back</button>
-        <button type="button" class="btn btn-success" type="button">
-          Load
-        </button>
+        >Back</button><button id="loadCod"
+          class="btn btn-success text-white"
+          type="button"
+          data-bs-dismiss="modal"
+        >Load</button>
+
       </div>
     </div>
   </div>
@@ -233,10 +262,10 @@
 {{! ///////////////////////////////// }}
 {{! ///////////////////////////////// }}
 {{! ///////////////////////////////// }}
-
+<script src="socket.io/socket.io.min.js"></script>
 <script
   type="text/javascript"
   src="https://www.gstatic.com/charts/loader.js"
 ></script>
 <script type="text/javascript" src="js/planner/chart-gantt.js"></script>
-<script type="text/javascript" src="js/planner/planner.js" ></script>
+<script type="text/javascript" src="js/planner/planner.js"></script>

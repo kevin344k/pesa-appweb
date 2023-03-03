@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <button id="primerLink" class="nav-link">Producto</button>
+        </li>
+        <li class="nav-item">
+          <button id="segundoLink" class="nav-link">Personal</button>
+        </li>
+        <li class="nav-item">
+          <button id="tercerLink" class="nav-link">Materia Prima</button>
+        </li>
+        <li class="nav-item">
+          <button id="cuartoLink" class="nav-link">Suministros</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card-body">
+      <div id="productoAdmin" class="container">
+        {{> productoAdmin}} 
+      </div>
+
+      <div id="personalAdmin" class="container">
+        {{> personalAdmin}} 
+      </div>
+      <div id="materiaPrima" class="container">
+        {{> materiaPrima}} 
+      </div>
+      <div id="pestanaSuministro" class="container">
+        {{> suministros}} 
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<script src="socket.io/socket.io.min.js"></script>
+<script type="text/javascript" src="js/admin/admin.js"></script>

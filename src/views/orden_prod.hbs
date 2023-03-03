@@ -6,88 +6,18 @@
 <div class="container d-flex justify-content-center mt-4">
 
   <div class="row">
-    <div class="col-12 col-md-5">
+    <div class="col-12 col-md-3">
       {{! se divide este col para hacer las dos tablas dentro de un col  }}
       <div class="row">
         <div class="col">
-          <div class="card text-center">
-            <div class="card-header">
-              <h3 class="card-title">Planner Id</h3>
-            </div>
-            <div class="card-body">
-              {{! encbezado planner id }}
-
-              <div class="row mb-2 text-center">
-                <div class="col">
-                  Id
-                </div>
-                <div class="col">
-                  Fecha
-                </div>
-                <div class="col">
-                  Code
-                </div>
-                <div class="col">
-                  Description
-                </div>
-                <div class="col">
-                  Amount
-                </div>
-                <div class="col">
-                  Action
-                </div>
-
-              </div>
-              {{! segunda fila de planner id , de aquí en adelante se debe ser automático }}
-
-              <div class="row mb-2 text-center text-secondary">
-                <hr />
-                <div class="col">
-                  00001
-                </div>
-                <div class="col">
-                  2022-07-12
-                </div>
-                <div class="col">
-                  095786
-                </div>
-                <div class="col">
-                  Super Vianda Amrilla
-                </div>
-                <div class="col">
-                  25146 und
-                </div>
-                <div class="col">
-                  <button class="btn btn-success">load</button>
-                </div>
-
-              </div>
-              {{! tercera fila del planner id donde se supone debe ser automatico }}
-              <div class="row mb-2 text-center text-secondary">
-                <hr />
-                <div class="col">
-                  00001
-                </div>
-                <div class="col">
-                  2022-07-12
-                </div>
-                <div class="col">
-                  095786
-                </div>
-                <div class="col">
-                  Super Vianda Amrilla
-                </div>
-                <div class="col">
-                  25146 und
-                </div>
-                <div class="col">
-                  <button class="btn btn-success">load</button>
-                </div>
-
-              </div>
-              {{!  }}
-            </div>
-          </div>
+          <div class="container">
+            <button
+              id="buttonPlannerModal"
+              data-bs-toggle="modal"
+              data-bs-target="#modal-Planner-Id"
+              type="button"
+              class="btn btn-outline-primary btn-lg"
+            >Productos a Fabricar</button></div>
         </div>
       </div>
 
@@ -202,58 +132,57 @@
 
           <form
             id="form-production"
-            action="/ordenProd"
+            
             autocomplete="off"
-            method="post"
+            
           >
             {{! //////////////////////////////////header form/////////////////////////////////////////////////////////// }}
             {{! input group para todos los input del formulario orden de produccion }}
             <div class="input-group m-2">
-              <label class="form-label" for="prod-hora"># Order:
+              <label class="form-label" for="prod-hora"># Orden:
                 <span
+                  id="spanOrder"
                   class="p-1 rounded bg-danger bg-gradient text-white"
-                >123456</span>
+                ></span>
               </label>
             </div>
-{{!-- para llamar a un partial que cargue la cabecera de la orden de produción e informe de operador  --}}
-{{!--  --}}
-{{!--  --}}
-{{!--  --}}
-{{> headercardOpInfor}} 
-{{!--  --}}
-{{!--  --}}
-{{!--  --}}
-
-
+            {{! para llamar a un partial que cargue la cabecera de la orden de produción e informe de operador  }}
+            {{!  }}
+            {{!  }}
+            {{!  }}
+            {{> headercardOpInfor}}  
+            {{!  }}
+            {{!  }}
+            {{!  }}
 
             {{! primer input-group }}
-            {{!-- <div class="input-group mb-2">
+            {{! <div class="input-group mb-2">
               <span class="input-group-text" for="nombre_linea">Line</span>
               <input id="nombre_linea" class="form-control" type="text" />
               <span class="input-group-text" for="cod_linea">C.C</span>
               <input class="form-control" id="cc" type="text" />
-            </div> --}}
+            </div> }}
             {{! segundo input-group }}
-            {{!-- <div class="input-group mb-2">
+            {{! <div class="input-group mb-2">
               <span
                 class="input-group-text"
                 for="nombre-articulo"
               >Artículo</span>
               <input class="form-control" id="nombre-articulo" type="text" />
 
-            </div> --}}
+            </div> }}
 
             {{! tercer input-group }}
 
-            {{!-- <div class="input-group mb-2">
+            {{! <div class="input-group mb-2">
 
               <span class="input-group-text" for="cod-art">Código</span>
               <input class="form-control" id="cod-art" type="text" />
               <span class="input-group-text" for="peso">Peso(g)</span>
               <input class="form-control" id="peso" type="number" />
-            </div> --}}
+            </div> }}
             {{! cuarto input-group }}
-            {{!-- <label class="form-label" for="prod-hora">Cantidad a Fabricar
+            {{! <label class="form-label" for="prod-hora">Cantidad a Fabricar
             </label>
             <div class="input-group mb-2">
 
@@ -262,57 +191,68 @@
               <span class="input-group-text" for="prod-hora">Ciclo</span>
               <input class="form-control" id="c" type="text" />
 
-            </div> --}}
+            </div> }}
 
             {{! quinto input-grou }}
 
-            {{!-- <div class="input-group mb-3">
+            {{! <div class="input-group mb-3">
 
               <span class="input-group-text" for="prod-hora">Por Turno</span>
               <input class="form-control" id="c" type="number" />
               <span class="input-group-text" for="prod-hora">Por hora</span>
               <input class="form-control" id="c" type="number" />
 
-            </div> --}}
+            </div> }}
             {{! ////////////////////////////////////////body-form///////////////////////////////////////////////////// }}
 
             {{! aqui esta la tabla que nos mostrará los input que activaran la ventana modal patra elegir la materia prima y suministro }}
             <div class="card">
-              <div class="card-body">
+              <div class="card-body text-center">
                 <div class="row">
-                  <h5 class="card-title text-center">Materia Prima</h5>
+                  <h5 class="card-title text-center">Materia Prima y suministros</h5>
                 </div>
                 {{! cabvecera suministros }}
                 <div class="row mb-2 text-center">
                   <div class="col col-md-3">
                     Code
                   </div>
-                  <div class="col col-md-6">
+                  <div class="col col-md-5">
                     Description
                   </div>
-                  <div class="col col-md-3">
-                    Amount
+                  <div class="col col-md-2">
+                    Cantidad
+                  </div>
+                  <div class="col col-md-2">
+                    Unidades
                   </div>
                 </div>
                 {{! primera fila de inputs materia prima y suministros  }}
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
-                      <input class="form-control" type="text" />
+                      <input id="codeMp1" class="form-control" type="text" />
                       <button
                         class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-item-search"
                         type="button"
-                        id=""
+                        id="butsearchMp1"
                       ><i class="bi bi-search"></i></button>
                     </div>
                   </div>
-                  <div class="col col-md-6">
-                    <input class="form-control" type="text" disabled />
+                  <div class="col col-md-5">
+                    <input
+                      id="descMp1"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
                   </div>
-                  <div class="col col-md-3">
-                    <input class="form-control" type="text" />
+                  <div class="col col-md-2">
+                    <input id="cantidadMp1" class="form-control" type="text" />
+                  </div>
+                  <div class="col col-md-2">
+                    <span id="undSpan1">KLS</span>
                   </div>
                 </div>
 
@@ -321,21 +261,29 @@
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
-                      <input class="form-control" type="text" />
+                      <input id="codeMp2" class="form-control" type="text" />
                       <button
                         class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-item-search"
                         type="button"
-                        id=""
+                         id="butsearchMp2"
                       ><i class="bi bi-search"></i></button>
                     </div>
                   </div>
-                  <div class="col col-md-6">
-                    <input class="form-control" type="text" disabled />
+                  <div class="col col-md-5">
+                    <input
+                      id="descMp2"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
                   </div>
-                  <div class="col col-md-3">
-                    <input class="form-control" type="text" />
+                  <div class="col col-md-2">
+                    <input id="cantidadMp2" class="form-control" type="text" />
+                  </div>
+                  <div class="col col-md-2">
+                    <span id="undSpan2">KLS</span>
                   </div>
                 </div>
 
@@ -343,42 +291,53 @@
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
-                      <input class="form-control" type="text" />
+                      <input id="codeMp3" class="form-control" type="text" />
                       <button
                         class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-item-search"
                         type="button"
-                        id=""
+                        id="butsearchMp3"
                       ><i class="bi bi-search"></i></button>
                     </div>
                   </div>
-                  <div class="col col-md-6">
-                    <input class="form-control" type="text" disabled />
+                  <div class="col col-md-5">
+                    <input
+                      id="descMp3"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
                   </div>
-                  <div class="col col-md-3">
-                    <input class="form-control" type="text" />
+                  <div class="col col-md-2">
+                    <input id="cantidadMp3"  class="form-control" type="text" />
+                  </div>
+                  <div class="col col-md-2">
+                    <span id="undSpan3">KLS</span>
                   </div>
                 </div>
                 {{! cuarta fila de inputs materia prima y suministros  }}
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
-                      <input class="form-control" type="text" />
+                      <input id="codeMp4" class="form-control" type="text" />
                       <button
                         class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-item-search"
                         type="button"
-                        id=""
+                        id="butsearchMp4"
                       ><i class="bi bi-search"></i></button>
                     </div>
                   </div>
-                  <div class="col col-md-6">
-                    <input class="form-control" type="text" disabled />
+                  <div class="col col-md-5">
+                    <input id="descMp4" class="form-control" type="text" disabled />
                   </div>
-                  <div class="col col-md-3">
-                    <input class="form-control" type="text" />
+                  <div class="col col-md-2">
+                    <input id="cantidadMp4" class="form-control" type="text" />
+                  </div>
+                  <div class="col col-md-2">
+                    <span id="undSpan4">KLS</span>
                   </div>
                 </div>
 
@@ -397,7 +356,10 @@
 
             <div class="row">
               <div class="col text-center">
-                <button
+
+
+
+                <button id="btnSaveOrden"
                   class="btn btn-outline-danger btn-md mt-3"
                   type="submit"
                 >
@@ -406,7 +368,9 @@
                 </button>
               </div>
             </div>
+      <div class="container mt-4" id="divMensajeError">
 
+      </div>
           </form>
 
         </div>
@@ -430,7 +394,7 @@
   aria-labelledby="titleWindow"
   aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 id="titleWindow">Load item</h5>
@@ -442,24 +406,143 @@
         ></button>
       </div>
       <div class="modal-body">
+        <div class="row text-center">
+          <div class="col">
+            <div class="container mb-3">
+              <button
+                id="seachMp"
+                type="button"
+                class="btn btn-outline-secondary"
+                type="button"
+              >
+                Materia Prima
+              </button>
+              <button
+                id="searchSum"
+                type="button"
+                class="btn btn-outline-secondary"
+                type="button"
+              >
+                Suministro
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="insert code" />
-          <button class="btn btn-outline-success" type="button" id=""><i
+          <input id="inputSearchCode" type="text" class="form-control" placeholder="insert code" />
+          <button class="btn btn-outline-success" type="button" id="butSearchCode"><i
               class="bi bi-search"
             ></i></button>
         </div>
+        <div id="divErrorLoadMpSum" class="container mt-3"></div>
+      </div>
+
+      <div class="container">
+        <table id="tablaMp" class="table table-hover text-center">
+
+          <thead>
+            <tr>
+              <th scope="col">codigo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Proveedor</th>
+              <th scope="col">familia</th>
+              <th scope="col">categoria</th>
+              <th scope="col">Accion</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyMp">
+
+          </tbody>
+            <tfoot id="tfootMp">
+
+          </tfoot >
+
+        </table>
+        <table id="tablaSum" class="table table-hover text-center">
+
+          <thead>
+            <tr>
+              <th scope="col">codigo</th>
+
+              <th scope="col">Proveedor</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">undMedida</th>
+              <th scope="col">Accion</th>
+            </tr>
+          </thead>
+
+          <tbody id="tbodySum">
+
+          </tbody>
+          <tfoot id="tfootSum">
+
+          </tfoot >
+
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-info text-white"
+          type="button"
+          data-bs-dismiss="modal"
+        >Back</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{{! ////////////////modal planner id///////////////// }}
+
+<div
+  class="modal fade"
+  id="modal-Planner-Id"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="titleWindow"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="titleWindow">Productos a Fabricar</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          id="butCloseModal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+
+          <thead>
+            <tr>
+              <th scope="col">Id(Plan)</th>
+              <th scope="col">Programado el:</th>
+              <th scope="col">Código</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Unidades</th>
+              <th scope="col">Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tablaPlanner">
+
+          </tbody>
+        </table>
+
       </div>
 
       <div class="modal-footer">
         <button
-          class="btn btn-info"
+          class="btn btn-info text-white"
           type="button"
           data-bs-dismiss="modal"
         >Back</button>
-        <button type="button" class="btn btn-success" type="button">
-          Load
-        </button>
+
       </div>
     </div>
   </div>
@@ -468,4 +551,6 @@
 {{! ///////////////////////////////// }}
 {{! ///////////////////////////////// }}
 {{! ///////////////////////////////// }}
-{{! ///////////////////////////////// }}
+
+<script src="socket.io/socket.io.min.js"></script>
+<script type="text/javascript" src="js/orden/orden.js"></script>

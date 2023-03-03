@@ -1,0 +1,117 @@
+<div class="card mx-4 mt-4">
+
+  <div class="card-body">
+    <form action="" id="formAdd">
+      <div class="row">
+        <h6 class="card-title mb-4 d-flex justify-content-start">Crear código de producto</h6>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-2 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Code</span>
+            <input
+              id="input-code"
+              name="input-code"
+              type="text"
+              
+              minlength="6"
+             
+              maxlength="6"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              
+            />
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-10 mt-2">
+          <div class="input-group flex-nowrap">
+            <span
+              class="input-group-text"
+              id="addon-wrapping"
+            >Description</span>
+            <input
+              id="input-desc"
+              name="input-desc"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              
+            />
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-4 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Und x hora</span>
+            <input
+              id="input-und-hora"
+              name="input-und-hora"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              
+            />
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-4 mt-2">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Und x turno</span>
+            <input
+              id="input-und-turno"
+              name="input-und-turno"
+              type="text"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              
+            />
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-4 mt-2">
+            <div class="input-group">
+               <span
+                class="input-group-text "
+                id="basic-addon1"
+              >Und de medida</span>
+              <select
+                id="optionUND"
+                name="units_cant_plan"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option value="Seleccinoar">Seleccionar</option>
+                <option value="FDON">FDON</option>
+                <option value="UND">UND</option>
+              </select>
+            </div>
+        </div>
+        <div class="d-grid gap-2 col col-md-12 col-sm-12 col-lg-4 mt-2">
+          <button type="submit" id="but-add-prod" class="btn btn-success"><i
+              class="bi bi-plus-lg"
+            ></i></button>
+        </div>
+      </div>
+
+    </form>
+    <div id="msgProduct" class="container"></div>
+  </div>
+</div>
+
+<div class="card  mt-4">
+  <div class="card-header">
+    <h5 class="card-title mt-3">Listado de productos</h5>
+    <div class="row text-secondary">
+      <div class="col-2">código</div>
+      <div class="col-4">Descripción</div>
+      <div class="col-1">Por hora</div>
+      <div class="col-2">Por turno</div>
+           <div class="col-2">Unidad de Medida</div>
+        <div class="col-1">Acción</div>
+    </div>
+  </div>
+
+  <div id="listProd" class="card-body">
+    {{! aqui se insertará los campos de productos de manera dinámica }}
+
+  </div>
+</div>

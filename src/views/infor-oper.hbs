@@ -1,105 +1,34 @@
 {{!-- {{>headercardOpInfor}}  --}}
 {{! estilos solo para esta pagina ya que es una plantilla y es renderizado aparte del main }}
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0"
+/>
 <link rel="stylesheet" href="/css/production.css" />
+
+
+
+
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500,
+  'GRAD' 0, 'opsz' 48 }
+</style>
 
 <div class="container d-flex justify-content-center mt-4">
 
   <div class="row">
     <div class="col-12 col-md-5">
-      {{! se divide este col para hacer las dos tablas dentro de un col  }}
+      {{! codigo para el boron de las ordenes generadas }}
       <div class="row">
-        <div class="col">
-          <div class="card text-center">
-            <div class="card-header">
-              <h3 class="card-title">Order List</h3>
-            </div>
-            <div class="card-body">
-              {{! encbezado Order List}}
-
-              <div class="row mb-2 text-center">
-                <div class="col">
-                  #
-                </div>
-                <div class="col">
-                  Fecha
-                </div>
-
-                <div class="col">
-                  Code
-                </div>
-
-                <div class="col">
-                  Description
-                </div>
-
-                <div class="col">
-                  Amount
-                </div>
-                <div class="col">
-                  shortage
-                </div>
-                <div class="col">
-                  Action
-                </div>
-
-              </div>
-
-              {{! segunda fila de planner id , de aquí en adelante se debe ser automático }}
-
-              <div class="row mb-2 text-center text-secondary">
-                <hr />
-                <div class="col">
-                  00001
-                </div>
-                <div class="col">
-                  2022-07-12
-                </div>
-                <div class="col">
-                  095786
-                </div>
-                <div class="col">
-                  Super Vianda Amrilla
-                </div>
-                <div class="col">
-                  25146 und
-                </div>
-                <div class="col">
-                  25000 und
-                </div>
-                <div class="col">
-                  <button class="btn btn-info text-white">Open</button>
-                </div>
-
-              </div>
-              {{! tercera fila del planner id donde se supone debe ser automatico }}
-              <div class="row mb-2 text-center text-secondary">
-                <hr />
-                <div class="col">
-                  00001
-                </div>
-                <div class="col">
-                  2022-07-12
-                </div>
-                <div class="col">
-                  095786
-                </div>
-                <div class="col">
-                  Super Vianda Amrilla
-                </div>
-                <div class="col">
-                  25146 und
-                </div>
-                <div class="col">
-                  25000 und
-                </div>
-                <div class="col">
-                  <button class="btn btn-info text-white">Open</button>
-                </div>
-
-              </div>
-              {{!  }}
-            </div>
-          </div>
+        <div class="col-12 text-align-center">
+          <div class="container">
+            <button
+              id="butOrderList"
+              data-bs-toggle="modal"
+              data-bs-target="#modal-orden-load"
+              type="button"
+              class="btn btn-outline-primary btn-lg"
+            >Ordenes Pendientes</button></div>
         </div>
       </div>
 
@@ -133,26 +62,37 @@
                 class="row mb-2 text-center align-items-center text-secondary"
               >
                 <hr />
-                <div class="col col-md-1">
+                <div class="col-12 col-md-1">
                   1
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-4">
                   <div class="input-group">
-                    <input class="form-control" type="text" />
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="cedula"
+                      id="cedula1"
+                    />
                     <button
                       class="btn btn-outline-secondary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modal-people-search"
+                      {{! data-bs-toggle="modal"
+                      data-bs-target="#modal-people-search" }}
                       type="button"
-                      id=""
+                      id="butCedula1"
+                      name="butModalPeople"
                     ><i class="bi bi-search"></i></button>
                   </div>
                 </div>
-                <div class="col col-md-4">
-                  <input class="form-control" type="text" disabled />
+                <div class="col-12 col-md-5">
+                  <input
+                    class="form-control"
+                    type="text"
+                    disabled
+                    id="nombre1"
+                  />
                 </div>
-                <div class="col">
-                  <input class="form-control" type="text" disabled />
+                <div class="col-12 col-md-2">
+                  <input class="form-control" type="text" disabled id="rol1" />
                 </div>
 
               </div>
@@ -161,29 +101,122 @@
                 class="row mb-2 text-center align-items-center text-secondary"
               >
                 <hr />
-                <div class="col col-md-1">
+                <div class="col-12 col-md-1">
                   2
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-4">
                   <div class="input-group">
-                    <input class="form-control" type="text" />
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="cedula"
+                      id="inputCedula2"
+                    />
                     <button
                       class="btn btn-outline-secondary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modal-people-search"
+                      {{! data-bs-toggle="modal"
+                      data-bs-target="#modal-people-search" }}
                       type="button"
-                      id=""
+                      name="butModalPeople"
+                      id="butCedula2"
                     ><i class="bi bi-search"></i></button>
                   </div>
                 </div>
-                <div class="col col-md-4">
-                  <input class="form-control" type="text" disabled />
+                <div class="col-12 col-md-5">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="nombre2"
+                    disabled
+                  />
                 </div>
-                <div class="col">
-                  <input class="form-control" type="text" disabled />
+                <div class="col-12 col-md-2">
+                  <input class="form-control" type="text" id="rol2" disabled />
                 </div>
 
               </div>
+              {{!  }}
+              {{! tercero registro de production people }}
+              <div
+                class="row mb-2 text-center align-items-center text-secondary"
+              >
+                <hr />
+                <div class="col-12 col-md-1">
+                  3
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="cedula"
+                      id="inputCedula3"
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      {{! data-bs-toggle="modal"
+                      data-bs-target="#modal-people-search"
+                      }}
+                      type="button"
+                      name="butModalPeople"
+                      id="butCedula3"
+                    ><i class="bi bi-search"></i></button>
+                  </div>
+                </div>
+                <div class="col-12 col-md-5">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="nombre3"
+                    disabled
+                  />
+                </div>
+                <div class="col-12 col-md-2">
+                  <input class="form-control" type="text" id="rol3" disabled />
+                </div>
+
+              </div>
+              {{!  }}
+              {{! cuarto registro de production people }}
+              <div
+                class="row mb-2 text-center align-items-center text-secondary"
+              >
+                <hr />
+                <div class="col-12 col-md-1">
+                  4
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="cedula"
+                      id="inputCedula4"
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      {{! data-bs-toggle="modal"
+                      data-bs-target="#modal-people-search" }}
+                      type="button"
+                      name="butModalPeople"
+                      id="butCedula4"
+                    ><i class="bi bi-search"></i></button>
+                  </div>
+                </div>
+                <div class="col-12 col-md-5">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="nombre4"
+                    disabled
+                  />
+                </div>
+                <div class="col-12 col-md-2">
+                  <input class="form-control" type="text" id="rol4" disabled />
+                </div>
+
+              </div>
+              <div id="msgerrorPeople"></div>
               {{!  }}
             </div>
           </div>
@@ -196,9 +229,13 @@
       <div class="card">
 
         <div class="card-header">
-            <div class="container ">
-              <script>document.write(new Date().toLocaleDateString()+"  --   "+"  Turno 1 ")</script>
+          <div class="container text-center fs-5 text-primary">
+            <div class="row ">
+              <div class="col"><span class="text-secondary">Fecha:</span><span class="text-primary" id="spanFecha"></span></div>
+              <div class="col"><span class="text-secondary">Hora:</span><span   class="text-primary" id="spanHora"></span></div>
+              <div class="col"><span class="text-secondary">Turno:</span><span class="text-primary" id="spanTurno"></span><span id="spandia"></span></div>
             </div>
+          </div>
           <h3 class="card-title text-center">Operator Report</h3>
 
         </div>
@@ -206,7 +243,7 @@
           {{! formulario para ingresar la orden de producción }}
 
           <form
-            id="form-production"
+            id="form-infor-prod"
             action="/informe-Operador"
             autocomplete="off"
             method="post"
@@ -219,8 +256,9 @@
                 <div class="input-group">
                   <label class="form-label" for="prod-hora"># Order:
                     <span
-                      class="p-1 rounded bg-danger bg-gradient text-white"
-                    >123456</span>
+                      id="spanOrderNumber"
+                      class="p-1 rounded bg-danger bg-gradient text-white fs-6"
+                    >---</span>
                   </label>
                 </div>
 
@@ -230,32 +268,245 @@
                   <label class="form-label" for="prod-hora"># Report:
                     <span
                       class="p-1 rounded bg-secondary bg-gradient text-white"
-                    >123456</span>
+                      id="spanReportNumber"
+                    ></span>
                   </label>
                 </div>
               </div>
             </div>
-{{!-- input group para cargar los datos de la orden en el informe  --}}
-           
-{{!--  --}}
-{{!--  --}}
-{{!--  --}}
-{{> headercardOpInfor}} 
-{{!--  --}}
-{{!--  --}}
-{{!--  --}}
+            {{! input group para cargar los datos de la orden en el informe  }}
 
+            {{!  }}
+            {{!  }}
+            {{!  }}
+            {{> headercardOpInfor}}  
+            {{!  }}
+            {{!  }}
+            {{!  }}
 
             {{! ////////////////////////////////////////body-form///////////////////////////////////////////////////// }}
 
             {{! aqui esta la tabla que nos mostrará los input que activaran la ventana modal patra elegir las paralizaciones }}
             <div class="card">
-              <div class="card-body">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item">
+                    <button type="button" id="butMp" class="nav-link fs-4">
+                      M.P</button>
+                  </li>
+                  <li class="nav-item">
+                    <button
+                      type="button"
+                      id="butTiempoImproductivo"
+                      class="nav-link fs-4"
+                    >Tiempo Improductivo</button>
+                  </li>
+                </ul>
+              </div>
+              {{! //////////////////// }}
+
+              <div id="materiaPrima" class="card-body text-center">
+                <div class="row">
+                  <h5 class="card-title text-center">Materia Prima y suministros</h5>
+                </div>
+                {{! cabvecera suministros }}
+                <div class="row mb-2 text-center">
+                  <div class="col col-md-3">
+                    Code
+                  </div>
+                  <div class="col col-md-5">
+                    Description
+                  </div>
+                  <div class="col col-md-2">
+                    Cantidad
+                  </div>
+                  <div class="col col-md-2">
+                    Unidades
+                  </div>
+                </div>
+                {{! primera fila de inputs materia prima y suministros  }}
+                <div class="row mb-2">
+                  <div class="col col-md-3">
+                    <div class="input-group">
+                      <input
+                        id="codeMp1"
+                        class="form-control"
+                        type="text"
+                        disabled
+                      />
+                      {{! <button
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-item-search"
+                        type="button"
+                        id="butsearchMp1"
+                      ><i class="bi bi-search"></i></button> }}
+                    </div>
+                  </div>
+                  <div class="col col-md-5">
+                    <input
+                      id="descMp1"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="col col-md-2">
+                    <input
+                      id="cantidadMp1"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="col col-md-2">
+                    <span id="undSpan1">KLS</span>
+                  </div>
+                </div>
+
+                {{! segunda fila de inputs materia prima y suministros  }}
+
+                <div class="row mb-2">
+                  <div class="col col-md-3">
+                    <div class="input-group">
+                      <input
+                        id="codeMp2"
+                        class="form-control"
+                        type="text"
+                        disabled
+                      />
+                      {{! <button
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-item-search"
+                        type="button"
+                         id="butsearchMp2"
+                      ><i class="bi bi-search"></i></button> }}
+                    </div>
+                  </div>
+                  <div class="col col-md-5">
+                    <input
+                      id="descMp2"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="col col-md-2">
+                    <input
+                      id="cantidadMp2"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="col col-md-2">
+                    <span id="undSpan2">KLS</span>
+                  </div>
+                </div>
+
+                {{! tercera fila de inputs materia prima y suministros  }}
+                <div class="row mb-2">
+                  <div class="col col-md-3">
+                    <div class="input-group">
+                      <input
+                        id="codeMp3"
+                        class="form-control"
+                        type="text"
+                        disabled
+                      />
+                      {{! <button
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-item-search"
+                        type="button"
+                        id="butsearchMp3"
+                      ><i class="bi bi-search"></i></button> }}
+                    </div>
+                  </div>
+                  <div class="col col-md-5">
+                    <input
+                      id="descMp3"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="col col-md-2">
+                    <input
+                      id="cantidadMp3"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="col col-md-2">
+                    <span id="undSpan3">KLS</span>
+                  </div>
+                </div>
+                {{! cuarta fila de inputs materia prima y suministros  }}
+                <div class="row mb-2">
+                  <div class="col col-md-3">
+                    <div class="input-group">
+                      <input
+                        id="codeMp4"
+                        class="form-control"
+                        type="text"
+                        disabled
+                      />
+                      {{! <button
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-item-search"
+                        type="button"
+                        id="butsearchMp4"
+                      ><i class="bi bi-search"></i></button> }}
+                    </div>
+                  </div>
+                  <div class="col col-md-5">
+                    <input
+                      id="descMp4"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="col col-md-2">
+                    <input
+                      id="cantidadMp4"
+                      class="form-control"
+                      type="text"
+                      disabled
+                    />
+                  </div>
+                  <div class="col col-md-2">
+                    <span id="undSpan4">KLS</span>
+                  </div>
+                </div>
+
+              </div>
+
+              {{! /////////////////// }}
+
+              <div class="card-body" id="timeLost">
+                {{!-- <div class="row">
+                  <div class="col mb-4">
+                    <div class="position-relative">
+
+                      <div class="position-absolute top-0 end-0">
+                        <button id="butTimer" type="button" class="btn btn-primary"><i
+                            class="bi bi-alarm"
+                          ></i></button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div> --}}
                 <div class="row">
                   <h5 class="card-title text-center">Tiempo improductivo
                     generado</h5>
                 </div>
-                {{! cabvecera suministros }}
+                {{! cabecera suministros }}
                 <div class="row mb-2 text-center">
                   <div class="col col-md-2">
                     Code
@@ -271,10 +522,19 @@
                   </div>
                 </div>
                 {{! primera fila de inputs tiempo improductivo generado  }}
-                <div class="row mb-2">
+                <div class="row mb-3 text-center fs-4">
                   <div class="col col-md-3">
                     <div class="input-group">
-                      <input class="form-control" type="text" />
+                      <input
+                        id="inputCodePar1"
+                        class="form-control text-center"
+                        type="text"
+                      />
+                      <button
+                        class="btn btn-outline-danger"
+                        type="button"
+                        id="butDelCodPar1"
+                      ><i class="bi bi-x-lg"></i></button>
                       <button
                         class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
@@ -285,13 +545,18 @@
                     </div>
                   </div>
                   <div class="col col-md-5">
-                    <input class="form-control" type="text" disabled />
+                    <input
+                      id="inputDescPar1"
+                      class="form-control text-wrap"
+                      type="text"
+                      disabled
+                    />
                   </div>
                   <div class="col col-md-2">
-                    <input class="form-control text-center" type="time" />
+                    <input id="timestart1" class="form-control text-center" type="time" name="time" />
                   </div>
                   <div class="col col-md-2">
-                    <input class="form-control text-center" type="time" />
+                    <input id="timeEnd1" class="form-control text-center" type="time" name="time"/>
                   </div>
                 </div>
 
@@ -300,7 +565,16 @@
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
-                      <input class="form-control" type="text" />
+                      <input
+                        id="inputCodePar2"
+                        class="form-control text-center"
+                        type="text"
+                      />
+                      <button
+                        class="btn btn-outline-danger"
+                        type="button"
+                        id="butDelCodPar2"
+                      ><i class="bi bi-x-lg"></i></button>
                       <button
                         class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
@@ -311,13 +585,18 @@
                     </div>
                   </div>
                   <div class="col col-md-5">
-                    <input class="form-control" type="text" disabled />
+                    <input
+                      id="inputDescPar2"
+                      class="form-control text-wrap"
+                      type="text"
+                      disabled
+                    />
                   </div>
                   <div class="col col-md-2">
-                    <input class="form-control text-center" type="time" />
+                    <input id="timestart2"   class="form-control text-center" type="time" name="time" />
                   </div>
                   <div class="col col-md-2">
-                    <input class="form-control text-center" type="time" />
+                    <input id="timeEnd2" class="form-control text-center" type="time" name="time" />
                   </div>
                 </div>
 
@@ -325,7 +604,16 @@
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
-                      <input class="form-control" type="text" />
+                      <input
+                        id="inputCodePar3"
+                        class="form-control text-center"
+                        type="text"
+                      />
+                      <button
+                        class="btn btn-outline-danger"
+                        type="button"
+                        id="butDelCodPar3"
+                      ><i class="bi bi-x-lg"></i></button>
                       <button
                         class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
@@ -336,20 +624,35 @@
                     </div>
                   </div>
                   <div class="col col-md-5">
-                    <input class="form-control" type="text" disabled />
+                    <input
+                      id="inputDescPar3"
+                      class="form-control text-wrap"
+                      type="text"
+                      disabled
+                    />
                   </div>
                   <div class="col col-md-2">
-                    <input class="form-control text-center" type="time" />
+                    <input id="timestart3" class="form-control text-center" type="time" name="time" />
                   </div>
                   <div class="col col-md-2">
-                    <input class="form-control text-center" type="time" />
+                    <input id="timeEnd3" class="form-control text-center" type="time" name="time" />
                   </div>
                 </div>
                 {{! cuarta fila de inputs tiempo improductivo generado   }}
                 <div class="row mb-2">
                   <div class="col col-md-3">
                     <div class="input-group">
-                      <input class="form-control" type="text" />
+                      <input
+                        id="inputCodePar4"
+                        class="form-control text-center"
+                        type="text"
+                      />
+
+                      <button
+                        class="btn btn-outline-danger"
+                        type="button"
+                        id="butDelCodPar4"
+                      ><i class="bi bi-x-lg"></i></button>
                       <button
                         class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
@@ -360,17 +663,23 @@
                     </div>
                   </div>
                   <div class="col col-md-5">
-                    <input class="form-control" type="text" disabled />
+                    <input
+                      id="inputDescPar4"
+                      class="form-control text-wrap"
+                      type="text"
+                      disabled
+                    />
                   </div>
                   <div class="col col-md-2">
-                    <input class="form-control text-center" type="time" />
+                    <input id="timestart4" class="form-control text-center" type="time" name="time" />
                   </div>
                   <div class="col col-md-2">
-                    <input class="form-control text-center" type="time" />
+                    <input id="timeEnd4" class="form-control text-center" type="time" name="time" />
                   </div>
                 </div>
                 {{! fin input tiempo improductivo generado }}
               </div>
+
             </div>
             {{! seccion para poner el "line production" }}
             <div class="card mt-2">
@@ -385,14 +694,15 @@
                         <button
                           class="btn btn-success"
                           type="button"
-                          id="button-addon1"
+                          
                         ><i class="bi bi-emoji-laughing-fill"></i></button>
                         <input
                           type="text"
-                          class="form-control text-center"
+                          class="form-control text-center fs-5"
                           placeholder=""
                           aria-label="Example text with button addon"
                           aria-describedby="button-addon1"
+                          id="inputUnitsGood"
                         />
                       </div>
                     </div>
@@ -404,14 +714,15 @@
                         <button
                           class="btn btn-danger"
                           type="button"
-                          id="button-addon1"
+                          
                         ><i class="bi bi-emoji-frown-fill"></i></button>
                         <input
                           type="text"
-                          class="form-control text-center"
+                          class="form-control text-center fs-5"
                           placeholder=""
                           aria-label="Example text with button addon"
                           aria-describedby="button-addon1"
+                          id="inputScrap"
                         />
                       </div>
 
@@ -425,21 +736,27 @@
               <textarea
                 class="form-control"
                 placeholder="Leave at note here"
-                id="floatingTextarea2"
+                id="textAreaObservations"
                 style="height: 100px"
               ></textarea>
               <label
                 for="floatingTextarea2"
               >Observations/Recommendations</label>
+
             </div>
+  <div id="errCloseReport" class="container text-center">
+
+  </div>
 
             <div class="row">
               <div class="col text-center">
                 <button
-                  class="btn btn-outline-danger btn-md mt-3"
+                  class="btn btn-outline-danger btn-md mt-3 p-2 fs-4"
                   type="submit"
+                  id="butCloseIOpReport"
+                  
                 >
-                  <i class="bi bi-journal-richtext"></i>
+                  <i class="bi bi-journal-richtext  "></i>
                   Close report
                 </button>
               </div>
@@ -457,6 +774,72 @@
   {{! div del container }}
 </div>
 {{! ////////////////////////////////////////////////////////////// }}
+
+{{! ////////////////////////2do modal para ingresar the production people  ////////////////////////////////////// }}
+{{! ventana modal para buscar materia prima y suministros por codigo y cargar automaticamnete a la orden  }}
+{{! una ventana mmodal esta constituido de  1) modal-header 2) modal-body 3) modal-footer}}
+
+<div
+  class="modal fade"
+  id="modal-orden-load"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="titleWindow"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="titleWindow">Load Order</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+          <table id="tablaOrderList" class="table table-hover text-center">
+
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Code</th>
+                <th scope="col">Product</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Missing</th>
+                <th scope="col">Action</th>
+
+              </tr>
+            </thead>
+            <tbody id="tbodyOrderList">
+
+            </tbody>
+            <tfoot id="tfootOrderList">
+
+            </tfoot>
+
+          </table>
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          class="btn btn-info text-white"
+          type="button"
+          data-bs-dismiss="modal"
+        >Back</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{{! ///////////////////////////////// }}
 {{! ventana modal para buscar materia prima y suministros por codigo y cargar automaticamnete a la orden  }}
 {{! una ventana mmodal esta constituido de  1) modal-header 2) modal-body 3) modal-footer}}
 
@@ -468,10 +851,10 @@
   aria-labelledby="titleWindow"
   aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="titleWindow">Load item</h5>
+        <h5 class="fs-3" id="titleWindow">Select type:</h5>
         <button
           type="button"
           class="btn-close"
@@ -479,51 +862,59 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body d-flex text-center">
 
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="insert code" />
-          <button class="btn btn-outline-success" type="button" id=""><i
-              class="bi bi-search"
-            ></i></button>
+        <div class="col">
+
+          <button
+            type="button"
+            class="btn btn-outline-primary fs-1"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-item-mntto"
+          >
+            <span class="material-symbols-outlined">
+              settings
+            </span>Mecánico
+
+          </button>
+
         </div>
+        <div class="col">
+
+          <button type="button" class="btn btn-outline-info fs-1">
+            <span class="material-symbols-outlined">
+              bolt
+            </span>Eléctrico</button>
+        </div>
+
       </div>
 
       <div class="modal-footer">
         <button
-          class="btn btn-info text-white"
+          class="btn btn-info text-white fs-4"
           type="button"
           data-bs-dismiss="modal"
         >Back</button>
-        <button type="button" class="btn btn-success text-white" type="button">
-          Load
-        </button>
       </div>
     </div>
   </div>
 </div>
 
 {{! ///////////////////////////////// }}
+{{! modal hijo mecanico}}
 {{! ///////////////////////////////// }}
-{{! ///////////////////////////////// }}
-{{! ///////////////////////////////// }}
-
-{{! ////////////////////////2do modal para ingresar the production people  ////////////////////////////////////// }}
-{{! ventana modal para buscar materia prima y suministros por codigo y cargar automaticamnete a la orden  }}
-{{! una ventana mmodal esta constituido de  1) modal-header 2) modal-body 3) modal-footer}}
-
 <div
   class="modal fade"
-  id="modal-people-search"
-  tabindex="-1"
+  id="modal-item-mntto"
+  tabindex="1"
   role="dialog"
   aria-labelledby="titleWindow"
   aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="titleWindow">Load C.I</h5>
+        <h5 id="titleWindow">Insert code:</h5>
         <button
           type="button"
           class="btn-close"
@@ -533,29 +924,96 @@
       </div>
       <div class="modal-body">
 
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="insert C.I" />
-          <button class="btn btn-outline-success" type="button" id=""><i
-              class="bi bi-search"
-            ></i></button>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col">
+              <button id="butSeeList" class="btn btn-primary fs-4">
+                Ver listado
+              </button></div>
+            <div class="col">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control fs-4"
+                  placeholder="Buscar"
+                  id="inputSearchP"
+                />
+                <button
+                  class="btn btn-outline-success"
+                  type="button"
+                  id="butSearchCodeP"
+                ><i class="bi bi-search"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="row overflow-auto">
+            <div class="col">
+              <table
+                id="tablaListP"
+                class="table table-hover text-center mt-4 fs-5"
+              >
+
+                <thead>
+                  <tr>
+                    <th scope="col">codigo</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Accion</th>
+
+                  </tr>
+                </thead>
+                <tbody class="h-25" id="tabListP">
+
+                </tbody>
+                <tfoot id="tabListPfoot">
+
+                </tfoot>
+
+              </table>
+            </div>
+          </div>
         </div>
+
       </div>
 
       <div class="modal-footer">
         <button
-          class="btn btn-info text-white"
+          class="btn btn-info text-white fs-4"
           type="button"
           data-bs-dismiss="modal"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-item-search"
         >Back</button>
-        <button type="button" class="btn btn-success text-white" type="button">
-          Load
-        </button>
+
       </div>
     </div>
   </div>
 </div>
 
-{{! ///////////////////////////////// }}
-{{! ///////////////////////////////// }}
-{{! ///////////////////////////////// }}
-{{! ///////////////////////////////// }}
+{{!-- modal close report --}}
+
+<div class="modal fade" id="modalSucessReport" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Notificación:</h5>
+        <button onclick="location.reload()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Registro guardado exitosamente</p>
+      </div>
+      <div class="container mb-3 d-grid gap-2">
+
+        <button type="button" onclick="location.reload()" class="btn btn-success">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script src="socket.io/socket.io.min.js"></script>
+<script type="text/javascript" src="js/informe/infor.js"></script>
