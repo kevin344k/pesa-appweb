@@ -3,7 +3,7 @@ const path = require("path"); // permite manejar rutas internas de archivos
 const exphbs = require("express-handlebars"); //permite renderizar hbs
 const morgan = require("morgan"); //crea logs de las peticiones del cliente al servidor
 //BASE DE DATOS
-const pool = require("./db");
+
 //INICIALIZACIONES
 const app = express(); //se inicializa express
 

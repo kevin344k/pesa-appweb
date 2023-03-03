@@ -38,4 +38,6 @@ router.get("/dash", (req, res) => {
 router.get("/admin",(req,res)=>{
   res.render("admin.hbs")
 })
+
+
 module.exports = router;

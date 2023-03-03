@@ -1,5 +1,5 @@
-require("./public/js/admin/admin.js")
-
+//require("./public/js/admin/admin.js")
+const pool = require("./db");
 
 module.exports=function (io) {
     
