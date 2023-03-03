@@ -1,6 +1,5 @@
 
-function 
-data(){
+
 
 const productoAdmin = document.getElementById("productoAdmin");
 const primerLink = document.getElementById("primerLink");
@@ -493,5 +492,5 @@ for (let i = 0; i < deleteSum.length; i++) {
 }
 
 })
-}
-module.exports={data}
+
+module.exports
