@@ -53,7 +53,7 @@ const { Socket } = require("dgram");
 
 const io = new Server(httpServer);
 
-require("./sockets")(io)
+require("./sockets.js")(io);
 
 //STARTING THE SERVER con express
 

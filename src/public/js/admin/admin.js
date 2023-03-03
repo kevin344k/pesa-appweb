@@ -1,3 +1,7 @@
+
+function 
+data(){
+
 const productoAdmin = document.getElementById("productoAdmin");
 const primerLink = document.getElementById("primerLink");
 const segundoLink = document.getElementById("segundoLink");
@@ -489,4 +493,5 @@ for (let i = 0; i < deleteSum.length; i++) {
 }
 
 })
-
+}
+module.exports={data}
