@@ -1,5 +1,5 @@
 //$(function () {
-  
+window.addEventListener("load",()=>{
   const socketadmin = io();
 
 const productoAdmin = document.getElementById("productoAdmin");
@@ -499,3 +499,4 @@ for (let i = 0; i < deleteSum.length; i++) {
 
 
 //})
+})
