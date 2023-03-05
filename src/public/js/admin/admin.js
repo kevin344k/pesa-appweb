@@ -1,4 +1,4 @@
-$(function () {
+//$(function () {
   
   const socketadmin = io();
 
@@ -498,4 +498,4 @@ for (let i = 0; i < deleteSum.length; i++) {
 //module.exports={socketadmin}
 
 
-})
+//})
