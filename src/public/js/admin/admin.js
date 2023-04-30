@@ -1,6 +1,6 @@
-//$(function () {
-window.addEventListener("load",()=>{
-  const socketadmin = io();
+
+
+const socketadmin = io();
 
 const productoAdmin = document.getElementById("productoAdmin");
 const primerLink = document.getElementById("primerLink");
@@ -495,8 +495,5 @@ for (let i = 0; i < deleteSum.length; i++) {
 
 })
 
-//module.exports={socketadmin}
 
 
-//})
-})

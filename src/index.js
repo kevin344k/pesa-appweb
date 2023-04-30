@@ -2,7 +2,7 @@ const express = require("express"); //se importa express para iniciar el server-
 const http = require("http");//----------
 const exphbs = require("express-handlebars"); //permite renderizar hbs
 const morgan = require("morgan"); //crea logs de las peticiones del cliente al servidor
-const {Server} = require('socket.io');
+const realTimeServer=require("./sockets")
 const path = require("path"); // permite manejar rutas internas de archivos-------------
 const PORT=process.env.PORT || 5000
 //BASE DE DATOS
@@ -12,7 +12,7 @@ const app = express(); //se inicializa express------------------
 
 //pasando el server a http
 
-const server = http.createServer(app);
+const httpServer = http.createServer(app);
 
 //static files
 app.use(express.static(path.join(__dirname, "public")));
@@ -24,9 +24,9 @@ app.set("port", PORT);
 
 //websockets
 
-const io = new Server(server);
 
-require("./sockets");
+
+//require("./sockets");
 
 
 ///// se configuar las carpetas con los "hbs" para ser cargado cada ves que se haga una peticion del cliente/////
@@ -48,10 +48,8 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false })); //para que la alpicaión acepte desde los formularios que me envien los usuarios y false para no aceptar imágenes
 app.use(express.json()); //para que la aplicación acepte datos en formato json
 //GLOBAL VARIABLES
-//toma info del cliente, lo que responde el server y continua con el codigo con next
-app.use((req, res, next) => {
-  next();
-});
+
+
 
 //ROUTES
 
@@ -63,7 +61,7 @@ app.use("/app", require("./routes/app"));
 
 
 
-//const { Socket } = require("dgram");
+
 
 
 
@@ -71,11 +69,11 @@ app.use("/app", require("./routes/app"));
 
 //STARTING THE SERVER con express
 
-server.listen(app.get("port"));
+httpServer.listen(app.get("port"));
 console.log(`server on port, ${PORT}`);
 
+realTimeServer(httpServer)
 
-const pool = require("./db");
 
 /*
 io.on("connection", (socket) => {

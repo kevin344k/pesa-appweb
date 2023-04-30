@@ -1,6 +1,11 @@
 
-module.exports=function sockets () {
-    
+
+module.exports=httpServer=>{
+
+const {Server} = require('socket.io');
+const pool = require("./db");
+ const io = new Server(httpServer);
+ //const socketAdmin=io.of('socketAdmin')   
 
     io.on("connection", (socket) => {
         console.log("nueva conexión");
@@ -75,8 +80,8 @@ module.exports=function sockets () {
       
       ////////////////io para la plantilla admin/////////////////////
       
-      io.on("connection", (socketadmin) => {
-        socketadmin.on("client:admin-ingresar-prod", async (data) => {
+     io.on("connection", (socketadmin) => {
+      socketadmin.on("client:admin-ingresar-prod", async (data) => {
           const [validation] = await pool.query(
             "select  * from productos where code_prod=?",
             data.codigo
@@ -243,8 +248,7 @@ module.exports=function sockets () {
           pool.query("delete from suministro where codigo=?", data);
         });
       });
-      /////////////////////////////////////////
-      ////////////////////////////////////////
+
       /////////////////io para la pagina orden de planeación
       
       io.on("connection", (socketOrden) => {
@@ -561,6 +565,7 @@ module.exports=function sockets () {
       });
       
 
+    }
 
 
 
@@ -568,5 +573,3 @@ module.exports=function sockets () {
 
 
 
-
-}
