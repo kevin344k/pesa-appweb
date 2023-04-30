@@ -1,8 +1,5 @@
-//require("./public/js/admin/admin.js")
 
-
-//const io=io()
-module.exports=function (io) {
+module.exports=function sockets () {
     
 
     io.on("connection", (socket) => {

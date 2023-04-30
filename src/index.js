@@ -25,7 +25,9 @@ app.set("port", PORT);
 //websockets
 
 const io = new Server(server);
-//require("./sockets")(io);
+
+require("./sockets");
+
 
 ///// se configuar las carpetas con los "hbs" para ser cargado cada ves que se haga una peticion del cliente/////
 app.set("views", path.join(__dirname, "views"));
@@ -75,7 +77,7 @@ console.log(`server on port, ${PORT}`);
 
 const pool = require("./db");
 
-
+/*
 io.on("connection", (socket) => {
   console.log("nueva conexión");
   //para buscar el codigo de producto en planner
@@ -634,3 +636,4 @@ io.on("connection", (socketInfor) => {
   });
 });
 
+*/
