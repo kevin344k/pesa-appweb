@@ -1,6 +1,4 @@
-const { Router } = require("express");
 const express = require("express");
-const pool = require("../db");
 const router = express.Router();
 //main page
 router.get("/", (req, res) => {
