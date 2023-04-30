@@ -2,6 +2,7 @@
 
 const socketadmin = io();
 
+
 const productoAdmin = document.getElementById("productoAdmin");
 const primerLink = document.getElementById("primerLink");
 const segundoLink = document.getElementById("segundoLink");
@@ -251,11 +252,6 @@ function mensajeProduct(text) {
   }, 5000);
 }
 
-/*
-
-
-*/
-
 const formAddPersonal = document.getElementById("formAddPersonal");
 
 const input_cedula = document.getElementById("input-cedula");
@@ -423,8 +419,8 @@ formAddSum.addEventListener("submit", (e) => {
     validarSum(err)
   }
 
-  // console.table(
-  // inputCodeSum.value,inputProveedorSum.value,inputDescSum.value,selectUndSum.value)
+   console.table(
+   inputCodeSum.value,inputProveedorSum.value,inputDescSum.value,selectUndSum.value)
 });
 
 function validarSum(err) {
