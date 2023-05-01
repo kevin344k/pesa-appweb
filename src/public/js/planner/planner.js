@@ -1,7 +1,9 @@
 const socket = io();
 
 //socket.emit('alert')
-socket.on('saludo',alert('hola'))
+socket.on('saludo',()=>{
+  alert('hola')
+})
 /*
 const idPlan = document.querySelector("#id_plan");
 const buscarProd = document.querySelector("#buscarProducto");
