@@ -1,9 +1,9 @@
 const socket = io("/planner");
-
+/*
 socket.emit('alert')
 socket.on('saludo',()=>{
   alert('hola')
-})
+})*/
 
 
 const idPlan = document.querySelector("#id_plan");
@@ -17,7 +17,7 @@ const desc_Product = document.querySelector("#desc_Product");
 socket.emit("client:plannerId")
 
 
-/*
+
 
 
 
@@ -130,4 +130,3 @@ socket.on("server:plan_query",(queryPlan)=>{
 
 
 
-*/

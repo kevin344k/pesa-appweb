@@ -52,19 +52,19 @@ httpServer.listen(app.get("port"));
 console.log(`server on port, ${app.get("port")}`);
 
 //websockets
-
+/*
 io.of("/planner").on('connection',(socket)=>{
-  console.log("nueva conexión",socket.id);
+  
   socket.emit('saludo')
 
-})
+})*/
 
 
 
 
-/*
-  io.on("connection", (socket) => {
-      
+
+  io.of("/planner").on("connection", (socket) => {
+      console.log("nueva conexión",socket.id);
       //para buscar el codigo de producto en planner
       socket.on("cliente:plannerId", async () => {
         const [plannerId] = await pool.query(
@@ -619,7 +619,7 @@ io.of("/planner").on('connection',(socket)=>{
     
       });
     });
-    */
+    
     
 
   
