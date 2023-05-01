@@ -4,8 +4,7 @@ module.exports=httpServer=>{
 
 const {Server} = require('socket.io');
 const pool = require("./db");
- const io = new Server(httpServer);
- //const socketAdmin=io.of('socketAdmin')   
+ const io = new Server(httpServer); 
 
     io.on("connection", (socket) => {
         console.log("nueva conexión");
@@ -383,7 +382,7 @@ const pool = require("./db");
         });
       });
       
-      ///Io para la pagina informe de operador ////
+      ///io para la pagina informe de operador ////
       io.on("connection", (socketInfor) => {
         socketInfor.on("client:SearchByCedula", async (data) => {
           const [dataSelectUser] = await pool.query(

@@ -2,9 +2,9 @@ const express = require("express"); //se importa express para iniciar el server-
 const http = require("http");//----------
 const exphbs = require("express-handlebars"); //permite renderizar hbs
 const morgan = require("morgan"); //crea logs de las peticiones del cliente al servidor
-const realTimeServer=require("./sockets")
 const path = require("path"); // permite manejar rutas internas de archivos-------------
 const PORT=process.env.PORT || 5000
+const realTimeServer=require("./sockets.js")
 //BASE DE DATOS
 
 //INICIALIZACIONES
@@ -22,11 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.set("port", PORT);
 
-//websockets
 
-
-
-//require("./sockets");
 
 
 ///// se configuar las carpetas con los "hbs" para ser cargado cada ves que se haga una peticion del cliente/////
@@ -60,6 +56,7 @@ app.use("/app", require("./routes/app"));
 //STARTING THE SERVER con express
 
 httpServer.listen(app.get("port"));
-console.log(`server on port, ${PORT}`);
+console.log(`server on port, ${app.get("port")}`);
 
+//websockets
 realTimeServer(httpServer)
