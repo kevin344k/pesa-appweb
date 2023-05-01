@@ -48,8 +48,6 @@ app.use(express.json());
 
 app.use(require("./routes"));
 
-//websockets
-realTimeServer(httpServer)
 
 //STARTING THE SERVER con express
 
@@ -57,4 +55,6 @@ realTimeServer(httpServer)
 httpServer.listen(app.get("port"));
 console.log(`server on port, ${app.get("port")}`);
 
+//websockets
+realTimeServer(httpServer)
 
