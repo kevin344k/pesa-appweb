@@ -53,6 +53,11 @@ console.log(`server on port, ${app.get("port")}`);
 
 //websockets
 
+io.on('connection',(socket)=>{
+  socket.emit('saludo',alert('hola'))
+})
+
+/*
   io.on("connection", (socket) => {
       console.log("nueva conexión");
       //para buscar el codigo de producto en planner
@@ -609,7 +614,7 @@ console.log(`server on port, ${app.get("port")}`);
     
       });
     });
-    
+    */
     
 
   
