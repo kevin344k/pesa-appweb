@@ -1,4 +1,4 @@
-import pool  from "./db.js";
+const pool  =require ("./db.js");
 
 module.exports=httpServer=>{
 
