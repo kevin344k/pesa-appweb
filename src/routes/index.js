@@ -14,8 +14,8 @@ router.post("/signin", (req, res) => {
   res.send("Bienvenido");
 });
 //planner
-router.get("/planner", async (req, res) => {
-  res.render("planeacion");
+router.get("/planner", (req, res) => {
+  res.render(views+"planeacion");
 });
 
 //orden de produccion
