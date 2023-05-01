@@ -1,9 +1,11 @@
 const express = require("express"); 
 const {createServer} = require("http");
+const {Server} = require('socket.io');
+const pool  =require ("./db.js");
 const exphbs = require("express-handlebars"); 
 const morgan = require("morgan"); 
 const path = require("path");
-//const realTimeServer=require("./realTimeServer.js")
+
 
 
 //INICIALIZACIONES
@@ -12,10 +14,10 @@ const app = express();
 //pasando el server a http
 
 const httpServer = createServer(app);
+const io = new Server(httpServer); 
 
 //static files
 app.use(express.static(path.join(__dirname, "public")));
-
 
 //SETTINGS
 const PORT=process.env.PORT || 5000
@@ -41,12 +43,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); 
 //GLOBAL VARIABLES
 
-
-
 //ROUTES
 
 app.use(require("./routes"));
-
 
 //STARTING THE SERVER con express
 
@@ -55,14 +54,6 @@ httpServer.listen(app.get("port"));
 console.log(`server on port, ${app.get("port")}`);
 
 //websockets
-
-
-
-
-const {Server} = require('socket.io');
-const io = new Server(httpServer); 
-const pool  =require ("./db.js");
-
 
   io.on("connection", (socket) => {
       console.log("nueva conexión");
