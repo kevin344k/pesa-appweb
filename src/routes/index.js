@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const path=require("path")
+
+
+const views= path.join(__dirname, "/../views")
 
 //main page
 router.get("/", (req, res) => {
-  res.render("index");
+  res.render(views+"index");
 });
 //login
 router.post("/signin", (req, res) => {
