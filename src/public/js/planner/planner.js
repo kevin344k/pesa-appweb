@@ -14,13 +14,16 @@ var divCol = document.createElement("div");
 const inputCodeProd = document.querySelector("#inputCodeProd");
 const desc_Product = document.querySelector("#desc_Product");
 
+socket.emit("client:plannerId")
+
+
 /*
 
 
 
 
 
-socket.emit("cliente:plannerId")
+
 socket.on("server:plannerId",(data)=>{
 
 idPlan.value=data.id_plan+1
