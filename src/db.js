@@ -7,7 +7,7 @@ const {
     DB_PASSWORD,
     DB_USER
   
-}  =reuire ("./config.js")
+}  =require ("./config.js")
 
 
 
