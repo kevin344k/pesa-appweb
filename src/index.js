@@ -6,8 +6,6 @@ const exphbs = require("express-handlebars");
 const morgan = require("morgan"); 
 const path = require("path");
 
-
-
 //INICIALIZACIONES
 const app = express(); 
 
@@ -125,7 +123,7 @@ console.log(`server on port, ${app.get("port")}`);
         socket.emit("server:chart", selectAll);
       });
     });
-    /*
+    
     ////////////////io para la plantilla admin/////////////////////
     
    io.on("connection", (socketadmin) => {
@@ -611,7 +609,7 @@ console.log(`server on port, ${app.get("port")}`);
     
       });
     });
-    */
+    
     
 
   
