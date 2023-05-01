@@ -54,7 +54,7 @@ console.log(`server on port, ${app.get("port")}`);
 //websockets
 
 io.on('connection',(socket)=>{
-  socket.emit('saludo',alert('hola'))
+  socket.emit('saludo')
 })
 
 /*
