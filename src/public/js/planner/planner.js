@@ -1,10 +1,11 @@
-const socket = io();
+const socket = io("/planner");
 
-//socket.emit('alert')
+socket.emit('alert')
 socket.on('saludo',()=>{
   alert('hola')
 })
-/*
+
+
 const idPlan = document.querySelector("#id_plan");
 const buscarProd = document.querySelector("#buscarProducto");
 const codeProd = document.querySelector("#code_product");
@@ -12,6 +13,11 @@ var divProd = document.querySelector("#divProd");
 var divCol = document.createElement("div");
 const inputCodeProd = document.querySelector("#inputCodeProd");
 const desc_Product = document.querySelector("#desc_Product");
+
+/*
+
+
+
 
 
 socket.emit("cliente:plannerId")

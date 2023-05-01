@@ -53,7 +53,7 @@ console.log(`server on port, ${app.get("port")}`);
 
 //websockets
 
-io.on('connection',(socket)=>{
+io.of("/planner").on('connection',(socket)=>{
   socket.emit('saludo')
 })
 
