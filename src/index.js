@@ -3,7 +3,7 @@ const {createServer} = require("http");
 const exphbs = require("express-handlebars"); 
 const morgan = require("morgan"); 
 const path = require("path");
-const realTimeServer=require("./sockets.js")
+const realTimeServer=require("./realTimeServer.js")
 
 
 //INICIALIZACIONES
