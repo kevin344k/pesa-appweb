@@ -1,6 +1,3 @@
-
-
- const PORT = process.env.PORT || 5000 //DE LA APP
  const DB_HOST = process.env.DB_HOST || 'containers-us-west-114.railway.app'
  const DB_USER = process.env.DB_USER || 'root'
  const DB_PASSWORD = process.env.DB_PASSWORD || 'JwvlLf417IRcpdHVBjOB'
