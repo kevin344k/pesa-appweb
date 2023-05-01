@@ -60,10 +60,7 @@ io.of("/planner").on('connection',(socket)=>{
 })*/
 
 
-
-
-
-  io.of("/planner").on("connection", (socket) => {
+  io.on("connection", (socket) => {
       console.log("nueva conexión",socket.id);
       //para buscar el codigo de producto en planner
       socket.on("cliente:plannerId", async () => {

@@ -1,4 +1,4 @@
-const socket = io("/planner");
+const socket = io();
 /*
 socket.emit('alert')
 socket.on('saludo',()=>{
