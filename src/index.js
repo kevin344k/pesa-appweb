@@ -54,9 +54,8 @@ console.log(`server on port, ${app.get("port")}`);
 //websockets
 
 io.of("/planner").on('connection',(socket)=>{
-  socket.emit('saludo')
   console.log("nueva conexión",socket.id);
-
+  socket.emit('saludo')
 
 })
 
