@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const path=require("path")
 
 
-const views= path.join(__dirname, "/../views")
+
+
 
 //main page
 router.get("/", (req, res) => {
-  res.render(views+"index");
+  res.render("index");
 });
 //login
 router.post("/signin", (req, res) => {
@@ -15,7 +15,7 @@ router.post("/signin", (req, res) => {
 });
 //planner
 router.get("/planner", (req, res) => {
-  res.render(views+"planeacion");
+  res.render("planeacion");
 });
 
 //orden de produccion
