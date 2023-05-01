@@ -52,12 +52,6 @@ httpServer.listen(app.get("port"));
 console.log(`server on port, ${app.get("port")}`);
 
 //websockets
-/*
-io.of("/planner").on('connection',(socket)=>{
-  
-  socket.emit('saludo')
-
-})*/
 
 
   io.on("connection", (socket) => {
