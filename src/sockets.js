@@ -1,10 +1,11 @@
-const pool  =require ("./db.js");
-
-module.exports=httpServer=>{
 
 const {Server} = require('socket.io');
 
- const io = new Server(httpServer); 
+module.exports=httpServer=>{
+
+  const io = new Server(httpServer); 
+const pool  =require ("./db.js");
+
 
     io.on("connection", (socket) => {
         console.log("nueva conexión");
