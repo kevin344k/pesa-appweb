@@ -1,8 +1,8 @@
 
-const {Server} = require('socket.io');
+
 
 module.exports=httpServer=>{
-
+  const {Server} = require('socket.io');
   const io = new Server(httpServer); 
 const pool  =require ("./db.js");
 

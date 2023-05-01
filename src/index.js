@@ -1,9 +1,8 @@
 const express = require("express"); 
-const http = require("http");
+const {createServer} = require("http");
 const exphbs = require("express-handlebars"); 
 const morgan = require("morgan"); 
 const path = require("path");
-const PORT=process.env.PORT || 5000
 const realTimeServer=require("./sockets.js")
 
 
@@ -12,14 +11,14 @@ const app = express();
 
 //pasando el server a http
 
-const httpServer = http.createServer(app);
+const httpServer = createServer(app);
 
 //static files
 app.use(express.static(path.join(__dirname, "public")));
 
 
 //SETTINGS
-
+const PORT=process.env.PORT || 5000
 app.set("port", PORT);
 
 //  "hbs"
