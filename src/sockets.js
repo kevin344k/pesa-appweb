@@ -76,7 +76,7 @@ const {Server} = require('socket.io');
           socket.emit("server:chart", selectAll);
         });
       });
-      
+      /*
       ////////////////io para la plantilla admin/////////////////////
       
      io.on("connection", (socketadmin) => {
@@ -562,7 +562,7 @@ const {Server} = require('socket.io');
       
         });
       });
-      
+      */
       
 
     }
