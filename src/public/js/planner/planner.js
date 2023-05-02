@@ -1,9 +1,5 @@
 const socket = io();
-/*
-socket.emit('alert')
-socket.on('saludo',()=>{
-  alert('hola')
-})*/
+
 
 
 const idPlan = document.querySelector("#id_plan");
@@ -14,11 +10,9 @@ var divCol = document.createElement("div");
 const inputCodeProd = document.querySelector("#inputCodeProd");
 const desc_Product = document.querySelector("#desc_Product");
 
-socket.emit("client:plannerId")
-
-
-
-
+document.addEventListener('DOMContentLoaded',()=>{
+socket.emit("client:plannerId")  
+})
 
 
 
