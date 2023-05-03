@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const pool  =require ("../db.js");
 
 //main page
 router.get("/", (req, res) => {
@@ -33,6 +34,5 @@ router.get("/dash", (req, res) => {
 router.get("/admin",(req,res)=>{
   res.render("admin.hbs")
 })
-
 
 module.exports = router;

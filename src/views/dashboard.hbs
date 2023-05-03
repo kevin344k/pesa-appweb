@@ -2,7 +2,41 @@
 
 <div class="container mt-3">
   {{! un solo row que engloba todo }}
+<div class="row align-content-center">
+ 
+    
+<div class="row ">
+  <div class="col-5 col-sd-12 col-md-5 col-lg-5">
+      <form id="formDates"  >
 
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Inicio</span>
+  </div>
+  <input type="date" name="dateStartDash" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Fin</span>
+  </div>
+  <input type="date"  name="dateEndDash" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div> 
+
+
+    <button  id="butDataGraph" class="btn btn-success">Graph</button>
+
+     </form>   
+  </div>  
+</div>
+  
+
+
+        
+
+  
+
+
+</div>
   {{! una sola columna que engloba a todo }}
 
   {{! otro row para la fila superior que estara dividida en dos columnas }}
@@ -61,8 +95,9 @@
   {{! div del primer row que engloba todo }}
 
 </div>
+ <script  type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-
+<script  src="/js/dash/script.js"></script>
 <script  src="/js/dash/helpers.js"></script>
 <script  src="/js/dash/handlers.js"></script>
 <script  src="/js/dash/app.js"></script>

@@ -8,7 +8,7 @@ Chart.defaults.borderColor='#444'
 const printCharts=()=>{
 
 // traemos todos los datos a traves d eun fetch
-fetchCoastersData('https://coasters-api.herokuapp.com/','https://coasters-api.herokuapp.com/country/Spain')
+fetchCoastersData('https://jsonplaceholder.typicode.com/users','https://jsonplaceholder.typicode.com/users')
 .then(([allCoasters,nationalCoasters])=>{
     //renderizamos todas lñas montañas rusas
     renderModelsChart(allCoasters)
