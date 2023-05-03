@@ -620,7 +620,7 @@ console.log(`server on port, ${app.get("port")}`);
 io.of("/dashboard").on("connection",(socketDash)=>{
   socketDash.on("dash:dates",async data=>{
     console.log(data)
-     const [result]= await pool.query("select * from inforOper where   fechaRegistroInfor BETWEEN ? AND  ?",[data.date_Start,data.date_End] )
+     const [result]= await pool.query("select * from inforOper INNER JOIN orden_produccion ON inforOper.num_orden=orden_produccion.num_orden where   fechaRegistroInfor BETWEEN ? AND  ?",[data.date_Start,data.date_End] )
     socketDash.emit("dash:server:resultDates",result)
   })
 })

@@ -15,11 +15,32 @@ if(formDates.dateStartDash.value!="" && formDates.dateEndDash.value!="" ){
   
 })
 socket.on("dash:server:resultDates",data=>{
+  const canvas_unitsProduced=document.querySelector("#canvas-unitsProduced")
   if(data.length==0){
     const msg="No se encontraron resultados para la(s) fechas seleccionada!"
     alert(msg)
   }else{
-      console.log(data)
+      //console.log(data)
+    //capturando la data y pasandola a chart js
+graphUnitsProduced(data)
   }
 
+
+
+  
 })
+
+
+function graphUnitsProduced(arr){
+      const tags=arr.map(function(linea){
+  return linea.linea,
+})
+
+
+
+  
+console.log(tags)
+}
+
+
+
