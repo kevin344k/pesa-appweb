@@ -16,15 +16,12 @@ body {
 canvas{
  width: 700px;
   height: fit-content;
+  overflow:scroll;
 }
 
 /* grafico de unidades producidas */
-#canvas-unitsProduced{
-  width: 500px;
-height: 400px;
-}
-#unitsProduced{
 
+#unitsProduced{
   background-color: #1f1f4c;
   color: white;
   font-family: "Poppins", sans-serif;

@@ -2,6 +2,7 @@ const socket=io("/dashboard")
 let chartUndProd;
 const formDates=document.querySelector("#formDates")
 const canvas_unitsProduced=document.querySelector("#canvas-unitsProduced")
+const canvas_paralizaciones=document.querySelector("#canvas-paralizaciones")
 formDates.addEventListener("submit",e=>{
   e.preventDefault()
 
@@ -16,19 +17,21 @@ if(formDates.dateStartDash.value!="" && formDates.dateEndDash.value!="" ){
 }
   
 })
-socket.on("dash:server:resultDates",data=>{
-  
+socket.on("dash:server:resultDates",(data)=>{
+
+
   if(data.length==0){
     const msg="No se encontraron resultados para la(s) fechas seleccionada!"
     alert(msg)
   }else{
-      //console.log(data)
+      console.log(data)
     //capturando la data y pasandola a chart js
 graphUnitsProduced(data)
-
+graphParalizations(data)
   }
 
 })
+
 
 const getDataColors=opacity=>{
     const colors =['#7448c2','#27ae60','#3498db','#2c3e50','#e74c3c','#1abc9c','#bdc3c7','#8e44ad','#f39c12','#ecf0f1']
@@ -77,26 +80,82 @@ console.log(prodArr)
     options: {
       responsive:true,
       plugins:{
+        datalabels:{
+          formatter:function(value, context) {
+  return context.dataIndex + ': ' + Math.round(value*100) + '%';
+}
+        }
+          ,
          legend:{
         display:false
-      },
-        datalabels:{
-          formatter:(perfor)=>perfor+"%"
-        }
+      }
+
       },
       
         title:{
         display:false
       },
       scales: {
+        x:{
+          display:true
+        },
         y: {
+           display:true,
           beginAtZero: true
         }
       }
     }
   });
-  
+ 
 }
 
+function graphParalizations(data){
+   const par1=data.map(function(par){
+        
+  return (par.descPar1 )
+})
 
+ chartPar=new Chart(canvas_paralizaciones, {
+   
+    type: 'bar',
+    data: {
+      labels: par1,
+      datasets: [{
+        label: "",
+        data: par1.lenght,
+        fill:false,
+        borderColor: getDataColors(),
+        backgroundColor: getDataColors(10),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive:true,
+      plugins:{
+        datalabels:{
+          formatter:function(value, context) {
+  return context.dataIndex + ': ' + Math.round(value*100) + '%';
+}
+        }
+          ,
+         legend:{
+        display:false
+      }
 
+      },
+      
+        title:{
+        display:false
+      },
+      scales: {
+        x:{
+          display:true
+        },
+        y: {
+           display:true,
+          beginAtZero: true
+        }
+      }
+    }
+  })
+  }
