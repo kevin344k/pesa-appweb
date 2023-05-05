@@ -59,14 +59,15 @@
       {{! card para paralizaciones }}
       <div id="paralizations" class="card">
         <div class="card-body">
-          <h5 class="card-title">Paralizations</h5>
-          <select id="featuresOptions">
-            <option value="height">by hours</option>
-            <option value="length">by type</option>
+          <div class="container d-flex mb-4">
+                      <h5 class="card-title mx-2">Paralizations</h5>
+          <select id="featuresOptions"  >
+            <option value="height">by type</option>
+            
              </select>
-          {{!  }}
-          {{!  }}
-          {{! segundo gráfico en canvas  }}
+          </div>
+
+              {{! segundo gráfico en canvas  }}
           <canvas id="canvas-paralizaciones"></canvas>
         </div>
 

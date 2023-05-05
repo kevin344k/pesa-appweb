@@ -1,5 +1,6 @@
 const socket=io("/dashboard")
 let chartUndProd;
+let chartPar;
 const formDates=document.querySelector("#formDates")
 const canvas_unitsProduced=document.querySelector("#canvas-unitsProduced")
 const canvas_paralizaciones=document.querySelector("#canvas-paralizaciones")
@@ -110,19 +111,31 @@ console.log(prodArr)
 }
 
 function graphParalizations(data){
+  
    const par1=data.map(function(par){
         
   return (par.descPar1 )
 })
+  const filterEmpty=par1.filter(par=>par != "")
+  console.log(filterEmpty)
 
+  function contarData(arr){
+    return arr.reduce((a,d)=>(a[d] ? a[d] +=1: a[d]=1,a),{})
+  }
+  console.log(contarData(filterEmpty))
+  
+  if(chartPar){
+    chartPar.destroy()
+  }
+  
  chartPar=new Chart(canvas_paralizaciones, {
    
     type: 'bar',
     data: {
-      labels: par1,
+      labels: Object.keys(contarData(filterEmpty)),
       datasets: [{
         label: "",
-        data: par1.lenght,
+        data: Object.values(contarData(filterEmpty)),
         fill:false,
         borderColor: getDataColors(),
         backgroundColor: getDataColors(10),
