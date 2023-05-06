@@ -1,4 +1,18 @@
 <link rel="stylesheet" href="/css/dash.css" />
+<link rel="stylesheet" href="/css/realParpadeo.css" />
+
+ <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
 <div class="container mt-3">
   {{! un solo row que engloba todo }}
@@ -29,13 +43,6 @@
   </div>  
 </div>
   
-
-
-        
-
-  
-
-
 </div>
   {{! una sola columna que engloba a todo }}
 
@@ -80,11 +87,71 @@
       {{! card para lineas en tiempo real }}
       <div id="realTime" class="card">
         <div class="card-body" >
-          <h5 class="card-title">Real Time</h5>
-          {{!  }}
-          {{!  }}
-          {{! tercer gráfico en canvas  }}
-          <canvas id="canvas-realTime" ></canvas>
+          <h5 class="">Real Time </h5>
+<div id="parentDivRealTime" class="">
+  <div class="row mb-2">
+  <div class="col">
+    <div class="btn btn-dark mb-3 p-2 position-relative">
+  <div id="irwin1Parpadeo" class="position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="103">Irwin 1</span>
+                              
+  </div>
+    </div>
+    
+     <div class="col">
+    <div class="btn btn-dark mb-3 p-2 position-relative">
+  <div id="irwin1Parpadeo" class="position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="102">Irwin 2</span>
+                              
+  </div>      
+     </div>
+      <div class="col">
+    <div class="btn btn-dark mb-3 p-2 position-relative">
+  <div id="irwin1Parpadeo" class="position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="082">Irwin 4</span>
+                              
+  </div>
+
+      </div>
+    
+  </div>
+  
+  <div class="row ">
+     <div class="col">
+   
+    <div class="btn btn-dark mb-3 p-2 position-relative">
+  <div id="irwin1Parpadeo" class="position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="098">Comodore</span>
+                              
+  </div>
+  </div>
+         <div class="col">
+ 
+    <div class="btn btn-dark mb-3 p-2 position-relative">
+  <div id="irwin1Parpadeo" class="position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="087">Irwin 3</span>
+                              
+  </div>
+       
+     </div>
+          <div class="col">
+  
+    <div class="btn btn-dark mb-3 p-2 position-relative">
+  <div id="irwin1Parpadeo" class="position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="078">Irwin 5</span>
+                              
+  </div>
+      </div>
+    
+  </div>
+ 
+</div>        
         </div>
 
       </div>
@@ -92,14 +159,8 @@
 
   </div>
 
-  {{! div del primer row que engloba todo }}
-
 </div>
  <script  type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script  src="/js/dash/script.js"></script>
-<!--
-
-<script  src="/js/dash/helpers.js"></script>
-<script  src="/js/dash/handlers.js"></script>
-<script  src="/js/dash/app.js"></script> -->
+<script  src="/js/dash/realTime.js"></script>

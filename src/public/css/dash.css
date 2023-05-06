@@ -11,7 +11,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 canvas{
- width: 700px;
+
   height: fit-content;
   overflow:scroll;
 }
@@ -35,9 +35,4 @@ canvas{
 
 /* grafico de tiempo real */
 
-#canvas-realTime{
-  width: 1200;
-  height: 500;
-
-}
 

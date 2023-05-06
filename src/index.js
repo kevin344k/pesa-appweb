@@ -626,6 +626,28 @@ io.of("/dashboard").on("connection",(socketDash)=>{
       
     socketDash.emit("dash:server:resultDates",(result))
   })
+
+ //RUN
+        socketDash.on("run",(data)=>{
+            console.log(data)
+
+            io.volatile.emit("runner",data)
+        })
+        //STOPPED
+        socketDash.on("stop",(data)=>{
+            console.log(data)
+
+            io.volatile.emit("stopped",data)
+        })
+        //CHANGE
+        socketDash.on("change",(data)=>{
+            console.log(data)
+
+            io.volatile.emit("changes",data)
+        })
+
+
+  
 })
     
 
