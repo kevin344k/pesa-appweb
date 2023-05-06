@@ -1,4 +1,4 @@
-const socketInfor = io();
+const socketInfor = io("/informeOP");
 
 const modalPeople = document.getElementById("modal-people-search");
 const butModalPeople = document.getElementsByName("butModalPeople");
@@ -550,10 +550,100 @@ butDelCodPar4.addEventListener("click", () => {
       }, 8000);
     }
 
-
-
-
-
   });
 
+const butRun=document.querySelector("#butRun")
+const butStop=document.querySelector("#butStop")
+const butSwitch=document.querySelector("#butSwitch")
+const butNotOP=document.querySelector("#butNotOP")
+const text="text-white"
+const parpadeo="lineParpadeo"
+let realObj;
+let status;
+let emit;
+let ccObj;
+console.log(ccObj)
+let date2=`${spanFecha.textContent}+ ${spanHora.textContent}`
+butRun.addEventListener("click",clickRun)
+butStop.addEventListener("click",clickStop)
+butSwitch.addEventListener("click",clickSwitch)
+butNotOP.addEventListener("click",clickNotOP)
 
+function clickRun(){
+status="run"
+ccObj=cc.value
+  console.log("run")
+  butRun.classList.toggle("bg-success")
+   butRun.classList.toggle("text-white")
+  butRun.classList.toggle("lineParpadeo")
+  
+removeClass("butStop","bg-danger",text,parpadeo)
+  removeClass("butSwitch","bg-warning",text,parpadeo)
+  removeClass("butNotOP","bg-gray",text,parpadeo)
+
+  realAEnviar(status,ccObj,status,date2)
+
+
+}
+
+function clickStop(){
+  console.log("clickStop")
+  butStop.classList.toggle("bg-danger")
+   butStop.classList.toggle("text-white")
+  butStop.classList.toggle("lineParpadeo")
+removeClass("butRun","bg-success",text,parpadeo)
+  removeClass("butSwitch","bg-warning",text,parpadeo)
+  removeClass("butNotOP","bg-gray",text,parpadeo)
+}
+function clickSwitch(){
+  console.log("clickSwitch")
+  butSwitch.classList.toggle("bg-warning")
+   butSwitch.classList.toggle("text-white")
+  butSwitch.classList.toggle("lineParpadeo")
+
+  removeClass("butRun","bg-success",text,parpadeo)
+  removeClass("butStop","bg-danger",text,parpadeo)
+  removeClass("butNotOP","bg-gray",text,parpadeo)
+  
+}
+function clickNotOP(){
+  console.log("clickNotOP")
+  butNotOP.classList.toggle("bg-gray")
+   butNotOP.classList.toggle("text-white")
+  butNotOP.classList.toggle("lineParpadeo")
+
+  removeClass("butRun","bg-success",text,parpadeo)
+  removeClass("butSwitch","bg-warning",text,parpadeo)
+  removeClass("butStop","bg-danger",text,parpadeo)
+  
+}
+function removeClass(but,bg,class1,class2){
+  if(but=="butStop"){
+      butStop.classList.remove(bg,class1,class2)
+  } else if(but=="butSwitch"){
+     butSwitch.classList.remove(bg,class1,class2)
+  } else if(but=="butNotOP"){
+      butNotOP.classList.remove(bg,class1,class2)
+  } else if(but=="butRun"){
+      butRun.classList.remove(bg,class1,class2)
+  }
+}
+
+
+
+
+function realAEnviar(emit,ccObj,status,date2){
+
+if(cc!=""){
+    realObj={linea:ccObj,
+              status:status,
+              status_upDate:date2}
+
+socketInfor.emit(emit,realObj)
+  console.log(realObj)
+} else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
+  
+
+}

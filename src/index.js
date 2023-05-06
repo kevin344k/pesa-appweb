@@ -431,7 +431,7 @@ console.log(`server on port, ${app.get("port")}`);
     });
     
     ///io para la pagina informe de operador ////
-    io.on("connection", (socketInfor) => {
+    io.of("/informeOP").on("connection", (socketInfor) => {
       socketInfor.on("client:SearchByCedula", async (data) => {
         const [dataSelectUser] = await pool.query(
           "select * from usuarios where cedula=?",
@@ -610,7 +610,8 @@ console.log(`server on port, ${app.get("port")}`);
     
       });
 
-
+    //codigo para el tiempo real de las máquinas
+      
 
 
       

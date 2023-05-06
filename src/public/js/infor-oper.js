@@ -38,7 +38,3 @@ butPar.addEventListener("click", () => {
 
 
 
-
-
-
- 
