@@ -561,9 +561,9 @@ const parpadeo="lineParpadeo"
 let realObj;
 let status;
 let emit;
-let ccObj;
-console.log(ccObj)
-let date2=`${spanFecha.textContent}+ ${spanHora.textContent}`
+let ccObj=cc.value;
+let date2=new Date()
+
 butRun.addEventListener("click",clickRun)
 butStop.addEventListener("click",clickStop)
 butSwitch.addEventListener("click",clickSwitch)
@@ -572,6 +572,10 @@ butNotOP.addEventListener("click",clickNotOP)
 function clickRun(){
 status="run"
 ccObj=cc.value
+
+
+if(ccObj!=""){
+
   console.log("run")
   butRun.classList.toggle("bg-success")
    butRun.classList.toggle("text-white")
@@ -580,22 +584,43 @@ ccObj=cc.value
 removeClass("butStop","bg-danger",text,parpadeo)
   removeClass("butSwitch","bg-warning",text,parpadeo)
   removeClass("butNotOP","bg-gray",text,parpadeo)
+  
+     realAEnviar(status,ccObj,status,date2)
+} else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
+  
 
-  realAEnviar(status,ccObj,status,date2)
 
 
 }
 
 function clickStop(){
-  console.log("clickStop")
+  status="stop"
+ccObj=cc.value
+ 
+
+if(ccObj!=""){
+ console.log("clickStop")
   butStop.classList.toggle("bg-danger")
    butStop.classList.toggle("text-white")
   butStop.classList.toggle("lineParpadeo")
 removeClass("butRun","bg-success",text,parpadeo)
   removeClass("butSwitch","bg-warning",text,parpadeo)
   removeClass("butNotOP","bg-gray",text,parpadeo)
+     realAEnviar(status,ccObj,status,date2)
+} else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
+ 
+
+  
 }
 function clickSwitch(){
+    status="switch"
+ccObj=cc.value
+
+  if(ccObj!=""){
   console.log("clickSwitch")
   butSwitch.classList.toggle("bg-warning")
    butSwitch.classList.toggle("text-white")
@@ -604,9 +629,16 @@ function clickSwitch(){
   removeClass("butRun","bg-success",text,parpadeo)
   removeClass("butStop","bg-danger",text,parpadeo)
   removeClass("butNotOP","bg-gray",text,parpadeo)
-  
+     realAEnviar(status,ccObj,status,date2)
+  } else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
 }
 function clickNotOP(){
+      status="notOP"
+ccObj=cc.value
+
+    if(ccObj!=""){
   console.log("clickNotOP")
   butNotOP.classList.toggle("bg-gray")
    butNotOP.classList.toggle("text-white")
@@ -615,6 +647,10 @@ function clickNotOP(){
   removeClass("butRun","bg-success",text,parpadeo)
   removeClass("butSwitch","bg-warning",text,parpadeo)
   removeClass("butStop","bg-danger",text,parpadeo)
+       realAEnviar(status,ccObj,status,date2)
+  } else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
   
 }
 function removeClass(but,bg,class1,class2){
@@ -633,17 +669,11 @@ function removeClass(but,bg,class1,class2){
 
 
 function realAEnviar(emit,ccObj,status,date2){
-
-if(cc!=""){
-    realObj={linea:ccObj,
-              status:status,
-              status_upDate:date2}
-
-socketInfor.emit(emit,realObj)
-  console.log(realObj)
-} else{
- return  alert("Se necesita el Centro de costo para poder enviar el estado!")
-}
   
+ realObj={linea:ccObj,
+              status:status,
+              status_upDate:date2.toISOString().replace("T"," ").replace("Z","")}
 
+  console.log(realObj)
+socketInfor.emit(`${emit}`,realObj)
 }

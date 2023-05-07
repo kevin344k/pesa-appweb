@@ -14,12 +14,10 @@ divDataAll.style.display='none'
 divUndFab.style.display='none'
 divParalizacion.style.display = "none";
 
-
 butData.addEventListener("click", () => {
   
   butData.style.background = "rgba(163, 175, 189,0.7)";
   butData.style.borderLeft = "2px solid #ffff";
-
   
 });
 

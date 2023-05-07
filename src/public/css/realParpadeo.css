@@ -8,7 +8,7 @@
 }
 
 
-#irwin1Parpadeo{
+.spanParpadeo{
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -17,14 +17,14 @@
 
 /*para hacer parpadear*/
 
-#irwin1Parpadeo {
+.spanParpadeo {
     font-size:28px;
     font-family:helvetica;
     font-weight:bold;
-    background-color:var(--bs-secondary);
+
     text-transform:uppercase;
   }
-  #irwin1Parpadeo {
+  .spanParpadeo {
     
     animation-name: parpadeo;
     animation-duration: 2s;
@@ -36,7 +36,20 @@
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
   }
-  
+
+.run{
+      background-color:var(--bs-success);
+}
+.stop{
+      background-color:var(--bs-danger);
+}
+.switch{
+     background-color:var(--bs-warning);
+}
+.notOP{
+     background-color:var(--bs-secondary);
+}
+
   @-moz-keyframes parpadeo{  
     0% { opacity: 1.0; }
     50% { opacity: 0.0; }

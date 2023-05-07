@@ -611,10 +611,22 @@ console.log(`server on port, ${app.get("port")}`);
       });
 
     //codigo para el tiempo real de las máquinas
-      
-
-
-      
+      socketInfor.on("run",async data=>{
+        console.log(data)
+        const editStatus= await pool.query("update realTimeLine set status=?,status_dateUpdate=? where cc=?",[data.status,data.status_upDate,data.linea])
+      })
+            socketInfor.on("stop",async data=>{
+        console.log(data)
+        const editStatus= await pool.query("update realTimeLine set status=?,status_dateUpdate=? where cc=?",[data.status,data.status_upDate,data.linea])
+      })
+            socketInfor.on("switch",async data=>{
+        console.log(data)
+        const editStatus= await pool.query("update realTimeLine set status=?,status_dateUpdate=? where cc=?",[data.status,data.status_upDate,data.linea])
+      })
+                  socketInfor.on("notOP",async data=>{
+        console.log(data)
+        const editStatus= await pool.query("update realTimeLine set status=?,status_dateUpdate=? where cc=?",[data.status,data.status_upDate,data.linea])
+      })
     });
 
 //io para la pagina DASH
@@ -628,31 +640,19 @@ io.of("/dashboard").on("connection",(socketDash)=>{
     socketDash.emit("dash:server:resultDates",(result))
   })
 
- //RUN
-        socketDash.on("run",(data)=>{
-            console.log(data)
+//codigo para mostrar en timpo real las maquinas
 
-            io.volatile.emit("runner",data)
-        })
-        //STOPPED
-        socketDash.on("stop",(data)=>{
-            console.log(data)
-
-            io.volatile.emit("stopped",data)
-        })
-        //CHANGE
-        socketDash.on("change",(data)=>{
-            console.log(data)
-
-            io.volatile.emit("changes",data)
-        })
-
-
+socketDash.on("getRealTime",async ()=>{
+  const [query]=await pool.query("select * from realTimeLine")
+  console.log(query)
+  socketDash.emit("postRealtime",query)
+})
   
 })
-    
 
-  
+
+
+
 
 
 

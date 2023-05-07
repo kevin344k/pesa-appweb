@@ -4,6 +4,8 @@ let chartPar;
 const formDates=document.querySelector("#formDates")
 const canvas_unitsProduced=document.querySelector("#canvas-unitsProduced")
 const canvas_paralizaciones=document.querySelector("#canvas-paralizaciones")
+const spanParpadeo=document.getElementsByName("spanParpadeo")
+const line_103=document.querySelector("#Irwin_1")
 formDates.addEventListener("submit",e=>{
   e.preventDefault()
 
@@ -172,3 +174,58 @@ function graphParalizations(data){
     }
   })
   }
+
+
+
+function realtime(){
+
+  socket.emit("getRealTime")
+}
+
+socket.on("postRealtime",dataDB=>{
+
+
+changeStatusReal(dataDB)
+  
+})
+
+function changeStatusReal(dataDB){
+const arrSpan=["103","102","098","098","082","078"]
+
+
+for(i=0;i<=arrSpan.length-1;i++){
+ const datos=dataDB.find(linea=>{
+                return linea.cc===arrSpan[i]
+                })
+  console.log(datos)
+
+paintStatus(datos.status,i)
+}  
+ 
+}
+                    
+function paintStatus(status,index){
+
+spanParpadeo[index].classList.toggle(status)
+  removeClass(status,index)
+}
+
+function removeClass(status,index){
+
+  if(status=="run"){
+      spanParpadeo[index].classList.remove("stop","switch","notOP")
+  } else if(status=="stop"){
+     spanParpadeo[index].classList.remove("run","switch","notOP")
+  } else if(status=="switch"){
+     spanParpadeo[index].classList.remove("run","stop","notOP")
+  }  else if(status=="notOP"){
+     spanParpadeo[index].classList.remove("run","switch","stop")
+  }
+
+}
+
+
+
+
+realtime()
+console.log(spanParpadeo)
