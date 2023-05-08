@@ -644,8 +644,43 @@ io.of("/dashboard").on("connection",(socketDash)=>{
 
 socketDash.on("getRealTime",async ()=>{
   const [query]=await pool.query("select * from realTimeLine")
-  console.log(query)
+
+let query1=[]
+for (i=0;i<=query.length-1;i++){
+query1.push(query[i].status)
+}
+console.log(query1,654)
+  
+
+  
+
+  
+setInterval(async ()=>{
+  let query2=[]
+  let [detectChange]= await pool.query("select status from realTimeLine")
+  
+  if(detectChange.length>0){
+for (i=0;i<=detectChange.length-1;i++){
+query2.push(detectChange[i].status)
+  
+}
+console.log(query2,660)
+     compareArr(query2)
+  }
+
+},10000)
+
+
+function compareArr(q2){
+    
+  socketDash.emit("updateStatus",q2)
+}
+  
+
+  
+  
   socketDash.emit("postRealtime",query)
+  
 })
   
 })

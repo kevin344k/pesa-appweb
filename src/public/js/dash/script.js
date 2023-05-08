@@ -175,38 +175,56 @@ function graphParalizations(data){
   })
   }
 
+     realtime()
+
 
 
 function realtime(){
 
-  socket.emit("getRealTime")
-}
+      socket.emit("getRealTime")
 
+}
+let  queryDB;
 socket.on("postRealtime",dataDB=>{
 
+ queryDB=dataDB
 
-changeStatusReal(dataDB)
+StatusReal(queryDB)
   
 })
 
-function changeStatusReal(dataDB){
-const arrSpan=["103","102","098","098","082","078"]
-
+function StatusReal(queryDB){
+const arrSpan=["103","102","082","098","087","078"]
 
 for(i=0;i<=arrSpan.length-1;i++){
- const datos=dataDB.find(linea=>{
+ const datos=queryDB.find(linea=>{
                 return linea.cc===arrSpan[i]
                 })
   console.log(datos)
 
 paintStatus(datos.status,i)
 }  
- 
+
+
 }
-                    
+
+//updateStatus
+
+socket.on("updateStatus",(data)=>{
+  console.log(data,214)
+changeStatusReal(data)
+function changeStatusReal(data){
+  for(i=0;i<=data.length-1;i++){
+      paintStatus(data[i],i)
+  }
+
+}
+
+})
+
 function paintStatus(status,index){
 
-spanParpadeo[index].classList.toggle(status)
+spanParpadeo[index].classList.add(status)
   removeClass(status,index)
 }
 
@@ -227,5 +245,5 @@ function removeClass(status,index){
 
 
 
-realtime()
+
 console.log(spanParpadeo)

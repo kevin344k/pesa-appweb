@@ -7,12 +7,15 @@
     --default-bg:gray;
 }
 
-
+.box-machine{
+   width: 140px;
+    height: 80px;
+}
 .spanParpadeo{
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: rgb(129, 126, 126);
+
 }
 
 /*para hacer parpadear*/
@@ -21,7 +24,6 @@
     font-size:28px;
     font-family:helvetica;
     font-weight:bold;
-
     text-transform:uppercase;
   }
   .spanParpadeo {
