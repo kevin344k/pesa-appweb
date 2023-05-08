@@ -7,8 +7,11 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 //login
+router.get("/signin", (req, res) => {
+  res.render("auth/signin");
+});
 router.post("/signin", (req, res) => {
-  res.send("Bienvenido");
+console.log(req.body)
 });
 //planner
 router.get("/planner", (req, res) => {
