@@ -9,6 +9,8 @@ const passport = require("passport")
 const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const PassportLocal = require("passport-local").Strategy
+const sessionStore=require("express-mysql-session")(session)
+
 
 //INICIALIZACIONES
 const app = express();
@@ -48,18 +50,26 @@ app.use(cookieParser("mySecret hiper"))
 
 app.use(session({
   secret: "mySecret hiper",
+  store: new sessionStore(pool),
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie:{
+    maxAge: 1000*60*60*24 //1 day
+  }
 }))
 app.use(passport.initialize())
 app.use(passport.session())
 
 
-passport.use(new PassportLocal(function(username, password, done) {
-  if (username === "kevin" && password === "12345") {
+passport.use(new PassportLocal(function(ci, password, done) {
+ /* if (username === "kevin" && password === "12345") {
     return done(null, { id: 1, name: "Cody" })
     done(null, false)
-  }
+  }*/
+pool.query("select  from ")
+
+
+  
 }))
 
 //serializacion
