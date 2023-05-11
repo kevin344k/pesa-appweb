@@ -4,10 +4,11 @@
  const DB_NAME = process.env.DB_NAME || 'railway'
  const DB_PORT = process.env.DB_HOST || '6760'
 
- module.exports={
-    DB_HOST,
+ module.exports= {
+     DB_HOST,
+   DB_USER,
+   DB_PASSWORD,
     DB_NAME,
-    DB_PORT,
-    DB_PASSWORD,
-    DB_USER
+    DB_PORT
  }
+ 

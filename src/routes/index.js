@@ -1,9 +1,10 @@
 const express = require("express");
-const passport=require("passport")
+const pool=require("../db.js")
 const router = express.Router();
-const pool  =require ("../db.js");
+const passport=require("passport")
+const {isLoggedIn} = require('../lib/auth')
 
-//main page
+//main page  
 router.get("/", (req, res) => {
   res.render("index");
 });
@@ -11,7 +12,20 @@ router.get("/", (req, res) => {
 router.get("/signin", (req, res) => {
   res.render("auth/signin");
 });
-router.post("/signin",passport.authenticate("local", {successRedirect:"/planner",failureRedirect:"/signin"}));
+router.post("/signin", (req,res,next)=>{ 
+ 
+console.log(req.body)
+passport.authenticate('local.signin',{
+  successRedirect:"/profile",
+  failureRedirect:"/signin",
+  failureFlash:true
+})(req,res,next)
+ 
+
+
+}) 
+  
+/*
 //planner
 router.get("/planner",(req,res,next)=>{
     if(req.isAuthenticated()) return next()
@@ -57,4 +71,8 @@ router.get("/admin",(req,res,next)=>{
   res.render("admin.hbs")
 })
 
+router.get("/profile",(req,res)=>{
+  res.send("you profile")
+})
+     */                    
 module.exports = router;

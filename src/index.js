@@ -2,19 +2,27 @@ const express = require("express");
 const { createServer } = require("http");
 const { Server } = require('socket.io');
 const pool = require("./db.js");
+const database = require("./db.js");
 const exphbs = require("express-handlebars");
 const morgan = require("morgan");
 const path = require("path");
 const passport = require("passport")
 const session = require("express-session")
-const cookieParser = require("cookie-parser")
-const PassportLocal = require("passport-local").Strategy
-const sessionStore=require("express-mysql-session")(session)
-
-
+const mysqlStore = require("express-mysql-session")(session)
+const flash = require("connect-flash")
+const options={
+    host: process.env.DB_HOST || 'containers-us-west-114.railway.app',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'JwvlLf417IRcpdHVBjOB',
+    database: process.env.DB_NAME || 'railway',
+    port: process.env.DB_HOST || '6760'
+  }
+const sessionStore=new mysqlStore(options)
+const bodyParser=require("body-parser")
+const validator = require('express-validator');
 //INICIALIZACIONES
 const app = express();
-
+require('./lib/passport')
 //pasando el server a http
 
 const httpServer = createServer(app);
@@ -36,6 +44,7 @@ app.engine(
     layoutsDir: path.join(app.get("views"), "layouts"),
     partialsDir: path.join(app.get("views"), "partials"),
     extname: ".hbs",
+    helpers: require("./lib/handlebars")
   })
 );
 app.set("view engine", ".hbs");
@@ -43,48 +52,31 @@ app.set("view engine", ".hbs");
 ///MIDDLEWARES
 
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-app.use(cookieParser("mySecret hiper"))
-
-app.use(session({
-  secret: "mySecret hiper",
-  store: new sessionStore(pool),
-  resave: true,
-  saveUninitialized: true,
-  cookie:{
-    maxAge: 1000*60*60*24 //1 day
-  }
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+  app.use(session({
+  key:"mySecret_name",
+  secret: "mySecret",
+  resave: false,
+  saveUninitialized: false,
+  store: sessionStore
 }))
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
+//app.use(validator())
 
 
-passport.use(new PassportLocal(function(ci, password, done) {
- /* if (username === "kevin" && password === "12345") {
-    return done(null, { id: 1, name: "Cody" })
-    done(null, false)
-  }*/
-pool.query("select  from ")
-
-
-  
-}))
-
-//serializacion
-passport.serializeUser(function(user, done) {
-  done(null, user.id)
-})
-passport.deserializeUser(function(id, done) {
-  done(null, { id: 1, name: "Cody" })
-})
-//GLOBAL VARIABLES
 
 //ROUTES
 
 app.use(require("./routes"));
 
+//GLOBAL VARIABLES
+app.use((req, res, next) => {
+  app.locals.failed = req.flash("failed")
+  next()
+})
 //STARTING THE SERVER con express
 
 
