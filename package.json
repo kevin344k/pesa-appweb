@@ -21,7 +21,6 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
     "express-handlebars": "^7.0.7",
     "express-mysql-session": "^3.0.0",
@@ -32,8 +31,7 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "socket.io": "^4.6.1",
-    "timeago.js": "^4.0.2",
-    "util": "^0.12.5"
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "morgan": "^1.10.0",

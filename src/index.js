@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const path = require("path");
 const passport = require("passport")
 const session = require("express-session")
+const bodyParser=require('body-parser')
 const mysqlStore = require("express-mysql-session")(session)
 const flash = require("connect-flash")
 const options={
@@ -18,8 +19,7 @@ const options={
     port: process.env.DB_HOST || '6760'
   }
 const sessionStore=new mysqlStore(options)
-const bodyParser=require("body-parser")
-const validator = require('express-validator');
+
 //INICIALIZACIONES
 const app = express();
 require('./lib/passport')
@@ -48,34 +48,38 @@ app.engine(
   })
 );
 app.set("view engine", ".hbs");
-
 ///MIDDLEWARES
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json())
+
   app.use(session({
   key:"mySecret_name",
   secret: "mySecret",
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   store: sessionStore
 }))
-app.use(flash())
+
 app.use(passport.initialize())
 app.use(passport.session())
-//app.use(validator())
-
-
+app.use(flash())
 
 //ROUTES
 
 app.use(require("./routes"));
 
+
 //GLOBAL VARIABLES
-app.use((req, res, next) => {
-  app.locals.failed = req.flash("failed")
+app.use(function(req,res,next){
+  app.locals.failed=req.flash('failed')
+  app.locals.success=req.flash('success')
+  app.locals.message=req.flash('message')
+  app.locals.user=req.user
+  console.log(req.body,"global variables")
   next()
+  
 })
 //STARTING THE SERVER con express
 

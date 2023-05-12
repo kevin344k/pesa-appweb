@@ -12,20 +12,20 @@ router.get("/", (req, res) => {
 router.get("/signin", (req, res) => {
   res.render("auth/signin");
 });
-router.post("/signin", (req,res,next)=>{ 
- 
-console.log(req.body)
-passport.authenticate('local.signin',{
-  successRedirect:"/profile",
-  failureRedirect:"/signin",
-  failureFlash:true
-})(req,res,next)
- 
 
+router.post("/auth/signin",(req,res,next)=>{
+  passport.authenticate('local',{
+    successRedirect:'/profile',
+    failureRedirect:'/signin',
+    failureFlash:true
+  })(req,res,next)
+console.log(req.body,"req router")
+})
 
-}) 
-  
-/*
+router.get("/profile",(req,res)=>{
+  res.send("profile")
+})
+
 //planner
 router.get("/planner",(req,res,next)=>{
     if(req.isAuthenticated()) return next()
@@ -74,5 +74,5 @@ router.get("/admin",(req,res,next)=>{
 router.get("/profile",(req,res)=>{
   res.send("you profile")
 })
-     */                    
+                        
 module.exports = router;
