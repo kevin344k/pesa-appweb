@@ -2,10 +2,11 @@ const express = require("express");
 const pool=require("../db.js")
 const router = express.Router();
 const passport=require("passport")
-const {isLoggedIn} = require('../lib/auth')
+const {isLoggedIn,isNotLoggedIn} = require('../lib/auth')
 
 //main page  
 router.get("/", (req, res) => {
+  console.log(req.body)
   res.render("index");
 });
 //login
@@ -13,7 +14,7 @@ router.get("/signin", (req, res) => {
   res.render("auth/signin");
 });
 
-router.post("/auth/signin",(req,res,next)=>{
+router.post("/auth/signin",isNotLoggedIn,(req,res,next)=>{
   passport.authenticate('local',{
     successRedirect:'/profile',
     failureRedirect:'/signin',
@@ -22,23 +23,23 @@ router.post("/auth/signin",(req,res,next)=>{
 console.log(req.body,"req router")
 })
 
-router.get("/profile",(req,res)=>{
+router.get("/profile",isLoggedIn,(req,res)=>{
   res.send("profile")
 })
 
 //planner
-router.get("/planner",(req,res,next)=>{
+router.get("/planner",isLoggedIn,(req,res,next)=>{
     if(req.isAuthenticated()) return next()
-  res.render("auth/notAuth")
+   res.redirect("/notAuth")
   }
 , (req, res) => {
   res.render("planeacion");
 });
 
 //orden de produccion
-router.get("/ordenProd",(req,res,next)=>{
+router.get("/ordenProd",isLoggedIn,(req,res,next)=>{
     if(req.isAuthenticated()) return next()
-  res.render("auth/notAuth")
+  res.redirect("/notAuth")
   }
 , (req, res) => {
   res.render("orden_prod.hbs");
@@ -47,32 +48,42 @@ router.post("/ordenProd", (req, res) => {
    res.send("recibido");
  });
 //informe de operador
-router.get("/informe-Operador",(req,res,next)=>{
+router.get("/informe-Operador",isLoggedIn,(req,res,next)=>{
     if(req.isAuthenticated()) return next()
-  res.render("auth/notAuth")
+  res.redirect("/notAuth")
   }
 , (req, res) => {
   res.render("infor-oper.hbs");
 });
 
 //dashboard
-router.get("/dash",(req,res,next)=>{
+router.get("/dash",isLoggedIn,(req,res,next)=>{
     if(req.isAuthenticated()) return next()
-  res.render("auth/notAuth")
+  res.redirect("/notAuth")
   }
  ,(req, res) => {
   res.render("dashboard.hbs");
 });
-router.get("/admin",(req,res,next)=>{
+router.get("/admin",isLoggedIn,(req,res,next)=>{
     if(req.isAuthenticated()) return next()
-  res.render("auth/notAuth")
+  res.redirect("/notAuth")
   }
 ,(req,res)=>{
   res.render("admin.hbs")
 })
 
-router.get("/profile",(req,res)=>{
+router.get("/profile",isLoggedIn,(req,res)=>{
   res.send("you profile")
 })
-                        
+
+router.get('/notAuth',(req,res)=>{
+  res.render('auth/notAuth')
+})
+
+router.get('/logOut',(req,res)=>{
+  req.session.destroy((err)=>{
+      res.redirect('/')
+  })
+
+})
 module.exports = router;
