@@ -4,6 +4,7 @@ const { Server } = require('socket.io');
 const pool = require("./db.js");
 const database = require("./db.js");
 const exphbs = require("express-handlebars");
+const {engine}=require("express-handlebars");
 const morgan = require("morgan");
 const path = require("path");
 const passport = require("passport")
@@ -35,10 +36,11 @@ app.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT || 5000
 app.set("port", PORT);
 
+
 //  "hbs"
 app.set("views", path.join(__dirname, "views"));
-app.engine(
-  ".hbs",
+
+app.engine(".hbs",
   exphbs.engine({
     defaultLayout: "main",
     layoutsDir: path.join(app.get("views"), "layouts"),
@@ -61,10 +63,10 @@ app.use(bodyParser.json())
   saveUninitialized: true,
   store: sessionStore
 }))
-
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(flash())
+
 
 //ROUTES
 
@@ -77,7 +79,7 @@ app.use(function(req,res,next){
   app.locals.success=req.flash('success')
   app.locals.message=req.flash('message')
   app.locals.user=req.user
-  console.log(req.body,"global variables")
+//console.log( app.locals.user)
   next()
   
 })

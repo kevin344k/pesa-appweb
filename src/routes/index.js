@@ -5,8 +5,8 @@ const passport=require("passport")
 const {isLoggedIn,isNotLoggedIn} = require('../lib/auth')
 
 //main page  
-router.get("/", (req, res) => {
-  console.log(req.body)
+router.get("/",(req, res) => {
+  //console.log(req.body)
   res.render("index");
 });
 //login
@@ -20,11 +20,13 @@ router.post("/auth/signin",isNotLoggedIn,(req,res,next)=>{
     failureRedirect:'/signin',
     failureFlash:true
   })(req,res,next)
-console.log(req.body,"req router")
+//console.log(req.body,"req router")
 })
 
 router.get("/profile",isLoggedIn,(req,res)=>{
-  res.send("profile")
+   
+  res.render("profile")
+
 })
 
 //planner
@@ -70,10 +72,6 @@ router.get("/admin",isLoggedIn,(req,res,next)=>{
   }
 ,(req,res)=>{
   res.render("admin.hbs")
-})
-
-router.get("/profile",isLoggedIn,(req,res)=>{
-  res.send("you profile")
 })
 
 router.get('/notAuth',(req,res)=>{

@@ -18,7 +18,7 @@
 
       <ul class="navbar-nav" style="margin-left: auto;">
 
-        {{#if user}}
+     
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -39,23 +39,27 @@
 
           </ul>
         </li>
+        {{#if @user}}
         <li class="nav-item">
           <a class="nav-link" href="/profile">Profile </a>
         </li>
-        <li class="nav-item">
+        {{else}}
+        <p>no hay usuario</p>
+        {{/if}}
+
+                <li class="nav-item">
           <a  class="nav-link" href="/logOut">Logout</a>
         </li>
-
- {{else}} 
 
 <li class="nav-item">
   <a class="nav-link" href="/signin">SignIn</a>
 </li >
+    
 
 
 
 
-       {{/if}} 
+    
 
       </ul>
 
