@@ -8,10 +8,11 @@ const {engine}=require("express-handlebars");
 const morgan = require("morgan");
 const path = require("path");
 const passport = require("passport")
+const flash = require("connect-flash")
 const session = require("express-session")
 const bodyParser=require('body-parser')
 const mysqlStore = require("express-mysql-session")(session)
-const flash = require("connect-flash")
+
 const options={
     host: process.env.DB_HOST || 'containers-us-west-114.railway.app',
     user: process.env.DB_USER || 'root',
@@ -53,11 +54,10 @@ app.set("view engine", ".hbs");
 ///MIDDLEWARES
 
 app.use(morgan("dev"));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 
   app.use(session({
-  key:"mySecret_name",
   secret: "mySecret",
   resave: true,
   saveUninitialized: true,
@@ -67,14 +67,12 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 //ROUTES
 
 app.use(require("./routes"));
 
-
 //GLOBAL VARIABLES
-app.use(function(req,res,next){
+app.use((req,res,next)=>{
   app.locals.failed=req.flash('failed')
   app.locals.success=req.flash('success')
   app.locals.message=req.flash('message')
@@ -90,7 +88,6 @@ httpServer.listen(app.get("port"));
 console.log(`server on port, ${app.get("port")}`);
 
 //websockets
-
 
 io.on("connection", (socket) => {
   console.log("nueva conexión", socket.id);

@@ -1,8 +1,9 @@
 module.exports={
     isLoggedIn(req,res,next){
-      
+        console.log(req.body,'auth')
         if(req.isAuthenticated()){
-          console.log(req)
+        
+          req.flash('message','Ingreso correcto')
             return next()
         }else{
             return res.redirect('/notAuth')

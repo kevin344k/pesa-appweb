@@ -6,11 +6,11 @@ const {isLoggedIn,isNotLoggedIn} = require('../lib/auth')
 
 //main page  
 router.get("/",(req, res) => {
-  //console.log(req.body)
-  res.render("index");
+    res.render("index");
 });
 //login
 router.get("/signin", (req, res) => {
+
   res.render("auth/signin");
 });
 
@@ -20,13 +20,15 @@ router.post("/auth/signin",isNotLoggedIn,(req,res,next)=>{
     failureRedirect:'/signin',
     failureFlash:true
   })(req,res,next)
-//console.log(req.body,"req router")
+req.flash('success','ingreso exitoso')
+console.log(req.body,'post sigin')
 })
 
 router.get("/profile",isLoggedIn,(req,res)=>{
    
   res.render("profile")
-
+  console.log(req.body,'profile')
+req.flash('success','Bienvenido')
 })
 
 //planner

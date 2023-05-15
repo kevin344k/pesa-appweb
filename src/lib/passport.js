@@ -8,7 +8,7 @@ passport.use('local',new LocalStrategy({
   passwordField:'password',
 passReqToCallback: true
 },async function (req,username,password,done){
-  console.log(username,"passport-user")
+  console.log(req,"passport-req")
     console.log(password,"passport-pass")
 
 //console.log(req.body,"req passsport")
@@ -22,8 +22,10 @@ if(result.length>0){
 const validPassword=await helpers.matchPassword(password,user.pass)
 //console.log(validPassword)
   if(validPassword){
+    console.log(req.body, 'if validpass')
      done(null,user,req.flash('success','Welcome'+user.nombres))
 } else{
+  
      done(null,false,req.flash('failure',"Incorrect password"))
 }
   
@@ -34,10 +36,13 @@ const validPassword=await helpers.matchPassword(password,user.pass)
 }))
 
 passport.serializeUser((user,done)=>{
+  console.log(user,'serialize')
   done(null,user.cedula)
 })
 
 passport.deserializeUser(async(id,done)=>{
 const rows=await  pool.query('select * from usuarios where cedula=?',[id])
+
+console.log([id], 'deserialice')
   done(null,rows[0])
 })
