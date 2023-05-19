@@ -84,21 +84,29 @@
 function showLi(rol){
 
  console.log(rol)
+  
     if(rol=="Admin"){
    planerLi.style.display="block"
   ordenLi.style.display="block"
   inforLi.style.display="block"
   dashLi.style.display="block"
   adminLi.style.display="block"
+      
     } else if(rol=="Gerente"){
+      
         dashLi.style.display="block"
 
     } else if(rol=="Jefe División"){
+      
        ordenLi.style.display="block"
        dashLi.style.display="block"
+      
     } else if( rol=="Coordinador S&OP"){
+      
              dashLi.style.display="block"
          planerLi.style.display="block"
+    }else if(rol=="Ayudante" || rol=='Operador' ){
+        inforLi.style.display="block"
     }
 
 }
