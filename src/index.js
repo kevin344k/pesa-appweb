@@ -156,7 +156,7 @@ io.on("connection", (socket) => {
   });
   //////////////////////
   socket.on("client:chart", async () => {
-    const [selectAll] = await pool.query("select * from planner ");
+    const [selectAll] = await pool.query("select * from planner where id_plan>14");
 
     socket.emit("server:chart", selectAll);
   });

@@ -83,7 +83,7 @@ function time() {
     sec = "0" + sec;
   }
   spanHora.innerHTML = `${hora}:${min}:${sec}`;
-  spandia.innerHTML = ` - ${daysLetters[date.getDate() - 1]}`;
+  spandia.innerHTML = ` - ${daysLetters[date.getDay() - 1]}`;
 
   if (hora >= 19 && min >= 15) {
     spanTurno.innerHTML = "2";

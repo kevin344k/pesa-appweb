@@ -111,6 +111,7 @@ planForm.addEventListener('submit',e=>{
     date_end: dateEnd.value		
 })
 
+  location.reload()
   
 })
 
