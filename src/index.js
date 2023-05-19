@@ -94,7 +94,7 @@ console.log(`server on port, ${app.get("port")}`);
 io.on("connection", (socket) => {
   console.log("nueva conexión", socket.id);
   //para buscar el codigo de producto en planner
-  socket.on("cliente:plannerId", async () => {
+  socket.on("client:plannerId", async () => {
     const [plannerId] = await pool.query(
       " SELECT id_plan FROM planner order by id_plan desc"
     );

@@ -41,6 +41,7 @@
           </ul>
         </li>
         {{#if user}}
+
         <li class="nav-item">
           <a class="nav-link" href="/profile">{{user.[0].nombres}} (<span id="spanRol">{{user.[0].rol}}</span>) </a>
         </li>
@@ -55,21 +56,14 @@
 </li > 
     {{/if}}
 
-
-
-    
-
-
-
-
-    
-
       </ul>
 
     </div>
 
   </div>
 </nav>
+
+
 
 <script>
   const spanRol=document.querySelector('#spanRol')
@@ -78,31 +72,35 @@
   const inforLi=document.querySelector('#inforLi')
   const dashLi=document.querySelector('#dashLi')
   const adminLi=document.querySelector('#adminLi')
- planerLi.style.display="none"
-    ordenLi.style.display="none"
-    inforLi.style.display="none"
-    dashLi.style.display="none"
-    adminLi.style.display="none"
+
+   planerLi.style.display="none"
+  ordenLi.style.display="none"
+  inforLi.style.display="none"
+  dashLi.style.display="none"
+  adminLi.style.display="none"
+  
 
   
- if(spanRol.value!=null){
-   rol=spanRol.textContent
- }
-  
-function display(rol){
+function showLi(rol){
 
-
-  
-    if(rol=="Ayudante"){
+ console.log(rol)
+    if(rol=="Admin"){
+   planerLi.style.display="block"
+  ordenLi.style.display="block"
   inforLi.style.display="block"
-    } else if(rol=="Ayudante"){
-      
+  dashLi.style.display="block"
+  adminLi.style.display="block"
+    } else if(rol=="Gerente"){
+        dashLi.style.display="block"
+
+    } else if(rol=="Jefe División"){
+       ordenLi.style.display="block"
+       dashLi.style.display="block"
+    } else if( rol=="Coordinador S&OP"){
+             dashLi.style.display="block"
+         planerLi.style.display="block"
     }
 
- 
-
-
 }
-
-  
+  showLi(spanRol.textContent) 
 </script>

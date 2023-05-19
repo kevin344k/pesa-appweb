@@ -12,6 +12,7 @@ const desc_Product = document.querySelector("#desc_Product");
 
 document.addEventListener('DOMContentLoaded',()=>{
 socket.emit("client:plannerId")  
+  console.log('dom load')
 })
 
 
@@ -19,7 +20,7 @@ socket.emit("client:plannerId")
 
 
 socket.on("server:plannerId",(data)=>{
-
+console.log(data,'23')
 idPlan.value=data.id_plan+1
 })
 
