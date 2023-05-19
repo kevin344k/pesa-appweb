@@ -23,10 +23,10 @@ const validPassword=await helpers.matchPassword(password,user.pass)
 //console.log(validPassword)
   if(validPassword){
     console.log(req.body, 'if validpass')
-     done(null,user,req.flash('success','Welcome'+user.nombres))
+     done(null,user,req.flash('success','Welcome'+ user.nombres))
 } else{
   
-     done(null,false,req.flash('failure',"Incorrect password"))
+     done(null,false,req.flash('failed',"Incorrect password"))
 }
   
 } else{

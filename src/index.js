@@ -24,7 +24,7 @@ const sessionStore=new mysqlStore(options)
 
 //INICIALIZACIONES
 const app = express();
-require('./lib/passport')
+
 //pasando el server a http
 
 const httpServer = createServer(app);
@@ -66,21 +66,23 @@ app.use(express.json())
 app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
-
-//ROUTES
-
-app.use(require("./routes"));
-
 //GLOBAL VARIABLES
 app.use((req,res,next)=>{
   app.locals.failed=req.flash('failed')
   app.locals.success=req.flash('success')
   app.locals.message=req.flash('message')
   app.locals.user=req.user
-//console.log( app.locals.user)
+  
+  
+console.log( app.locals.user,'data de profile user')
   next()
   
 })
+//ROUTES
+require('./lib/passport')
+app.use(require("./routes"));
+
+
 //STARTING THE SERVER con express
 
 

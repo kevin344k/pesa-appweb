@@ -3,7 +3,7 @@ module.exports={
         console.log(req.body,'auth')
         if(req.isAuthenticated()){
         
-          req.flash('message','Ingreso correcto')
+          //req.flash('success','Ingreso exitoso')
             return next()
         }else{
             return res.redirect('/notAuth')

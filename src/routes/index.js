@@ -20,7 +20,7 @@ router.post("/auth/signin",isNotLoggedIn,(req,res,next)=>{
     failureRedirect:'/signin',
     failureFlash:true
   })(req,res,next)
-req.flash('success','ingreso exitoso')
+//req.flash('failed','Campos vacíos')
 console.log(req.body,'post sigin')
 })
 
@@ -28,7 +28,7 @@ router.get("/profile",isLoggedIn,(req,res)=>{
    
   res.render("profile")
   console.log(req.body,'profile')
-req.flash('success','Bienvenido')
+//req.flash('success','Bienvenido')
 })
 
 //planner

@@ -30,29 +30,33 @@
             Links
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/links">All Links</a></li>
-             <li><a class="dropdown-item" href="/planner">Planeación</a></li>
-             <li><a class="dropdown-item" href="/dash">Orden de producción</a></li>
-             <li><a class="dropdown-item" href="/dash">Informe de producción</a></li>
-            <li><a class="dropdown-item" href="/dash">Dashboard</a></li>
-            <li><a class="dropdown-item" href="/admin">Admin</a></li>
+
+          
+             <li id="planerLi"><a class="dropdown-item" href="/planner">Planeación</a></li>
+             <li id="ordenLi"><a class="dropdown-item" href="/ordenProd">Orden de producción</a></li>
+             <li id="inforLi"><a class="dropdown-item" href="/informe-Operador">Informe de producción</a></li>
+            <li id="dashLi"><a class="dropdown-item" href="/dash">Dashboard</a></li>
+            <li id="adminLi"><a class="dropdown-item" href="/admin">Admin</a></li>
 
           </ul>
         </li>
-
+        {{#if user}}
         <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile  </a>
+          <a class="nav-link" href="/profile">{{user.[0].nombres}} (<span id="spanRol">{{user.[0].rol}}</span>) </a>
         </li>
-   
-
-
+        
                 <li class="nav-item">
           <a  class="nav-link" href="/logOut">Logout</a>
         </li>
-
+{{else}}
+       
 <li class="nav-item">
   <a class="nav-link" href="/signin">SignIn</a>
-</li >
+</li > 
+    {{/if}}
+
+
+
     
 
 
@@ -66,3 +70,39 @@
 
   </div>
 </nav>
+
+<script>
+  const spanRol=document.querySelector('#spanRol')
+  const planerLi=document.querySelector('#planerLi')
+  const ordenLi=document.querySelector('#ordenLi')
+  const inforLi=document.querySelector('#inforLi')
+  const dashLi=document.querySelector('#dashLi')
+  const adminLi=document.querySelector('#adminLi')
+ planerLi.style.display="none"
+    ordenLi.style.display="none"
+    inforLi.style.display="none"
+    dashLi.style.display="none"
+    adminLi.style.display="none"
+
+  
+ if(spanRol.value!=null){
+   rol=spanRol.textContent
+ }
+  
+function display(rol){
+
+
+  
+    if(rol=="Ayudante"){
+  inforLi.style.display="block"
+    } else if(rol=="Ayudante"){
+      
+    }
+
+ 
+
+
+}
+
+  
+</script>
