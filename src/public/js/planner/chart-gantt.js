@@ -21,15 +21,16 @@ function drawChart() {
 
 
     rows.forEach((element) => {
-     
+      let done=((element.missing/element.cant_plan)*100).toFixed()
+      
        element = [ (element.id_plan).toString(),
         element.linea_name,
         element.desc_prod_plan,
         new Date(element.date_start),
         new Date(element.date_end),
         element.cant_plan,
-        null,
-        null
+         parseFloat(done),
+       null
       ]
       console.log(element)
       data.addRow(element);

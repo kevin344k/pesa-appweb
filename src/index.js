@@ -156,7 +156,7 @@ io.on("connection", (socket) => {
   });
   //////////////////////
   socket.on("client:chart", async () => {
-    const [selectAll] = await pool.query("select * from planner where id_plan>14");
+    const [selectAll] = await pool.query("select * from planner inner join  orden_produccion on planner.id_plan=orden_produccion.id_plan");
 
     socket.emit("server:chart", selectAll);
   });
@@ -545,7 +545,7 @@ io.of("/informeOP").on("connection", (socketInfor) => {
   //codigo para realizar el order list
   socketInfor.on("client:SelectOrderList", async () => {
     const [selectOrdenList] = await pool.query(
-      "select num_orden,linea,codigo_articulo,articulo,total_a_fabricar,missing from orden_produccion "
+      "select num_orden,linea,codigo_articulo,articulo,total_a_fabricar,missing from orden_produccion where missing<=total_a_fabricar order by num_orden desc"
     );
 
     socketInfor.emit("server:selectOrderList", selectOrdenList);
@@ -643,8 +643,16 @@ io.of("/informeOP").on("connection", (socketInfor) => {
         data.OrderNumber,
       ]
     );
+const [selectProd] =await pool.query("select total_a_fabricar,missing from orden_produccion where num_orden=?",[data.OrderNumber])
+
+    //const miss=
+
+    console.log(data.unitsGood+selectProd[0].missing,"orden de produccion")
+    
+await pool.query("update orden_produccion set missing=? where num_orden=?",[(parseInt(data.unitsGood)+parseInt(selectProd[0].missing)),data.OrderNumber])
 
 
+    
   });
 
   //codigo para el tiempo real de las máquinas
