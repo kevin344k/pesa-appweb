@@ -572,7 +572,7 @@ let realObj;
 let status;
 let emit;
 let ccObj=cc.value;
-let date2=new Date()
+
 
 butRun.addEventListener("click",clickRun)
 butStop.addEventListener("click",clickStop)
@@ -594,7 +594,7 @@ if(ccObj!=""){
 removeClass("butStop","bg-danger",text,parpadeo)
   removeClass("butSwitch","bg-warning",text,parpadeo)
   removeClass("butNotOP","bg-gray",text,parpadeo)
-  
+  let date2=new Date()
      realAEnviar(status,ccObj,status,date2)
 } else{
  return  alert("Se necesita el Centro de costo para poder enviar el estado!")
@@ -618,6 +618,7 @@ if(ccObj!=""){
 removeClass("butRun","bg-success",text,parpadeo)
   removeClass("butSwitch","bg-warning",text,parpadeo)
   removeClass("butNotOP","bg-gray",text,parpadeo)
+  let date2=new Date()
      realAEnviar(status,ccObj,status,date2)
 } else{
  return  alert("Se necesita el Centro de costo para poder enviar el estado!")
@@ -639,6 +640,7 @@ ccObj=cc.value
   removeClass("butRun","bg-success",text,parpadeo)
   removeClass("butStop","bg-danger",text,parpadeo)
   removeClass("butNotOP","bg-gray",text,parpadeo)
+    let date2=new Date()
      realAEnviar(status,ccObj,status,date2)
   } else{
  return  alert("Se necesita el Centro de costo para poder enviar el estado!")
@@ -657,6 +659,7 @@ ccObj=cc.value
   removeClass("butRun","bg-success",text,parpadeo)
   removeClass("butSwitch","bg-warning",text,parpadeo)
   removeClass("butStop","bg-danger",text,parpadeo)
+      let date2=new Date()
        realAEnviar(status,ccObj,status,date2)
   } else{
  return  alert("Se necesita el Centro de costo para poder enviar el estado!")
@@ -679,7 +682,7 @@ function removeClass(but,bg,class1,class2){
 
 
 function realAEnviar(emit,ccObj,status,date2){
-  
+  console.log(date2)
  realObj={linea:ccObj,
               status:status,
               status_upDate:date2.toISOString().replace("T"," ").replace("Z","")}
