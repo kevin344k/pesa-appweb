@@ -204,13 +204,13 @@ socket.on("updateDate",data=>{
    times(data)
 })
 function StatusReal(queryDB){
-const arrSpan=["103","102","82","98","87","78"]
+const arrSpan=["103","102","082","098","087","078"]
 
 for(i=0;i<=arrSpan.length-1;i++){
  const datos=queryDB.find(linea=>{
                 return linea.cc===arrSpan[i]
                 })
- // console.log(datos)
+  console.log(datos,"linea 213")
 
 paintStatus(datos.status,i)
 }  
