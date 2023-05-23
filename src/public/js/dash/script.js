@@ -186,7 +186,12 @@ function realtime(){
 }
 let  queryDB;
 socket.on("postRealtime",dataDB=>{
+console.log(dataDB,'linea 189')
 
+dataDB.forEach(e=>{
+  console.log(e.status_dateUpdate)
+})
+  
  queryDB=dataDB
 
 StatusReal(queryDB)
@@ -200,7 +205,7 @@ for(i=0;i<=arrSpan.length-1;i++){
  const datos=queryDB.find(linea=>{
                 return linea.cc===arrSpan[i]
                 })
-  console.log(datos)
+ // console.log(datos)
 
 paintStatus(datos.status,i)
 }  
@@ -211,7 +216,7 @@ paintStatus(datos.status,i)
 //updateStatus
 
 socket.on("updateStatus",(data)=>{
-  console.log(data,214)
+ // console.log(data,214)
 changeStatusReal(data)
 function changeStatusReal(data){
   for(i=0;i<=data.length-1;i++){
@@ -241,9 +246,11 @@ function removeClass(status,index){
   }
 
 }
+/*
+window.addEventListener('load',()=>{
+  socket.on()
+})*/
 
 
 
-
-
-console.log(spanParpadeo)
+//console.log(spanParpadeo)

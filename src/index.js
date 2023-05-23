@@ -156,10 +156,19 @@ io.on("connection", (socket) => {
   });
   //////////////////////
   socket.on("client:chart", async () => {
-    const [selectAll] = await pool.query("select * from planner inner join  orden_produccion on planner.id_plan=orden_produccion.id_plan");
+    const [selectAll] = await pool.query("select * from planner where fab<cant_plan order by id_plan desc");
 
+   // inner join  orden_produccion on planner.id_plan=orden_produccion.id_plan
     socket.emit("server:chart", selectAll);
+  
   });
+
+socket.on('client:selectPlan',async()=>{
+  const [allPlan]=await pool.query('select * from planner where fab<cant_plan order by id_plan desc')
+  socket.emit('server:selectPlan',allPlan)
+})
+  
+  
 });
 
 ////////////////io para la plantilla admin/////////////////////
@@ -459,7 +468,7 @@ io.on("connection", (socketOrden) => {
         data.id_plandbs,
         data.fechaCreacion,
         data.horaCreacion,
-        data.cantidad,
+        0,
       ]
     );
 
@@ -545,9 +554,8 @@ io.of("/informeOP").on("connection", (socketInfor) => {
   //codigo para realizar el order list
   socketInfor.on("client:SelectOrderList", async () => {
     const [selectOrdenList] = await pool.query(
-      "select num_orden,linea,codigo_articulo,articulo,total_a_fabricar,missing from orden_produccion where missing<=total_a_fabricar order by num_orden desc"
+      "select num_orden,linea,codigo_articulo,articulo,total_a_fabricar,id_plan,missing from orden_produccion where missing<=total_a_fabricar order by num_orden desc"
     );
-
     socketInfor.emit("server:selectOrderList", selectOrdenList);
   });
 
@@ -643,6 +651,11 @@ io.of("/informeOP").on("connection", (socketInfor) => {
         data.OrderNumber,
       ]
     );
+    //codigo para colocar la cantidad fabricada en el grafico "TimeLine de la vista planner"
+const [insertPlanner]=await pool.query("select cant_plan,fab from planner where id_plan=? ",[data.plan_id])
+console.log(insertPlanner,'insertplanner')    
+    await pool.query("update planner set fab=? where id_plan=?",[(parseInt(data.unitsGood)+parseInt(insertPlanner[0].fab)),data.plan_id])
+    
 const [selectProd] =await pool.query("select total_a_fabricar,missing from orden_produccion where num_orden=?",[data.OrderNumber])
 
     //const miss=

@@ -181,8 +181,11 @@
         </div>
         <div id="timeline" class="card-body ">
           <div id="chart_div"></div>
-
+ <button id="butDetallePlan"  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#planDetails">Ver a detalle</button>
         </div>
+       
+         
+      
 
       </div>
     </div>
@@ -198,8 +201,7 @@
   tabindex="-1"
   role="dialog"
   aria-labelledby="titleWindow"
-  aria-hidden="true"
->
+  aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -257,9 +259,54 @@
       </div>
     </div>
   </div>
+</div></div>
+
+<!-- Modal -->
+<div class="modal fade" id="planDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Plan Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div  class="modal-body overflow-auto">
+
+  <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">id_plan</th>
+      <th scope="col">code_prod</th>
+      <th scope="col">desc_prod_plan</th>
+      <th scope="col">linea_name</th>
+       <th scope="col">cant_plan</th>
+       <th scope="col">units_cant_plan</th>
+       <th scope="col">Fabricado</th>
+    </tr>
+  </thead>
+  <tbody id="detailsBodyPlan" class="table-group-divider">
+    
+  </tbody>
+</table>
+
+        
+
+        
+      </div>
+
+    </div>
+  </div>
 </div>
 
+
+
+
+  
 <script  type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/js/planner/planner.js"></script>
 
 <script type="text/javascript" src="/js/planner/chart-gantt.js"></script>
+
+
+

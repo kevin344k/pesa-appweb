@@ -10,6 +10,7 @@ const inputRol1 = document.getElementById("rol1");
 const spanFecha = document.getElementById("spanFecha");
 const spanHora = document.getElementById("spanHora");
 const spanTurno = document.getElementById("spanTurno");
+const spanPlanId=document.getElementById("spanPlanId")
 //
 const nombre_linea = document.getElementById("nombre_linea");
 const cc = document.getElementById("cc");
@@ -99,7 +100,12 @@ setInterval(() => {
 socketInfor.emit("client:numInfor");
 socketInfor.on("server:numInfor", (data) => {
   //console.log(data.num_infor);
-  spanReportNumber.innerHTML = data.num_infor + 1;
+  if(data!=null){
+      spanReportNumber.innerHTML = data.num_infor + 1;
+  } else{
+     spanReportNumber.innerHTML = 0;
+  }
+
 });
 
 const butCedula1 = document.getElementById("butCedula1");
@@ -282,6 +288,7 @@ socketInfor.on("server:selectOrderList", (data) => {
   tbodyOrderList.innerHTML = "";
   data.forEach((element) => {
     const childLoadOrder = document.createElement("tr");
+    console.log(element.id_plan)
     childLoadOrder.innerHTML += `
         <td class=col>${element.num_orden}</td>
         <td class=col>${element.linea}</td>
@@ -303,7 +310,7 @@ socketInfor.on("server:selectOrderList", (data) => {
 });
 
 socketInfor.on("server:resultSelectOrder", (data) => {
-  console.log(data);
+  
   nombre_linea.value = data.linea;
   cc.value = data.centro_costo;
   nombreArticulo.value = data.articulo;
@@ -315,6 +322,7 @@ socketInfor.on("server:resultSelectOrder", (data) => {
   undmedida.innerText = `${data.und_medida}`;
   ciclo.value = data.por_hora / 60;
   spanOrderNumber.innerText = data.num_orden;
+  spanPlanId.innerText=data.id_plan;
   codeMp1.value = data.codeMpSn1;
   codeMp2.value = data.codeMpSn2;
   codeMp3.value = data.codeMpSn3;
@@ -324,7 +332,7 @@ socketInfor.on("server:resultSelectOrder", (data) => {
   descMp2.value = data.descMpSn2;
   descMp3.value = data.descMpSn3;
   descMp4.value = data.descMpSn4;
-
+  
   cantidadMp1.value = data.cantidadMpSn1;
   cantidadMp2.value = data.cantidadMpSn2;
   cantidadMp3.value = data.cantidadMpSn3;
@@ -334,6 +342,8 @@ socketInfor.on("server:resultSelectOrder", (data) => {
   undSpan2.value = data.undMpSn2;
   undSpan3.value = data.undMpSn3;
   undSpan4.value = data.undMpSn4;
+  
+  console.log(data.id_plan, 'plannerr');
 });
 
 ///codigo de las pestañas del operador report
@@ -485,7 +495,7 @@ butDelCodPar4.addEventListener("click", () => {
 
       let dataInforOp = {
         OrderNumber: spanOrderNumber.textContent,
-
+        plan_id:spanPlanId.textContent,
         fechaRegInfor: spanFecha.textContent,
         horaRegInfor: spanHora.textContent,
         turnoRegInfor: spanTurno.textContent,
