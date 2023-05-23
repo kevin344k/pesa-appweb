@@ -72,6 +72,7 @@ app.use((req,res,next)=>{
   app.locals.success=req.flash('success')
   app.locals.message=req.flash('message')
   app.locals.user=req.user
+
   
   
 console.log( app.locals.user,'data de profile user')
@@ -716,7 +717,7 @@ io.of("/dashboard").on("connection", (socketDash) => {
     setInterval(async () => {
       let query2 = []
       let [detectChange] = await pool.query("select status from realTimeLine")
-
+      let [fechas]=await pool.query("select * from realTimeLine")
       if (detectChange.length > 0) {
         for (i = 0; i <= detectChange.length - 1; i++) {
           query2.push(detectChange[i].status)
@@ -724,6 +725,7 @@ io.of("/dashboard").on("connection", (socketDash) => {
         }
         console.log(query2, 660)
         compareArr(query2)
+        upDate(fechas)
       }
 
     }, 10000)
@@ -732,6 +734,10 @@ io.of("/dashboard").on("connection", (socketDash) => {
     function compareArr(q2) {
 
       socketDash.emit("updateStatus", q2)
+    
+    }
+    function upDate(fechas){
+        socketDash.emit("updateDate",fechas)
     }
 
 

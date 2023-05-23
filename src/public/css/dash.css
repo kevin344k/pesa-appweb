@@ -31,7 +31,9 @@ canvas{
   color: white;
   font-family: "Poppins", sans-serif;
 }
-
+#spandate{
+  font-size:10px;
+}
 /* grafico de tiempo real */
 
 

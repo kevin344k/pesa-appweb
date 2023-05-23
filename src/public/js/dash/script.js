@@ -6,6 +6,7 @@ const canvas_unitsProduced=document.querySelector("#canvas-unitsProduced")
 const canvas_paralizaciones=document.querySelector("#canvas-paralizaciones")
 const spanParpadeo=document.getElementsByName("spanParpadeo")
 const line_103=document.querySelector("#Irwin_1")
+const dateAgo=document.getElementsByName("dateAgo")
 formDates.addEventListener("submit",e=>{
   e.preventDefault()
 
@@ -175,6 +176,7 @@ function graphParalizations(data){
   })
   }
 
+
      realtime()
 
 
@@ -188,16 +190,19 @@ let  queryDB;
 socket.on("postRealtime",dataDB=>{
 console.log(dataDB,'linea 189')
 
-dataDB.forEach(e=>{
-  console.log(e.status_dateUpdate)
-})
-  
- queryDB=dataDB
+//dataDB.forEach(e=>{
+ // console.log(e.status_dateUpdate)
+//})
 
+ queryDB=dataDB
+ 
 StatusReal(queryDB)
   
 })
 
+socket.on("updateDate",data=>{
+   times(data)
+})
 function StatusReal(queryDB){
 const arrSpan=["103","102","082","098","087","078"]
 
@@ -246,10 +251,17 @@ function removeClass(status,index){
   }
 
 }
-/*
-window.addEventListener('load',()=>{
-  socket.on()
-})*/
+
+function times(data){
+  console.log(dateAgo)
+  console.log(moment(Date.parse(data[0].status_dateUpdate)).fromNow())
+
+for(i=0;i<=dateAgo.length-1;i++){
+let date=Date.parse(data[i].status_dateUpdate)//-(5*3600000)
+  dateAgo[i].textContent=moment(date).fromNow()
+ // dateAgo[i].textContent=(new Date(date).toISOString()).slice(0,-2)
+}
+ }
 
 
 

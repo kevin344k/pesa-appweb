@@ -90,34 +90,41 @@
           <h5 class="">Real Time </h5>
 <div id="parentDivRealTime" class="">
   <div class="row mb-2  text-center">
-  <div class="col box-machine btn btn-dark mb-3 p-2 position-relative">
+  <div class="col">
     <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
       <div class="d-flex flex-column">
           <div id="Irwin_1" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
 
 <span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 1</span>
       </div>
-<span class="align-middle" name="dateAgo" id="">(2023)</span>
+<span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span>
                           
   </div>
     </div>
+
+    
     
      <div class="col">
     <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
-  <div id="Irwin_2" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
+<div class="d-flex flex-column">
+    <div id="Irwin_2" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
 
 <span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 2</span>
-                              
+</div>
+    <span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span>                     
   </div>      
      </div>
 
                  <div class="col">
  
     <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+      <div class="d-flex flex-column">
   <div id="Irwin_3" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
 
 <span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 3</span>
-                              
+
+       </div>  
+      <span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span> 
   </div>
        
      </div>
@@ -127,10 +134,12 @@
 
        <div class="col">
     <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+       <div class="d-flex flex-column">
   <div id="Irwin_4" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
 
 <span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 4</span>
-                              
+        </div>
+       <span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span> 
   </div>
 
       </div>
@@ -138,19 +147,23 @@
           <div class="col">
   
     <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+       <div class="d-flex flex-column">
   <div id="Irwin_5" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
 
 <span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 5</span>
-                              
+       </div>  
+         <span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span> 
   </div>
       </div>
             <div class="col">
    
     <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+       <div class="d-flex flex-column">
   <div id="Comodore" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
 
 <span class="align-middle" name="maquina" id="">Comodore</span>
-                              
+       </div>
+      <span class="align-middle" name="dateAgo" id="spandate">(2023)</span>
   </div>
   </div>
     
@@ -167,5 +180,7 @@
 </div>
  <script  type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 <script  src="/js/dash/script.js"></script>
+
 

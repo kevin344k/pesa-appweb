@@ -65,7 +65,8 @@ router.get("/dash",isLoggedIn,(req,res,next)=>{
     if(req.isAuthenticated()) return next()
   res.redirect("/notAuth")
   }
- ,(req, res) => {
+ , (req, res) => {
+   
   res.render("dashboard.hbs");
 });
 router.get("/admin",isLoggedIn,(req,res,next)=>{
