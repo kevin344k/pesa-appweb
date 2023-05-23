@@ -204,7 +204,7 @@ socket.on("updateDate",data=>{
    times(data)
 })
 function StatusReal(queryDB){
-const arrSpan=["103","102","082","098","087","078"]
+const arrSpan=["103","102","82","98","87","78"]
 
 for(i=0;i<=arrSpan.length-1;i++){
  const datos=queryDB.find(linea=>{
