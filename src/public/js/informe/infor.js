@@ -1,4 +1,4 @@
-const socketInfor = io();
+const socketInfor = io("/informeOP");
 
 const modalPeople = document.getElementById("modal-people-search");
 const butModalPeople = document.getElementsByName("butModalPeople");
@@ -10,6 +10,7 @@ const inputRol1 = document.getElementById("rol1");
 const spanFecha = document.getElementById("spanFecha");
 const spanHora = document.getElementById("spanHora");
 const spanTurno = document.getElementById("spanTurno");
+const spanPlanId=document.getElementById("spanPlanId")
 //
 const nombre_linea = document.getElementById("nombre_linea");
 const cc = document.getElementById("cc");
@@ -83,7 +84,7 @@ function time() {
     sec = "0" + sec;
   }
   spanHora.innerHTML = `${hora}:${min}:${sec}`;
-  spandia.innerHTML = ` - ${daysLetters[date.getDate() - 1]}`;
+  spandia.innerHTML = ` - ${daysLetters[date.getDay() - 1]}`;
 
   if (hora >= 19 && min >= 15) {
     spanTurno.innerHTML = "2";
@@ -99,7 +100,12 @@ setInterval(() => {
 socketInfor.emit("client:numInfor");
 socketInfor.on("server:numInfor", (data) => {
   //console.log(data.num_infor);
-  spanReportNumber.innerHTML = data.num_infor + 1;
+  if(data!=null){
+      spanReportNumber.innerHTML = data.num_infor + 1;
+  } else{
+     spanReportNumber.innerHTML = 0;
+  }
+
 });
 
 const butCedula1 = document.getElementById("butCedula1");
@@ -282,6 +288,7 @@ socketInfor.on("server:selectOrderList", (data) => {
   tbodyOrderList.innerHTML = "";
   data.forEach((element) => {
     const childLoadOrder = document.createElement("tr");
+    console.log(element.id_plan)
     childLoadOrder.innerHTML += `
         <td class=col>${element.num_orden}</td>
         <td class=col>${element.linea}</td>
@@ -303,7 +310,7 @@ socketInfor.on("server:selectOrderList", (data) => {
 });
 
 socketInfor.on("server:resultSelectOrder", (data) => {
-  console.log(data);
+  
   nombre_linea.value = data.linea;
   cc.value = data.centro_costo;
   nombreArticulo.value = data.articulo;
@@ -315,6 +322,7 @@ socketInfor.on("server:resultSelectOrder", (data) => {
   undmedida.innerText = `${data.und_medida}`;
   ciclo.value = data.por_hora / 60;
   spanOrderNumber.innerText = data.num_orden;
+  spanPlanId.innerText=data.id_plan;
   codeMp1.value = data.codeMpSn1;
   codeMp2.value = data.codeMpSn2;
   codeMp3.value = data.codeMpSn3;
@@ -324,7 +332,7 @@ socketInfor.on("server:resultSelectOrder", (data) => {
   descMp2.value = data.descMpSn2;
   descMp3.value = data.descMpSn3;
   descMp4.value = data.descMpSn4;
-
+  
   cantidadMp1.value = data.cantidadMpSn1;
   cantidadMp2.value = data.cantidadMpSn2;
   cantidadMp3.value = data.cantidadMpSn3;
@@ -334,6 +342,8 @@ socketInfor.on("server:resultSelectOrder", (data) => {
   undSpan2.value = data.undMpSn2;
   undSpan3.value = data.undMpSn3;
   undSpan4.value = data.undMpSn4;
+  
+  console.log(data.id_plan, 'plannerr');
 });
 
 ///codigo de las pestañas del operador report
@@ -485,7 +495,7 @@ butDelCodPar4.addEventListener("click", () => {
 
       let dataInforOp = {
         OrderNumber: spanOrderNumber.textContent,
-
+        plan_id:spanPlanId.textContent,
         fechaRegInfor: spanFecha.textContent,
         horaRegInfor: spanHora.textContent,
         turnoRegInfor: spanTurno.textContent,
@@ -550,10 +560,133 @@ butDelCodPar4.addEventListener("click", () => {
       }, 8000);
     }
 
-
-
-
-
   });
 
+const butRun=document.querySelector("#butRun")
+const butStop=document.querySelector("#butStop")
+const butSwitch=document.querySelector("#butSwitch")
+const butNotOP=document.querySelector("#butNotOP")
+const text="text-white"
+const parpadeo="lineParpadeo"
+let realObj;
+let status;
+let emit;
+let ccObj=cc.value;
 
+
+butRun.addEventListener("click",clickRun)
+butStop.addEventListener("click",clickStop)
+butSwitch.addEventListener("click",clickSwitch)
+butNotOP.addEventListener("click",clickNotOP)
+
+function clickRun(){
+status="run"
+ccObj=cc.value
+
+
+if(ccObj!=""){
+
+  console.log("run")
+  butRun.classList.toggle("bg-success")
+   butRun.classList.toggle("text-white")
+  butRun.classList.toggle("lineParpadeo")
+  
+removeClass("butStop","bg-danger",text,parpadeo)
+  removeClass("butSwitch","bg-warning",text,parpadeo)
+  removeClass("butNotOP","bg-gray",text,parpadeo)
+  let date2=new Date()
+     realAEnviar(status,ccObj,status,date2)
+} else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
+  
+
+
+
+}
+
+function clickStop(){
+  status="stop"
+ccObj=cc.value
+ 
+
+if(ccObj!=""){
+ console.log("clickStop")
+  butStop.classList.toggle("bg-danger")
+   butStop.classList.toggle("text-white")
+  butStop.classList.toggle("lineParpadeo")
+removeClass("butRun","bg-success",text,parpadeo)
+  removeClass("butSwitch","bg-warning",text,parpadeo)
+  removeClass("butNotOP","bg-gray",text,parpadeo)
+  let date2=new Date()
+     realAEnviar(status,ccObj,status,date2)
+} else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
+ 
+
+  
+}
+function clickSwitch(){
+    status="switch"
+ccObj=cc.value
+
+  if(ccObj!=""){
+  console.log("clickSwitch")
+  butSwitch.classList.toggle("bg-warning")
+   butSwitch.classList.toggle("text-white")
+  butSwitch.classList.toggle("lineParpadeo")
+
+  removeClass("butRun","bg-success",text,parpadeo)
+  removeClass("butStop","bg-danger",text,parpadeo)
+  removeClass("butNotOP","bg-gray",text,parpadeo)
+    let date2=new Date()
+     realAEnviar(status,ccObj,status,date2)
+  } else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
+}
+function clickNotOP(){
+      status="notOP"
+ccObj=cc.value
+
+    if(ccObj!=""){
+  console.log("clickNotOP")
+  butNotOP.classList.toggle("bg-gray")
+   butNotOP.classList.toggle("text-white")
+  butNotOP.classList.toggle("lineParpadeo")
+
+  removeClass("butRun","bg-success",text,parpadeo)
+  removeClass("butSwitch","bg-warning",text,parpadeo)
+  removeClass("butStop","bg-danger",text,parpadeo)
+      let date2=new Date()
+       realAEnviar(status,ccObj,status,date2)
+  } else{
+ return  alert("Se necesita el Centro de costo para poder enviar el estado!")
+}
+  
+}
+function removeClass(but,bg,class1,class2){
+  if(but=="butStop"){
+      butStop.classList.remove(bg,class1,class2)
+  } else if(but=="butSwitch"){
+     butSwitch.classList.remove(bg,class1,class2)
+  } else if(but=="butNotOP"){
+      butNotOP.classList.remove(bg,class1,class2)
+  } else if(but=="butRun"){
+      butRun.classList.remove(bg,class1,class2)
+  }
+}
+
+
+
+
+function realAEnviar(emit,ccObj,status,date2){
+  console.log(date2)
+ realObj={linea:ccObj,
+              status:status,
+              status_upDate:date2.toISOString().replace("T"," ").replace("Z","")}
+
+  console.log(realObj)
+socketInfor.emit(`${emit}`,realObj)
+}

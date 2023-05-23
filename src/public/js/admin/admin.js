@@ -1,3 +1,8 @@
+
+
+const socketadmin = io();
+
+
 const productoAdmin = document.getElementById("productoAdmin");
 const primerLink = document.getElementById("primerLink");
 const segundoLink = document.getElementById("segundoLink");
@@ -79,7 +84,8 @@ const deleteMp = document.getElementsByClassName("btn btn-outline-danger");
 const butSave = document.querySelector("#but-add-person");
 const butEdit = document.querySelector("#but-edit-person");
 butEdit.style.display = "none";
-const socketadmin = io();
+
+
 
 socketadmin.emit("client:mpLoadList");
 
@@ -245,11 +251,6 @@ function mensajeProduct(text) {
     msgProduct.removeChild(msg);
   }, 5000);
 }
-
-/*
-
-
-*/
 
 const formAddPersonal = document.getElementById("formAddPersonal");
 
@@ -418,8 +419,8 @@ formAddSum.addEventListener("submit", (e) => {
     validarSum(err)
   }
 
-  // console.table(
-  // inputCodeSum.value,inputProveedorSum.value,inputDescSum.value,selectUndSum.value)
+   console.table(
+   inputCodeSum.value,inputProveedorSum.value,inputDescSum.value,selectUndSum.value)
 });
 
 function validarSum(err) {
@@ -489,4 +490,6 @@ for (let i = 0; i < deleteSum.length; i++) {
 }
 
 })
+
+
 

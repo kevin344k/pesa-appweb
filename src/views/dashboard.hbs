@@ -1,8 +1,49 @@
 <link rel="stylesheet" href="/css/dash.css" />
+<link rel="stylesheet" href="/css/realParpadeo.css" />
+
+ <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
 <div class="container mt-3">
   {{! un solo row que engloba todo }}
+<div class="row align-content-center">
+ 
+    
+<div class="row ">
+  <div class="col-5 col-sd-12 col-md-5 col-lg-5">
+      <form id="formDates"  >
 
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Inicio</span>
+  </div>
+  <input type="date" name="dateStartDash" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Fin</span>
+  </div>
+  <input type="date"  name="dateEndDash" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div> 
+
+
+    <button  id="butDataGraph" class="btn btn-success">Graph</button>
+
+     </form>   
+  </div>  
+</div>
+  
+</div>
   {{! una sola columna que engloba a todo }}
 
   {{! otro row para la fila superior que estara dividida en dos columnas }}
@@ -12,7 +53,7 @@
       {{!  card  para units produced}}
       <div id="unitsProduced" class="card">
         <div id="div-units-produced" class="card-body">
-          <h5 class="card-title">Units Produced</h5>
+          <h5 class="card-title">Performance(%)</h5>
           {{!  }}
           {{!  }}
           {{! primer gráfico en canvas  }}
@@ -25,15 +66,15 @@
       {{! card para paralizaciones }}
       <div id="paralizations" class="card">
         <div class="card-body">
-          <h5 class="card-title">Paralizations</h5>
-          <select id="featuresOptions">
-            <option value="height">Altura (m)</option>
-            <option value="length">Longitud (m)</option>
-            <option value="speed">Velocidad(km/h)</option>
-          </select>
-          {{!  }}
-          {{!  }}
-          {{! segundo gráfico en canvas  }}
+          <div class="container d-flex mb-4">
+                      <h5 class="card-title mx-2">Paralizations</h5>
+          <select id="featuresOptions"  >
+            <option value="height">by type</option>
+            
+             </select>
+          </div>
+
+              {{! segundo gráfico en canvas  }}
           <canvas id="canvas-paralizaciones"></canvas>
         </div>
 
@@ -46,11 +87,89 @@
       {{! card para lineas en tiempo real }}
       <div id="realTime" class="card">
         <div class="card-body" >
-          <h5 class="card-title">Real Time</h5>
-          {{!  }}
-          {{!  }}
-          {{! tercer gráfico en canvas  }}
-          <canvas id="canvas-realTime" ></canvas>
+          <h5 class="">Real Time </h5>
+<div id="parentDivRealTime" class="">
+  <div class="row mb-2  text-center">
+  <div class="col">
+    <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+      <div class="d-flex flex-column">
+          <div id="Irwin_1" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 1</span>
+      </div>
+<span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span>
+                          
+  </div>
+    </div>
+
+    
+    
+     <div class="col">
+    <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+<div class="d-flex flex-column">
+    <div id="Irwin_2" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 2</span>
+</div>
+    <span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span>                     
+  </div>      
+     </div>
+
+                 <div class="col">
+ 
+    <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+      <div class="d-flex flex-column">
+  <div id="Irwin_3" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 3</span>
+
+       </div>  
+      <span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span> 
+  </div>
+       
+     </div>
+  </div>
+  
+  <div class="row text-center">
+
+       <div class="col">
+    <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+       <div class="d-flex flex-column">
+  <div id="Irwin_4" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 4</span>
+        </div>
+       <span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span> 
+  </div>
+
+      </div>
+
+          <div class="col">
+  
+    <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+       <div class="d-flex flex-column">
+  <div id="Irwin_5" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="ico material-symbols-outlined">precision_manufacturing </span><span class="align-middle" name="maquina" id="">Irwin 5</span>
+       </div>  
+         <span class="align-middle h6" name="dateAgo" id="spandate">(2023)</span> 
+  </div>
+      </div>
+            <div class="col">
+   
+    <div class="box-machine btn btn-dark mb-3 p-2 position-relative">
+       <div class="d-flex flex-column">
+  <div id="Comodore" name="spanParpadeo" class="spanParpadeo position-absolute top-0 start-100 translate-middle"></div>
+
+<span class="align-middle" name="maquina" id="">Comodore</span>
+       </div>
+      <span class="align-middle" name="dateAgo" id="spandate">(2023)</span>
+  </div>
+  </div>
+    
+  </div>
+ 
+</div>        
         </div>
 
       </div>
@@ -58,11 +177,10 @@
 
   </div>
 
-  {{! div del primer row que engloba todo }}
-
 </div>
+ <script  type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+<script  src="/js/dash/script.js"></script>
 
-<script  src="/js/dash/helpers.js"></script>
-<script  src="/js/dash/handlers.js"></script>
-<script  src="/js/dash/app.js"></script>
+

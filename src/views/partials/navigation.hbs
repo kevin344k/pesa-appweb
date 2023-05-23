@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
 
-    <a class="navbar-brand" href="/">App Web</a>
+    <a class="navbar-brand" href="/">PESA Online</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -18,7 +18,7 @@
 
       <ul class="navbar-nav" style="margin-left: auto;">
 
-       {{!-- {{#if user}} --}}
+     
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -30,33 +30,31 @@
             Links
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/links">All Links</a></li>
-            <li><a class="dropdown-item" href="/dash">Dashboard</a></li>
-            <li><a class="dropdown-item" href="/admin">Admin</a></li>
+
+          
+             <li id="planerLi"><a class="dropdown-item" href="/planner">Planeación</a></li>
+             <li id="ordenLi"><a class="dropdown-item" href="/ordenProd">Orden de producción</a></li>
+             <li id="inforLi"><a class="dropdown-item" href="/informe-Operador">Informe de producción</a></li>
+            <li id="dashLi"><a class="dropdown-item" href="/dash">Dashboard</a></li>
+            <li id="adminLi"><a class="dropdown-item" href="/admin">Admin</a></li>
 
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile </a>
-        </li>
-        <li class="nav-item">
-          <a  class="nav-link" href="/logout">Logout</a>
-        </li>
+        {{#if user}}
 
-{{!-- {{else}} --}}
-
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">{{user.[0].nombres}} (<span id="spanRol">{{user.[0].rol}}</span>) </a>
+        </li>
+        
+                <li class="nav-item">
+          <a  class="nav-link" href="/logOut">Logout</a>
+        </li>
+{{else}}
+       
 <li class="nav-item">
   <a class="nav-link" href="/signin">SignIn</a>
-</li >
-
-
-{{!-- <li class="nav-item">
-  <a class="nav-link" href="/signup">SignUp</a>
-</li> --}}
-
-
-{{!-- 
-       {{/if}} --}}
+</li > 
+    {{/if}}
 
       </ul>
 
@@ -64,3 +62,68 @@
 
   </div>
 </nav>
+
+
+
+<script>
+  const spanRol=document.querySelector('#spanRol')
+  const planerLi=document.querySelector('#planerLi')
+  const ordenLi=document.querySelector('#ordenLi')
+  const inforLi=document.querySelector('#inforLi')
+  const dashLi=document.querySelector('#dashLi')
+  const adminLi=document.querySelector('#adminLi')
+
+block("block")
+  
+
+  
+function showLi(rol){
+
+ console.log(rol)
+  
+    if(rol=="Admin"){
+      block("block")
+ 
+      
+    } else if(rol=="Gerente"){
+     planerLi.style.display="none"
+        dashLi.style.display="block"
+       ordenLi.style.display="none"
+        adminLi.style.display="none"
+      inforLi.style.display="none"
+      
+    } else if(rol=="J.División"){
+      planerLi.style.display="none"
+       ordenLi.style.display="block"
+       dashLi.style.display="block"
+inforLi.style.display="none"
+       adminLi.style.display="none"
+    } else if( rol=="Coordinador S&OP"){
+       ordenLi.style.display="none"
+        inforLi.style.display="none"
+             dashLi.style.display="block"
+         planerLi.style.display="block"
+        adminLi.style.display="block"
+    }else if(rol=="Ayudante" || rol=='Operador' ){
+        planerLi.style.display="none"
+  ordenLi.style.display="none"
+  dashLi.style.display="none"
+  adminLi.style.display="none"
+        inforLi.style.display="block"
+    }
+
+}
+
+function block(sw){
+  
+   planerLi.style.display=sw
+  ordenLi.style.display=sw
+  inforLi.style.display=sw
+  dashLi.style.display=sw
+  adminLi.style.display=sw
+
+}
+
+  
+  showLi(spanRol.textContent) 
+</script>

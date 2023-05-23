@@ -1,4 +1,7 @@
 const socket = io();
+
+
+
 const idPlan = document.querySelector("#id_plan");
 const buscarProd = document.querySelector("#buscarProducto");
 const codeProd = document.querySelector("#code_product");
@@ -6,11 +9,19 @@ var divProd = document.querySelector("#divProd");
 var divCol = document.createElement("div");
 const inputCodeProd = document.querySelector("#inputCodeProd");
 const desc_Product = document.querySelector("#desc_Product");
+const butDetallePlan=document.querySelector('#butDetallePlan')
+
+document.addEventListener('DOMContentLoaded',()=>{
+socket.emit("client:plannerId")  
+  console.log('dom load')
+})
 
 
-socket.emit("cliente:plannerId")
+
+
+
 socket.on("server:plannerId",(data)=>{
-
+console.log(data,'23')
 idPlan.value=data.id_plan+1
 })
 
@@ -89,6 +100,11 @@ planForm.addEventListener('submit',e=>{
       dateEnd.value		
  
   )
+    const hoursPlus=0
+  const dateIni=Date.parse(dateStart.value)-hoursPlus
+
+  const dateF=Date.parse(dateEnd.value)-hoursPlus
+  
   socket.emit("client:plannerSave",{
    
     cod_prod:inputCodeProd.value ,	
@@ -97,10 +113,12 @@ planForm.addEventListener('submit',e=>{
     linea_cc:cc_line.value ,	
     cant_plan: qty.value,	
     units_cant_plan	: select_measurement.value,
-    date_start:dateStart.value ,	
-    date_end: dateEnd.value		
+    date_start:(new Date(dateIni).toISOString()).slice(0,-2)	,	
+    date_end: (new Date(dateF).toISOString()).slice(0,-2)
 })
 
+  
+  location.reload()
   
 })
 
@@ -112,6 +130,39 @@ socket.on("server:plan_query",(queryPlan)=>{
     alert('a ocurrido un error')
   }
 })
+
+
+
+
+const detailsBodyPlan=document.querySelector('#detailsBodyPlan')
+
+butDetallePlan.addEventListener('click',()=>{
+  console.log('click')
+  socket.emit('client:selectPlan')
+})
+  socket.on('server:selectPlan',(data)=>{
+    data.forEach(e=>{
+      const tablePlanD=document.createElement('tr')
+      console.log(e)
+tablePlanD.innerHTML +=`
+
+      <th scope="row">${e.id_plan}</th>
+      <td>${e.code_prod}</td>
+      <td>${e.desc_prod_plan}</td>
+      <td>${e.linea_name}</td>
+        <td>${e.cant_plan}</td>
+      <td>${e.units_cant_plan}</td>
+      <td>${e.fab}</td>
+
+
+`
+    detailsBodyPlan.append(tablePlanD)
+    })
+
+  })
+
+
+
 
 
 

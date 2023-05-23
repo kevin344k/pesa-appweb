@@ -4,9 +4,6 @@ body {
 
 }
 
-
-
-
 #realTime{
 
   background-color: #1f1f4c;
@@ -14,17 +11,13 @@ body {
   font-family: "Poppins", sans-serif;
 }
 canvas{
- width: 700px;
-  height: fit-content;
+  height: 500px;
+  overflow:scroll;
 }
 
 /* grafico de unidades producidas */
-#canvas-unitsProduced{
-  width: 500px;
-height: 400px;
-}
-#unitsProduced{
 
+#unitsProduced{
   background-color: #1f1f4c;
   color: white;
   font-family: "Poppins", sans-serif;
@@ -38,30 +31,9 @@ height: 400px;
   color: white;
   font-family: "Poppins", sans-serif;
 }
-#canvas-paralizaciones{
-
-width: 600px;
-height: 400px;
+#spandate{
+  font-size:10px;
 }
 /* grafico de tiempo real */
 
-#canvas-realTime{
-  width: 1200;
-  height: 500;
 
-}
-
-@media(max-width:500px){
-#canvas-paralizaciones{
-  width: 400;
-
-}
-#canvas-unitsProduced{
-  width: 300;
-
-}
-
-
-
-
-}

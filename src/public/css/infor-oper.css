@@ -1,3 +1,6 @@
+:root{
+    --default-bg:gray;
+}
 .div-all {
   display: flex;
   width: 100vw;
@@ -110,3 +113,15 @@
   background: #ff4757;
   color: #ffff;
 }
+
+
+
+/*
+#irwin1Parpadeo{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(129, 126, 126);
+}*/
+
+/*para hacer parpadear*/

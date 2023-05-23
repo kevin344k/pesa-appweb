@@ -381,6 +381,7 @@ missing: cantidad.value
 
   mensajeProduct("Porfavor llene todos los campos")
 } 
+  location.reload()
 })
 
 function mensajeProduct(text) {

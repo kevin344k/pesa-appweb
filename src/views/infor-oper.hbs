@@ -7,33 +7,45 @@
 <link rel="stylesheet" href="/css/production.css" />
 
 
-
-
 <style>
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500,
   'GRAD' 0, 'opsz' 48 }
 </style>
-
-<div class="container d-flex justify-content-center mt-4">
-
-  <div class="row">
-    <div class="col-12 col-md-5">
-      {{! codigo para el boron de las ordenes generadas }}
-      <div class="row">
-        <div class="col-12 text-align-center">
-          <div class="container">
+<div class="container text-align-center">
+        <div class="row mt-4  ">
+        <div class="col-5 text-center">
+         
             <button
               id="butOrderList"
               data-bs-toggle="modal"
               data-bs-target="#modal-orden-load"
               type="button"
               class="btn btn-outline-primary btn-lg"
-            >Ordenes Pendientes</button></div>
+            >Ordenes Pendientes</button>
+        </div>
+        <div class="col-7  ">
+        <div class="container border rounded  p-1 mx-auto bg-white text-center">
+          <span>Status Line: </span><br>
+         
+
+   
+                    <button id="butRun" class="btn btn-light">Run</button>
+                    <button id="butStop" class="btn btn-light">Stop</button>
+                    <button id="butSwitch" class="btn btn-light">Switch</button>
+                    <button id="butNotOP" class="btn btn-light">not O/P</button>
+ </div>
         </div>
       </div>
+</div>
+<div class="container d-flex justify-content-center mt-4">
+
+  <div class="row">
+    <div class="col-12 col-md-5">
+      {{! codigo para el boron de las ordenes generadas }}
+
 
       {{!///////Production People/////////}}
-      <div class="row mt-3">
+      <div class="row">
         <div class="col">
           <div class="card text-center">
             <div class="card-header">
@@ -259,6 +271,9 @@
                       id="spanOrderNumber"
                       class="p-1 rounded bg-danger bg-gradient text-white fs-6"
                     >---</span>
+                    <span id="spanPlanId" class="p-1 rounded bg-danger bg-gradient text-white fs-6">
+                    --
+                    </span>
                   </label>
                 </div>
 
@@ -798,9 +813,9 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body overflow-auto ">
 
-        <div class="container">
+        <div class="container ">
           <table id="tablaOrderList" class="table table-hover text-center">
 
             <thead>
@@ -810,7 +825,7 @@
                 <th scope="col">Code</th>
                 <th scope="col">Product</th>
                 <th scope="col">Amount</th>
-                <th scope="col">Missing</th>
+                <th scope="col">done</th>
                 <th scope="col">Action</th>
 
               </tr>
@@ -1009,11 +1024,11 @@
     </div>
   </div>
 </div>
- 
+ <script  type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 
 
 
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-<script src="socket.io/socket.io.min.js"></script>
+
 <script type="text/javascript" src="js/informe/infor.js"></script>

@@ -16,20 +16,20 @@ function drawChart() {
     data.addColumn("date", "Finaliza");
     data.addColumn("number", "Duration");
     data.addColumn("number", "Avance");
-    data.addColumn("string", "Dependencies");
-  
-
+    data.addColumn("string", "Dependencies"); 
 
     rows.forEach((element) => {
-     
-       element = [ (element.id_plan).toString(),
+      let done=((element.fab/element.cant_plan)*100).toFixed()
+      
+       element = [ 
+         (element.id_plan).toString(),
         element.linea_name,
-        element.desc_prod_plan,
+       `${element.desc_prod_plan}(${element.id_plan} )`,
         new Date(element.date_start),
         new Date(element.date_end),
         element.cant_plan,
-        null,
-        null
+         parseFloat(done),
+       null
       ]
       console.log(element)
       data.addRow(element);
@@ -39,10 +39,10 @@ function drawChart() {
     
    
     var options = {
-      height: 400,
+      height: 350,
       gantt: {
         trackHeight: 30,
-      },
+      }
     };
   
     var chart = new google.visualization.Gantt(

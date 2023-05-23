@@ -1,65 +1,101 @@
-const express = require("express"); //se importa express para iniciar el server
-const path = require("path"); // permite manejar rutas internas de archivos
-const exphbs = require("express-handlebars"); //permite renderizar hbs
-const morgan = require("morgan"); //crea logs de las peticiones del cliente al servidor
-//BASE DE DATOS
-const pool = require("./db");
+const express = require("express");
+const { createServer } = require("http");
+const { Server } = require('socket.io');
+const pool = require("./db.js");
+const database = require("./db.js");
+const exphbs = require("express-handlebars");
+const {engine}=require("express-handlebars");
+const morgan = require("morgan");
+const path = require("path");
+const passport = require("passport")
+const flash = require("connect-flash")
+const session = require("express-session")
+const bodyParser=require('body-parser')
+const mysqlStore = require("express-mysql-session")(session)
+
+const options={
+    host: process.env.DB_HOST || 'containers-us-west-114.railway.app',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'JwvlLf417IRcpdHVBjOB',
+    database: process.env.DB_NAME || 'railway',
+    port: process.env.DB_HOST || '6760'
+  }
+const sessionStore=new mysqlStore(options)
+
 //INICIALIZACIONES
-const app = express(); //se inicializa express
+const app = express();
+
+//pasando el server a http
+
+const httpServer = createServer(app);
+const io = new Server(httpServer);
+
+//static files
+app.use(express.static(path.join(__dirname, "public")));
 
 //SETTINGS
+const PORT = process.env.PORT || 5000
+app.set("port", PORT);
 
-app.set("port", process.env.PORT || 5000);
-///// se configuar las carpetas con los "hbs" para ser cargado cada ves que se haga una peticion del cliente/////
+
+//  "hbs"
 app.set("views", path.join(__dirname, "views"));
-app.engine(
-  ".hbs",
+
+app.engine(".hbs",
   exphbs.engine({
     defaultLayout: "main",
     layoutsDir: path.join(app.get("views"), "layouts"),
     partialsDir: path.join(app.get("views"), "partials"),
     extname: ".hbs",
+    helpers: require("./lib/handlebars")
   })
 );
 app.set("view engine", ".hbs");
-
 ///MIDDLEWARES
 
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: false })); //para que la alpicaión acepte desde los formularios que me envien los usuarios y false para no aceptar imágenes
-app.use(express.json()); //para que la aplicación acepte datos en formato json
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
+
+  app.use(session({
+  secret: "mySecret",
+  resave: true,
+  saveUninitialized: true,
+  store: sessionStore
+}))
+app.use(flash())
+app.use(passport.initialize())
+app.use(passport.session())
 //GLOBAL VARIABLES
-//toma info del cliente, lo que responde el server y continua con el codigo con next
-app.use((req, res, next) => {
-  next();
-});
+app.use((req,res,next)=>{
+  app.locals.failed=req.flash('failed')
+  app.locals.success=req.flash('success')
+  app.locals.message=req.flash('message')
+  app.locals.user=req.user
 
+  
+  
+console.log( app.locals.user,'data de profile user')
+  next()
+  
+})
 //ROUTES
-
+require('./lib/passport')
 app.use(require("./routes"));
-app.use(require("./routes/authentication"));
-app.use("/app", require("./routes/app"));
-//FILES PUBLIC
-app.use(express.static(path.join(__dirname, "public")));
 
-//pasando el server a http
-const http = require("http");
-const httpServer = http.createServer(app);
+
 //STARTING THE SERVER con express
 
+
 httpServer.listen(app.get("port"));
-console.log("server on port", app.get("port"));
+console.log(`server on port, ${app.get("port")}`);
+
 //websockets
 
-const { Server } = require("socket.io");
-const { Socket } = require("dgram");
-
-const io = new Server(httpServer);
-
 io.on("connection", (socket) => {
-  console.log("nueva conexión");
+  console.log("nueva conexión", socket.id);
   //para buscar el codigo de producto en planner
-  socket.on("cliente:plannerId", async () => {
+  socket.on("client:plannerId", async () => {
     const [plannerId] = await pool.query(
       " SELECT id_plan FROM planner order by id_plan desc"
     );
@@ -121,10 +157,19 @@ io.on("connection", (socket) => {
   });
   //////////////////////
   socket.on("client:chart", async () => {
-    const [selectAll] = await pool.query("select * from planner ");
+    const [selectAll] = await pool.query("select * from planner where fab<cant_plan order by id_plan desc");
 
+   // inner join  orden_produccion on planner.id_plan=orden_produccion.id_plan
     socket.emit("server:chart", selectAll);
+  
   });
+
+socket.on('client:selectPlan',async()=>{
+  const [allPlan]=await pool.query('select * from planner where fab<cant_plan order by id_plan desc')
+  socket.emit('server:selectPlan',allPlan)
+})
+  
+  
 });
 
 ////////////////io para la plantilla admin/////////////////////
@@ -297,8 +342,7 @@ io.on("connection", (socketadmin) => {
     pool.query("delete from suministro where codigo=?", data);
   });
 });
-/////////////////////////////////////////
-////////////////////////////////////////
+
 /////////////////io para la pagina orden de planeación
 
 io.on("connection", (socketOrden) => {
@@ -425,7 +469,7 @@ io.on("connection", (socketOrden) => {
         data.id_plandbs,
         data.fechaCreacion,
         data.horaCreacion,
-        data.cantidad,
+        0,
       ]
     );
 
@@ -433,8 +477,8 @@ io.on("connection", (socketOrden) => {
   });
 });
 
-///Io para la pagina informe de operador ////
-io.on("connection", (socketInfor) => {
+///io para la pagina informe de operador ////
+io.of("/informeOP").on("connection", (socketInfor) => {
   socketInfor.on("client:SearchByCedula", async (data) => {
     const [dataSelectUser] = await pool.query(
       "select * from usuarios where cedula=?",
@@ -511,9 +555,8 @@ io.on("connection", (socketInfor) => {
   //codigo para realizar el order list
   socketInfor.on("client:SelectOrderList", async () => {
     const [selectOrdenList] = await pool.query(
-      "select num_orden,linea,codigo_articulo,articulo,total_a_fabricar,missing from orden_produccion "
+      "select num_orden,linea,codigo_articulo,articulo,total_a_fabricar,id_plan,missing from orden_produccion where missing<=total_a_fabricar order by num_orden desc"
     );
-
     socketInfor.emit("server:selectOrderList", selectOrdenList);
   });
 
@@ -609,7 +652,107 @@ io.on("connection", (socketInfor) => {
         data.OrderNumber,
       ]
     );
+    //codigo para colocar la cantidad fabricada en el grafico "TimeLine de la vista planner"
+const [insertPlanner]=await pool.query("select cant_plan,fab from planner where id_plan=? ",[data.plan_id])
+console.log(insertPlanner,'insertplanner')    
+    await pool.query("update planner set fab=? where id_plan=?",[(parseInt(data.unitsGood)+parseInt(insertPlanner[0].fab)),data.plan_id])
+    
+const [selectProd] =await pool.query("select total_a_fabricar,missing from orden_produccion where num_orden=?",[data.OrderNumber])
+
+    //const miss=
+
+    console.log(data.unitsGood+selectProd[0].missing,"orden de produccion")
+    
+await pool.query("update orden_produccion set missing=? where num_orden=?",[(parseInt(data.unitsGood)+parseInt(selectProd[0].missing)),data.OrderNumber])
 
 
+    
   });
+
+  //codigo para el tiempo real de las máquinas
+  socketInfor.on("run", async data => {
+    console.log(data)
+    const editStatus = await pool.query("update realTimeLine set status=?,status_dateUpdate=? where cc=?", [data.status, data.status_upDate, data.linea])
+  })
+  socketInfor.on("stop", async data => {
+    console.log(data)
+    const editStatus = await pool.query("update realTimeLine set status=?,status_dateUpdate=? where cc=?", [data.status, data.status_upDate, data.linea])
+  })
+  socketInfor.on("switch", async data => {
+    console.log(data)
+    const editStatus = await pool.query("update realTimeLine set status=?,status_dateUpdate=? where cc=?", [data.status, data.status_upDate, data.linea])
+  })
+  socketInfor.on("notOP", async data => {
+    console.log(data)
+    const editStatus = await pool.query("update realTimeLine set status=?,status_dateUpdate=? where cc=?", [data.status, data.status_upDate, data.linea])
+  })
 });
+
+//io para la pagina DASH
+io.of("/dashboard").on("connection", (socketDash) => {
+  socketDash.on("dash:dates", async data => {
+    console.log(data)
+    const [result] = await pool.query("select linea,articulo,UnitsGood,por_turno,codePar1,descPar1,timeStar1,timeEnd1,codePar2,descPar2,timeStar2,timeEnd2,codePar3,descPar3,timeStar3,timeEnd3,codePar4,descPar4,timeStar4,timeEnd4, round(((UnitsGood*100)/por_turno),1) AS EFICIENCIA  from inforOper INNER JOIN orden_produccion ON inforOper.num_orden=orden_produccion.num_orden where   fechaRegistroInfor BETWEEN ? AND  ?", [data.date_Start, data.date_End])
+
+
+
+    socketDash.emit("dash:server:resultDates", (result))
+  })
+
+  //codigo para mostrar en timpo real las maquinas
+
+  socketDash.on("getRealTime", async () => {
+    const [query] = await pool.query("select * from realTimeLine")
+
+    let query1 = []
+    for (i = 0; i <= query.length - 1; i++) {
+      query1.push(query[i].status)
+    }
+    console.log(query1, 654)
+
+
+
+
+
+    setInterval(async () => {
+      let query2 = []
+      let [detectChange] = await pool.query("select status from realTimeLine")
+      let [fechas]=await pool.query("select * from realTimeLine")
+      if (detectChange.length > 0) {
+        for (i = 0; i <= detectChange.length - 1; i++) {
+          query2.push(detectChange[i].status)
+
+        }
+        console.log(query2, 660)
+        compareArr(query2)
+        upDate(fechas)
+      }
+
+    }, 10000)
+
+
+    function compareArr(q2) {
+
+      socketDash.emit("updateStatus", q2)
+    
+    }
+    function upDate(fechas){
+        socketDash.emit("updateDate",fechas)
+    }
+
+
+
+
+    socketDash.emit("postRealtime", query)
+
+  })
+
+})
+
+
+
+
+
+
+
+

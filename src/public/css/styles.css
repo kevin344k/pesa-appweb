@@ -1,12 +1,35 @@
 body {
+    margin:0;
+  padding:0;
+    width: 100vw;
+heigth: calc(100%-56px);
   font-family: "Oswald", sans-serif;
 }
 
+/* bootstrap textos y boton */
+
+.masthead {
+  margin:auto;
+  color: white;
+
+
+
+  padding-top: 8rem;
+}
+
+.masthead h1 {
+  font-size: 4rem;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 992px) {
+  .masthead h1 {
+    font-size: 5.5rem;
+  }
+}
+
 /* fondo con movimiento (solo s ecarga en el index.hbs y sigin.hbs*/
-
-
-
-
 
 .area {
   background: #0575e6; /* fallback for old browsers */
@@ -21,7 +44,11 @@ body {
     #0575e6
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   width: 100%;
-  height: 100vh;
+  height:100%;
+
+
+
+  
 z-index: 0; /*permite crear capas para que los objetos se puedan superponer*/
 position: absolute;
 
@@ -35,6 +62,7 @@ position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index:-1;
 }
 
 .circles li {
@@ -134,34 +162,5 @@ position: absolute;
     transform: translateY(-1000px) rotate(720deg);
     opacity: 0;
     border-radius: 50%;
-  }
-}
-
-/* bootstrap textos y boton */
-.index {
-  width: 100vw;
-  height: 100vh;
-position:absolute;
-z-index: 1;
-
-
-}
-.masthead {
-  color: white;
-  min-height: 30rem;
-  width: 100%;
-  height: 100%;
-  padding-top: 8rem;
-}
-
-.masthead h1 {
-  font-size: 4rem;
-  margin: 0;
-  padding: 0;
-}
-
-@media (min-width: 992px) {
-  .masthead h1 {
-    font-size: 5.5rem;
   }
 }
